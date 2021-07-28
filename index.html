@@ -347,33 +347,16 @@ require([
    * Widget example - Add legend widget
    *
    ******************************************************************/
-   homicides.visible = true;
-    // Step 1: Create the widget
-    const legend = new Legend({
-      // Step 2: Specify any additional properties for the legend. In this case,
-      // we are just setting the view to where the legend should apply
-      view: view,
-      layerInfos: [{
-          layer: chicagoCrime,
-          title: "Chicago Crime Tracts"
-        },
-        {
-          layer: homicides,
-          title: "Chicago Homicide Data"
-        }
-      ]
+    let legend = new Legend({
+        view: view,
+        layerInfos: [{
+            layer: chicagoCrime,
+            title: "Legend"
+        }]
     });
 
-    const swipe = new Swipe({
-      view: view,
-      leadingLayers: [chicagoCrime],
-      trailingLayers: [homicides],
-      position: 45
-    });
+    view.ui.add(legend, "bottom-right")
 
-    // Step 3: Add the widget to the view's UI, specify the docking position as well
-    view.ui.add(legend, "top-right");
-    view.ui.add(swipe);
   });
     </script>
   </head>
