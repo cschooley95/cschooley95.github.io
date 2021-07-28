@@ -335,6 +335,26 @@
 
       // Add the widget
       view.ui.add(crimesExpand, "top-left");
+
+    });
+
+    view.whenLayerView(chicagoCrime).then(function (layerView) {
+      // Crime data layer is loaded
+      // Get a reference to the crime data layerview
+      crimeLayerView = layerView;
+
+      // Set up the UI items
+      crimesElement.style.visibility = "visible";
+      const legend = new Legend({
+        view: view,
+        layerInfos: [{
+        layer: chicagoCrime,
+        title: "Legend"
+  }]
+});
+
+        view.ui.add(legend, "bottom-right")
+      
     });
   });
 });
