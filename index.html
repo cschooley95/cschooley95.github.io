@@ -22,8 +22,9 @@
   "esri/layers/FeatureLayer",
   "esri/views/MapView",
   "esri/PopupTemplate",
-  "esri/widgets/Expand"
-], function (Map, FeatureLayer, MapView, PopupTemplate, Expand) {
+  "esri/widgets/Expand",
+  "esri/widgets/Legend"
+], function (Map, FeatureLayer, MapView, PopupTemplate, Expand, Legend) {
 
   let crimeLayerView;
 
@@ -344,16 +345,17 @@
       crimeLayerView = layerView;
 
       // Set up the UI items
-      crimesElement.style.visibility = "visible";
+      chicagoCrime.visible = true;
       const legend = new Legend({
         view: view,
         layerInfos: [{
-        layer: chicagoCrime,
-        title: "Legend"
-  }]
-});
+            layer: chicagoCrime,
+            title: "Legend"
+        }
+    ]
+    });
 
-        view.ui.add(legend, "bottom-right")
+    view.ui.add(legend, "bottom-right")
       
     });
   });
@@ -366,7 +368,7 @@
         <div class="crime-item visible-crime" data-crime="50-99">50 - 99 incidents</div>
         <div class="crime-item visible-crime" data-crime="49">< 50 incidents</div>
       </div>
-      <div id="viewDiv"></div>
+    <div id="viewDiv"></div>
   </body>
   
   </html>
