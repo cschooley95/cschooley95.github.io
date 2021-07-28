@@ -246,10 +246,10 @@ require([
     renderer: renderer
   });
 
-  // Vehicle thefts layer
-  // const vehicleThefts = new FeatureLayer({
-  //   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/ChicagoCrime/FeatureServer/0"
-  // });
+  // Homicide Layers
+   const homicides = new FeatureLayer({
+     url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Chicago_Homicide_Data/FeatureServer/0"
+   });
 
   // Set map's basemap
   const map = new Map({
@@ -273,7 +273,7 @@ require([
   view.when(function () {
     // Add the layer
     map.add(chicagoCrime);
-    // map.addMany([chicagoCrime, vehicleThefts]);
+     map.addMany([chicagoCrime, homicides]);
 
 /******************************************************************
  *
