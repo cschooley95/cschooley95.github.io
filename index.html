@@ -20,8 +20,9 @@
     require([
   "esri/Map",
   "esri/layers/FeatureLayer",
-  "esri/views/MapView"
-], function (Map, FeatureLayer, MapView) {
+  "esri/views/MapView",
+  "esri/PopupTemplate"
+], function (Map, FeatureLayer, MapView, PopupTemplate) {
 
   /******************************************************************
    *
@@ -187,33 +188,81 @@
 
   /******************************************************************
    *
-   * Add featurelayers to the map example
+   * Popup example
    *
    ******************************************************************/
 
-  // Create the layer
+  // Step 1: Create the template
+  const popupTemplate = new PopupTemplate({
+    title: "Crime in Tract {NAME}",
+    content: [{
+        // Specify the type of popup element - fields
+        //fieldInfos autocasts
+        type: "fields",
+        fieldInfos: [{
+            fieldName: "CrimeCnt",
+            visible: true,
+            label: "Number of crimes: "
+          },
+          {
+            fieldName: "NarcoticsC",
+            visible: true,
+            label: "Number of narcotics crimes: "
+          },
+        ]
+      },
+      {
+        type: "media",
+        // mediainfos autocasts
+        mediaInfos: [{
+          title: "Chicago Crime and Narcotics Rates",
+          type: "column-chart",
+          caption: "Crime rate in comparison to narcotics rate",
+          value: {
+            theme: "Julie",
+            fields: ["CrimeRate", "NarcoticsR"],
+          }
+        }]
+      }
+    ]
+  });
+
+  /******************************************************************
+   *
+   * Create feature layers
+   *
+   ******************************************************************/
+
   const chicagoCrime = new FeatureLayer({
     url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Chicago_Crime_Tracts/FeatureServer/0",
+    popupTemplate: popupTemplate,
     outFields: ["*"],
-    renderer: renderer // Add the renderer to the feature layer
+    renderer: renderer
   });
+
+  // const vehicleThefts = new FeatureLayer({
+  //   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/ChicagoCrime/FeatureServer/0"
+  // });
 
   // Set map's basemap
   const map = new Map({
-    basemap: "gray-vector"
+    basemap: "gray-vector",
+    // layers: [chicagoCrime, vehicleThefts]
+    layers: [chicagoCrime]
   });
 
   const view = new MapView({
     container: "viewDiv",
     map: map,
     zoom: 10,
-    center: [-87.66453728281347, 41.840392306471315]
-  });
-
-  view.when(function () {
-    // Add the layer
-    map.add(chicagoCrime);
-    // map.addMany([chicagoCrime, vehicleThefts]);
+    center: [-87.66453728281347, 41.840392306471315],
+    popup: {
+      dockEnabled: true,
+      dockOptions: {
+        buttonEnabled: false,
+        breakpoint: false
+      }
+    }
   });
 });
     </script>
