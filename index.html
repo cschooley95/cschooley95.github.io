@@ -21,12 +21,15 @@
   "esri/Map",
   "esri/layers/FeatureLayer",
   "esri/views/MapView",
-  "esri/PopupTemplate"
-], function (Map, FeatureLayer, MapView, PopupTemplate) {
+  "esri/PopupTemplate",
+  "esri/widgets/Expand"
+], function (Map, FeatureLayer, MapView, PopupTemplate, Expand) {
+
+  let crimeLayerView;
 
   /******************************************************************
    *
-   * LayerRenderer example
+   * Demo 3: LayerRenderer example
    *
    ******************************************************************/
 
@@ -104,7 +107,7 @@
 
   const sizeVisVar = {
     "type": "size",
-    "field": "NarcoticsC",
+    "field": "NarcoticsCnt",
     "valueExpression": null,
     "valueUnit": "unknown",
     "minSize": {
@@ -188,7 +191,7 @@
 
   /******************************************************************
    *
-   * Popup example
+   * Demo 4: Popup example
    *
    ******************************************************************/
 
@@ -205,7 +208,7 @@
             label: "Number of crimes: "
           },
           {
-            fieldName: "NarcoticsC",
+            fieldName: "NarcoticsCnt",
             visible: true,
             label: "Number of narcotics crimes: "
           },
@@ -220,7 +223,7 @@
           caption: "Crime rate in comparison to narcotics rate",
           value: {
             theme: "Julie",
-            fields: ["CrimeRate", "NarcoticsR"],
+            fields: ["CrimeRate", "NarcoticsRate"],
           }
         }]
       }
@@ -229,7 +232,7 @@
 
   /******************************************************************
    *
-   * Create feature layers
+   * Demo 2: Create feature layers
    *
    ******************************************************************/
 
@@ -240,15 +243,15 @@
     renderer: renderer
   });
 
+  // Vehicle thefts layer
   // const vehicleThefts = new FeatureLayer({
   //   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/ChicagoCrime/FeatureServer/0"
   // });
 
   // Set map's basemap
   const map = new Map({
-    basemap: "gray-vector",
+    basemap: "gray-vector"
     // layers: [chicagoCrime, vehicleThefts]
-    layers: [chicagoCrime]
   });
 
   const view = new MapView({
@@ -263,6 +266,76 @@
         breakpoint: false
       }
     }
+  });
+  view.when(function () {
+    // Add the layer
+    map.add(chicagoCrime);
+    // map.addMany([chicagoCrime, vehicleThefts]);
+
+/******************************************************************
+ *
+ * Demo 5: Filter data to display
+ *
+ ******************************************************************/
+
+
+    const crimeNodes = document.querySelectorAll('.crime-item');
+    const crimesElement = document.getElementById('crimes-filter');
+
+    // click event handler for crime amount choices
+    crimesElement.addEventListener("click", filterByCrimeAmount);
+
+    // User clicked on Winter, Spring, Summer or Fall
+    // set an attribute filter on flood warnings layer view
+    // to display the warnings issued in that season
+    function filterByCrimeAmount(event) {
+      const selectedCrimeAmount = event.target.getAttribute("data-crime");
+
+      // switch statement for checking selectedCrimeAmount and then set filter
+      // where clause
+
+      switch (selectedCrimeAmount) {
+        case "100":
+          crimeLayerView.filter = {
+            where: "CrimeCnt >= '" + selectedCrimeAmount + "'"
+          };
+          break;
+        case "50-99":
+          crimeLayerView.filter = {
+            where: "(CrimeCnt >= 50)" + 'AND' + "(CrimeCnt <= 99)"
+          };
+          break;
+        case "49":
+          crimeLayerView.filter = {
+            where: "CrimeCnt <= '" + selectedCrimeAmount + "'"
+          };
+      }
+    }
+
+    view.whenLayerView(chicagoCrime).then(function (layerView) {
+      // Crime data layer is loaded
+      // Get a reference to the crime data layerview
+      crimeLayerView = layerView;
+
+      // Set up the UI items
+      crimesElement.style.visibility = "visible";
+      const crimesExpand = new Expand({
+        view: view,
+        content: crimesElement,
+        expandIconClass: "esri-icon-filter",
+        group: "top-left"
+      });
+
+      // Clear the filters when the user closes the expand widget
+      crimesExpand.watch("expanded", function () {
+        if (!crimesExpand.expanded) {
+          crimeLayerView.filter = null;
+        }
+      });
+
+      // Add the widget
+      view.ui.add(crimesExpand, "top-left");
+    });
   });
 });
     </script>
