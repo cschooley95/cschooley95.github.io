@@ -1,59 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Step 2: Add layer</title>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.20/esri/css/main.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="https://js.arcgis.com/4.20/"></script>
-  <script>
-      require([
-    "esri/Map",
-    "esri/layers/FeatureLayer",
-    "esri/views/MapView"
-  ], function(Map, FeatureLayer, MapView) {
-    /******************************************************************
-     *
-     * Add featurelayers to the map example
-     *
-     ******************************************************************/
-  
-    // Create the layer
-    const chicagoCrime = new FeatureLayer({
-      url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Chicago_Crime_Tracts/FeatureServer/0"
-    });
-    
-    // 2 - This additional point layer shows time aware data used for the
-    //     TimeSlider
-    // var vehicleThefts = new FeatureLayer({
-    //   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/ChicagoCrime/FeatureServer/0"
-    // });
-  
-    // Set map's basemap
-    const map = new Map({
-      basemap: "gray-vector"
-    });
-  
-    const view = new MapView({
-      container: "viewDiv",
-      map: map,
-      zoom: 10,
-      center: [-87.66453728281347, 41.840392306471315]
-    });
-  
-    view.when(function() {
-      // Add the layer
-      map.add(chicagoCrime);
-      // map.addMany([chicagoCrime, vehicleThefts]);
-    });
-  });
-  </script>
-</head>
-
-<body>
-  <div id="viewDiv"></div>
-</body>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to MapView - Create a 2D map</title>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.20/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.20/"></script>
+    <script>
+      require(["esri/Map", "esri/views/MapView"], (Map, MapView) => {
+        const map = new Map({
+          basemap: "topo-vector"
+        });
+        const view = new MapView({
+          container: "viewDiv", // Reference to the view div created in step 5
+          map: map, // Reference to the map object created before the view
+          zoom: 4, // Sets zoom level based on level of detail (LOD)
+          center: [15, 65] // Sets center point of view using longitude,latitude
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
 </html>
