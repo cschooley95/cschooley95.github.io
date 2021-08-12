@@ -6,7 +6,7 @@ require([
   ], (Map, MapView, FeatureLayer, TimeSlider) => {
     const layer = new FeatureLayer({
       url:
-        "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer"
+        "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
     });
 
     const map = new Map({
