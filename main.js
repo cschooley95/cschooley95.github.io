@@ -1,41 +1,34 @@
+  
 require([
-    "esri/Map",
+    "esri/WebMap",
     "esri/views/MapView",
-    "esri/layers/FeatureLayer",
     "esri/widgets/TimeSlider"
-  ], (Map, MapView, FeatureLayer, TimeSlider) => {
-    const layer = new FeatureLayer({
-      url:
-        "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
-    });
+], function (WebMap, MapView, TimeSlider) {
 
-    const map = new Map({
-      basemap: "hybrid",
-      layers: [layer]
-    });
+  /******************************************************************
+   *
+   * Webmap example
+   *
+   ******************************************************************/
 
-    const view = new MapView({
-      map: map,
-      container: "viewDiv",
-      zoom: 4,
-      center: [-100, 30]
-    });
-
-    // time slider widget initialization
-    const timeSlider = new TimeSlider({
-      container: "timeSlider",
-      view: view,
-      timeVisible: true, // show the time stamps on the timeslider
-      loop: true
-    });
-
-    view.whenLayerView(layer).then((lv) => {
-      // around up the full time extent to full hour
-      timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent.expandTo(
-        "years"
-      );
-      timeSlider.stops = {
-        interval: layer.timeInfo.interval
-      };
-    });
+  // Step 1: Pass a webmap instance to the map and specify the id for the webmap item
+  const map = new WebMap({
+    portalItem: { // autocast (no need to specifically require it above)
+      id: "1e9a6937760e46d3bd047c108ebf8246"
+    }
   });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map
+  });
+  
+  const timeSlider = new TimeSlider({
+      container: "timeSlider",
+      fullTimeExtent: {
+          start: new Date(1900,0,1),
+          end: new Date(2022,0,1)
+      }
+  });
+
+});
