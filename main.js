@@ -31,4 +31,6 @@ require([
       }
   });
 
+  view.ui.add(timeSlider)
+
 });
