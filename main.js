@@ -24,9 +24,9 @@ require([
       layerInfos: [{
         layer: OGpoints,
         title: "Oil and Gas Well Status"
-      }]
-    })
-  })
+      }
+    ]
+  });
 
   const events = [
     {name:`Great Recession`, date: 2008},
