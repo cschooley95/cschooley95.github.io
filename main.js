@@ -4,13 +4,6 @@ require([
     "esri/widgets/TimeSlider"
 ], function (WebMap, MapView, TimeSlider) {
 
-  /******************************************************************
-   *
-   * Webmap example
-   *
-   ******************************************************************/
-
-  // Step 1: Pass a webmap instance to the map and specify the id for the webmap item
   const map = new WebMap({
     portalItem: { 
       id: "1e9a6937760e46d3bd047c108ebf8246"
@@ -23,10 +16,8 @@ require([
   });
 
   const events = [
-    {name:`Great
-    Recession`, date: 2008},
-    {name: `Covid-19
-    Pandemic`, date: 2020}
+    {name:`Great Recession`, date: 2008},
+    {name: `Covid-19 Pandemic`, date: 2020}
   ];
   
   const timeSlider = new TimeSlider({
