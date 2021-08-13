@@ -23,9 +23,7 @@ body,
 #timeSlider .custom-ticks{
 	background-color: black;
 	width: 1px;
-	height: 5px;
-	margin-top: -10px;
-
+	height: 20px;
 }
 
 #timeSlider .custom-labels2{
@@ -33,7 +31,7 @@ body,
 	font-size: 12px;
 	font-weight: bold;
 	color: black;
-	margin-top: 12px;
+	margin-top: 10px;
 }
 
 #timeSlider .custom-ticks2{
