@@ -10,14 +10,14 @@ body,
 	position: absolute;
 	left: 5%;
 	right: 5%;
-	bottom: 5px;
+	bottom: 20px;
   }
 
 #timeSlider .custom-labels{
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 8px;
 	color: blueviolet;
-	margin-top: -5px;
+	margin-bottom: 35px;
 }
 
 #timeSlider .custom-ticks{
