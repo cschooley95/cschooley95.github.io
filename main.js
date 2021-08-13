@@ -85,7 +85,7 @@ require([
     ]
   });
   
-  view.ui.add(legend, "top-left")
+  view.ui.add(legend, "top-right")
   view.ui.add(timeSlider)
 
 });
