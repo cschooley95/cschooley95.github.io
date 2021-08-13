@@ -15,7 +15,7 @@ body,
 
 #timeSlider .custom-labels{
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: 9px;
+	font-size: 8px;
 	color: blueviolet;
 	margin-top: 35px;
 }
@@ -24,4 +24,17 @@ body,
 	background-color: black;
 	width: 1px;
 	height: 20px;
+}
+
+#timeSlider .customlabels2{
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+}
+
+#timeSlider .custom-ticks2{
+	background-color: black;
+	width: 1px;
+	height: 5px;
 }
