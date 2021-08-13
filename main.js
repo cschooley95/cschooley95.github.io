@@ -34,8 +34,15 @@ require([
           start: new Date(1900,0,1),
           end: new Date(2022,0,1)
       },
-
       tickConfigs: [{
+        mode: "position",
+        values: [
+          new Date(1900, 0, 1), new Date(1920, 0, 1), new Date(1940, 0, 1),
+          new Date(1960, 0, 1), new Date(1980, 0 , 1), new Date(2000, 0, 1),
+          new Date(2020, 0, 1)
+        ].map((date) => date.getTime()),
+        labelsVisible: true,
+      }, {
         mode: "position",
         values: events
           .map((event) => new Date(event.date, 0, 1))
@@ -47,7 +54,8 @@ require([
           );
           return event.name + ", " + event.date;
         }
-      }]
+      }
+    ]
   });
 
   view.ui.add(timeSlider)
