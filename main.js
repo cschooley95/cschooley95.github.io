@@ -15,6 +15,10 @@ require([
     map: map
   });
 
+  view.when(function() {
+    const OGpoints = map.layers.getItemAt(1)
+  })
+
   const events = [
     {name:`Great Recession`, date: 2008},
     {name: `Covid-19 Pandemic`, date: 2020}
@@ -35,6 +39,7 @@ require([
           start: new Date(1940,0,1),
           end: new Date(2022,0,1)
       },
+
       tickConfigs: [{
         mode: "position",
         values: [
@@ -70,6 +75,6 @@ require([
     ]
   });
 
-  view.ui.add(timeSlider)
+  view.ui.add(timeSlider, "bottom-left")
 
 });
