@@ -23,6 +23,14 @@ require([
   const timeSlider = new TimeSlider({
       container: "timeSlider",
       mode: "time-window",
+      playRate: 50,
+      stops: {
+        interval: {
+          value: 1,
+          unit: "years"
+        }
+      },
+
       fullTimeExtent: {
           start: new Date(1940,0,1),
           end: new Date(2022,0,1)
