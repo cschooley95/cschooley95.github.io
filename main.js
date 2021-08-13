@@ -75,6 +75,6 @@ require([
     ]
   });
 
-  view.ui.add(timeSlider, "bottom-left")
+  view.ui.add(timeSlider)
 
 });
