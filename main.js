@@ -23,7 +23,7 @@ require([
   const timeSlider = new TimeSlider({
       container: "timeSlider",
       mode: "time-window",
-      playRate: 50,
+      playRate: 25,
       stops: {
         interval: {
           value: 1,
