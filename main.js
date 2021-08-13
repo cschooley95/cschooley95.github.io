@@ -25,6 +25,7 @@ require([
   //Creating Timeslider
   const timeSlider = new TimeSlider({
       container: "timeSlider",
+      mode: "instant",
       fullTimeExtent: {
           start: new Date(1900,0,1),
           end: new Date(2022,0,1)
@@ -35,8 +36,8 @@ require([
         values: events
           .map((event) => new Date(event.date, 0, 1))
           .map((date) => date.getTime()),
-        labelsVisible = true,
-        labelFormatFunction: (value)=> {
+        labelsVisible: true,
+        labelFormatFunction: (value) => {
           const event = events.find(
             (s) => new Date(s.date, 0, 1).getTime() === value
           );
