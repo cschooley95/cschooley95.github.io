@@ -26,8 +26,8 @@ require([
         title: "Oil and Gas Well Status"
       }
     ]
-  });
-
+  })
+});
 
   const events = [
     {name:`Great Recession`, date: 2008},
@@ -89,5 +89,4 @@ require([
   view.ui.add(legend, "top-right")
   view.ui.add(timeSlider)
 
-});
 });
