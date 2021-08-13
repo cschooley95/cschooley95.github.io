@@ -8,8 +8,8 @@ body,
 }
 .sample-slider {
 	position: absolute;
-	left: 5%;
-	right: 5%;
+	left: 2%;
+	right: 2%;
 	bottom: 20px;
 	margin: 0 20px ;
   }
