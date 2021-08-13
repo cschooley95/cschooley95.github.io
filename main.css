@@ -11,6 +11,7 @@ body,
 	left: 5%;
 	right: 5%;
 	bottom: 20px;
+	white-space: pre-wrap;
   }
 
 #timeSlider .custom-labels{

@@ -23,8 +23,10 @@ require([
   });
 
   const events = [
-    {name: "Great\n Recession", date: 2008},
-    {name: "Covid-19\n Pandemic", date: 2020}
+    {name:`Great
+    Recession`, date: 2008},
+    {name: `Covid-19
+    Pandemic`, date: 2020}
   ];
   
   const timeSlider = new TimeSlider({
