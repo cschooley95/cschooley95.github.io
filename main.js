@@ -42,6 +42,10 @@ require([
           new Date(2020, 0, 1)
         ].map((date) => date.getTime()),
         labelsVisible: true,
+        labelFormatFunction: (value) => {
+          const date = new Date(value);
+          return `${date.getUTCFullYear()}`;
+        }
       }, {
         mode: "position",
         values: events
