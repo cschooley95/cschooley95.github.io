@@ -17,7 +17,7 @@ body,
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 8px;
 	color: blueviolet;
-	margin-bottom: 35px;
+	margin-top: 10px;
 }
 
 #timeSlider .custom-ticks{
@@ -38,4 +38,5 @@ body,
 	background-color: black;
 	width: 1px;
 	height: 5px;
+	margin-top: 5px;
 }
