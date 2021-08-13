@@ -17,14 +17,14 @@ body,
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 8px;
 	color: blueviolet;
-	margin-top: -15px;
+	margin-top: -30px;
 }
 
 #timeSlider .custom-ticks{
 	background-color: black;
 	width: 1px;
 	height: 2px;
-	margin-top: -12px;
+	margin-top: -25px;
 }
 
 #timeSlider .custom-labels2{
