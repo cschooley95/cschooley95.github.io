@@ -24,7 +24,7 @@ require([
       container: "timeSlider",
       mode: "time-window",
       view: view,
-      playRate: 10,
+      playRate: 1000,
       stops: {
         interval: {
           value: 1,
