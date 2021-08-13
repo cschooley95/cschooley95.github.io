@@ -1,8 +1,9 @@
 require([
     "esri/WebMap",
     "esri/views/MapView",
+    "esri/widgets/Legend",
     "esri/widgets/TimeSlider"
-], function (WebMap, MapView, TimeSlider) {
+], function (WebMap, MapView, Legend, TimeSlider) {
 
   const map = new WebMap({
     portalItem: { 
@@ -14,6 +15,18 @@ require([
     container: "viewDiv",
     map: map
   });
+
+  view.when(function () {
+    const OGpoints = map.layers.getItem(1);
+
+    const legend = new Legend({
+      view:view,
+      layerInfos: [{
+        layer: OGpoints,
+        title: "Oil and Gas Well Status"
+      }]
+    })
+  })
 
   const events = [
     {name:`Great Recession`, date: 2008},
@@ -71,7 +84,8 @@ require([
       }
     ]
   });
-
+  
+  view.ui.add(legend, "top-left")
   view.ui.add(timeSlider)
 
 });
