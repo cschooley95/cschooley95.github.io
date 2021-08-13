@@ -31,7 +31,7 @@ require([
         mode: "position",
         values: [
           new Date(1940, 0, 1), new Date(1950, 0, 1), new Date(1960, 0, 1), new Date(1970, 0, 1),
-          new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1)
+          new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
         ].map((date) => date.getTime()),
         labelsVisible: true,
         labelFormatFunction: (value) => {
