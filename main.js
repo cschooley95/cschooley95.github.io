@@ -32,7 +32,7 @@ require([
       },
 
       fullTimeExtent: {
-          start: new Date(1940,0,1),
+          start: new Date(1900,0,1),
           end: new Date(2022,0,1)
       },
 
