@@ -25,6 +25,7 @@ require([
   ];
   
   const timeSlider = new TimeSlider({
+      view: view,
       container: "timeSlider",
       mode: "time-window",
       playRate: 25,
