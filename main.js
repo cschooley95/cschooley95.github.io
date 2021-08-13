@@ -29,7 +29,7 @@ require([
   
   const timeSlider = new TimeSlider({
       container: "timeSlider",
-      mode: "instant",
+      mode: "time-window",
       fullTimeExtent: {
           start: new Date(1900,0,1),
           end: new Date(2022,0,1)
@@ -57,6 +57,10 @@ require([
             (s) => new Date(s.date, 0, 1).getTime() === value
           );
           return event.name + ", " + event.date;
+        },
+        tickCreatedFunction: (value, tickElement, labelElement) => {
+          tickElement.classList.add("custom-ticks");
+          labelElement.classList.add("custom-labels");
         }
       }
     ]
