@@ -56,7 +56,7 @@ require([
           const event = events.find(
             (s) => new Date(s.date, 0, 1).getTime() === value
           );
-          return event.name + ", " + event.date;
+          return event.name;
         },
         tickCreatedFunction: (value, tickElement, labelElement) => {
           tickElement.classList.add("custom-ticks");
