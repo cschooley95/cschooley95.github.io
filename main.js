@@ -15,18 +15,14 @@ require([
     map: map
   });
 
-  view.when(function() {
-    const OGpoints = map.layers.getItemAt(1)
-  })
-
   const events = [
     {name:`Great Recession`, date: 2008},
     {name: `Covid-19 Pandemic`, date: 2020}
   ];
   
   const timeSlider = new TimeSlider({
-      view: view,
       container: "timeSlider",
+      view: view,
       playRate: 10,
       stops: {
         interval: {
