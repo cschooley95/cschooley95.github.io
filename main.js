@@ -21,6 +21,11 @@ require([
     container: "viewDiv",
     map: map
   });
+
+  const events = [
+    {name: "Great Recession", date: 2008},
+    {name: "Covid-19 Pandemic", date: 2020}
+  ];
   
   const timeSlider = new TimeSlider({
       container: "timeSlider",
