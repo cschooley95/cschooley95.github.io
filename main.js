@@ -47,7 +47,7 @@ require([
         },
         tickCreatedFunction: (value, tickElement, labelElement) => {
           tickElement.classList.add("custom-ticks2");
-          labelElement.classList.add("custom-labels");
+          labelElement.classList.add("custom-labels2");
         }
       }, {
         mode: "position",
