@@ -19,7 +19,77 @@ const view = new MapView({
 
 let layerView;
 
-const layer = map.layers.getItemAt(1);
+const layer = map.layers.getItemAt(0);
+
+let end = new Date(start);
+end.setDate(end.getDate() + 1);
+
+timeSlider.timeExtent = { start, end };
+
+});
+
+
+
+  const statquery = layer.filter.createQuery();
+  statquery.outStatistics = [
+    GDP
+  ];
+
+  layer.queryFeatures(statquery)
+  .then((result) => {
+    let htmls = [];
+    statsDiv.innerHTML = "";
+    if (result.error) {
+      return result.error;
+    } else {
+      if (result.queryFeatures.length >= 1) {
+        const attributes = result.features[0].attributes;
+        for (name in statsFields) {
+          if (attributes[name] && attributes[name] != null){
+            const html =
+            "<br/>" +
+            statsFields[name] +
+            ": <b><span>" +
+            attributes[name].toFixed(2) +
+            "</span></b>";
+            htmls.push(html);
+          }
+        }
+        const yearHtml =
+        "<span>" +
+        result.features[0].attributes["GDP"] +
+         "billion dollars </span> were added to Utah's GDP by the Oil and Gas Industry in" +
+         timeSlider.timeExtent.end.toLocaleDateString() + ".<br/>";
+
+         if (htmls[0] == undefined) {
+          statsDiv.innerHTML = yearHtml;
+        } else {
+          statsDiv.innerHTML =
+            yearHtml + htmls[0] + htmls[1] + htmls[2] + htmls[3]; 
+      }
+    }
+    }
+  });
+
+});
+
+const GDPamount = {
+  onStatisticField: "GDP",
+  outStatisticFieldName: "GDP_billions",
+  statisticType: "avg"
+};
+
+const statsDiv = document.getElementById("statsDiv")
+const infoDiv = document.getElementById("infoDiv");
+const infoDivExpand = new Expand({
+  collapsedIconClass: "esri-icon-collapse",
+  expandTooltip: "Expand Oil and Gas Industry Info",
+  view:view,
+  content: infoDiv,
+  expanded: true
+});
+
+view.ui.add(infoDivExpand, "top-right")
 
 const legendExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
