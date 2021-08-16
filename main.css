@@ -46,3 +46,15 @@ body,
 .esri-time-slider__slider .esri-slider {
     margin-top: -5px;
 }
+
+#infoDiv {
+	height: 200px;
+	padding: 10px;
+	width: 280px;
+}
+
+#infoDiv span {
+	color: #77496B;
+	font-size: 12pt;
+	font-weight: bolder;
+}
