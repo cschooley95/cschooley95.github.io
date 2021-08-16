@@ -1,9 +1,10 @@
 require([
     "esri/WebMap",
     "esri/views/MapView",
+    "esri/widgets/Expand",
     "esri/widgets/Legend",
     "esri/widgets/TimeSlider"
-], function (WebMap, MapView, Legend, TimeSlider) {
+], function (WebMap, MapView, Expand, Legend, TimeSlider) {
 
   const map = new WebMap({
     portalItem: { 
@@ -87,7 +88,7 @@ require([
   });
   
   view.ui.add(timeSlider)
-  view.ui.add(legend, "top-right")
+  view.ui.add(legendExpand, "top-left")
 
 });
 
