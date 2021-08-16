@@ -102,6 +102,13 @@ view.whenLayerView(layer).then((lv) => {
     end: layer.timeInfo.fullTimeExtent.end 
   };
 
+timeSlider.watch("timeExtent", function(value) {
+  timeLayerView.filter = {
+    timeExtent:value
+  }
+}
+)
+
 let end = new Date(start);
 end.setDate(end.getDate() + 1);
 
@@ -109,9 +116,7 @@ timeSlider.timeExtent = { start, end };
 
 });
 
-timeSlider.watch("timeExtent", () => {
-  layer.definitionExpression = 
-  "OrigComplDate <= "+ timeSlider.timeExtent.end.getTime();
+
 
   layerView.effect = {
     filter: {
@@ -176,4 +181,3 @@ const infoDivExpand = new Expand({
 
 view.ui.add(infoDivExpand, "top-right")
 
-});
