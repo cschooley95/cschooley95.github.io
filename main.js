@@ -17,6 +17,10 @@ const view = new MapView({
   map: map
 });
 
+let layerView;
+
+const layer = map.layers.getItemAt(1);
+
 const legendExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
   expandIconClass: "esri-icon-expand",
@@ -89,7 +93,79 @@ const timeSlider = new TimeSlider({
 
 view.ui.add(timeSlider);
 
-const infoDiv = document.getElementById("statsDiv");
+view.whenLayerView(layer).then((lv) => {
+  layerView = lv;
+
+  const start = new Date(1900, 0, 1);
+  timeSlider.fullTimeExtent = {
+    start: start,
+    end: layer.timeInfo.fullTimeExtent.end 
+  };
+
+let end = new Date(start);
+end.setDate(end.getDate() + 1);
+
+timeSlider.timeExtent = { start, end };
+
+});
+
+timeSlider.watch("timeExtent", () => {
+  layer.definitionExpression = 
+  "OrigComplDate <= "+ timeSlider.timeExtent.end.getTime();
+
+  layerView.effect = {
+    filter: {
+      timeExtent: timeSlider.timeExtent,
+      geometry: view.extent 
+    },
+    excludedEffect: "grayscale(20%) opacity(12%)"
+  };
+
+  const statquery = layerView.effect.filter.createQuery();
+  statquery.outStatistics = [
+    GDP
+  ];
+
+  layer.queryFeatures(statquery)
+  .then((result) => {
+    let htmls = [];
+    statsDiv.innerHTML = "";
+    if (result.error) {
+      return result.error;
+    } else {
+      if (result.queryFeatures.length >= 1) {
+        const attributes = result.features[0].attributes;
+        for (name in statsFields) {
+          if (attributes[name] && attributes[name] != null){
+            const html =
+            "<br/>" +
+            statsFields[name] +
+            ": <b><span>" +
+            attributes[name].toFixed(2) +
+            "</span></b>";
+            htmls.push(html);
+          }
+        }
+        const yearHtml =
+        "<span>" +
+        result.features[0].attributes["GDP"] +
+         "billion dollars </span> were added to Utah's GDP by the Oil and Gas Industry in" +
+         timeSlider.timeExtent.end.toLocaleDateString() + ".<br/>";
+      }
+    }
+    }
+  );
+
+});
+
+const GDPamount = {
+  onStatisticField: "GDP",
+  outStatisticFieldName: "GDP_billions",
+  statisticType: "avg"
+};
+
+const statsDiv = document.getElementById("statsDiv")
+const infoDiv = document.getElementById("infoDiv");
 const infoDivExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
   expandTooltip: "Expand Oil and Gas Industry Info",
