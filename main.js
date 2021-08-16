@@ -16,7 +16,6 @@ require([
     map: map
   });
 
-view.when(function () {
     const OGpoints = map.layers.getItemAt(1);
 
     const legend = new Legend({
@@ -87,4 +86,4 @@ view.when(function () {
   view.ui.add(legend, "top-right")
 
 });
-});
+
