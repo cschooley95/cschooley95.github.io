@@ -16,13 +16,17 @@ require([
     map: map
   });
 
-    const OGpoints = map.layers.getItemAt(1);
-
-    const legend = new Legend({
-      view:view,
-      layerInfos: {},
-        title: "Oil and Gas Well Status"
+  const legendExpand = new Expand({
+    collapsedIconClass: "esri-icon-collapse",
+    expandIconClass: "esri-icon-expand",
+    expandTooltip: "Legend",
+    view: view,
+    content: new Legend({
+      view: view
+    }),
+    expanded: false
   });
+  view.ui.add(legendExpand, "top-left");
 
 
   const events = [
