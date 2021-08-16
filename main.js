@@ -166,7 +166,7 @@ const GDPamount = {
 };
 
 const statsFields = {
-  GDPamount = "GDP"
+  GDPamount: "GDP"
 };
 
 const statsDiv = document.getElementById("statsDiv")
