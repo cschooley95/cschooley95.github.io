@@ -33,13 +33,14 @@ body,
 	font-size: 12px;
 	font-weight: bold;
 	color: black;
+	margin-top: 8
 }
 
 #timeSlider .custom-ticks2{
 	background-color: black;
 	width: 1px;
 	height: 5px;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .esri-time-slider__slider .esri-slider {
