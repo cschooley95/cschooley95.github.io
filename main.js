@@ -103,7 +103,7 @@ view.whenLayerView(layer).then((lv) => {
   };
 
 timeSlider.watch("timeExtent", function(value) {
-  timeLayerView.filter = {
+  layerView.filter = {
     timeExtent:value
   }
 }
@@ -118,7 +118,7 @@ timeSlider.timeExtent = { start, end };
 
 
 
-  layerView.effect = {
+  layer.effect = {
     filter: {
       timeExtent: timeSlider.timeExtent,
       geometry: view.extent 
