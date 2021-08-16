@@ -24,7 +24,7 @@ body,
 #timeSlider .custom-ticks{
 	background-color: black;
 	width: 1px;
-	height: 10px;
+	height: 8px;
 	margin-top: -30px;
 }
 
@@ -39,7 +39,7 @@ body,
 #timeSlider .custom-ticks2{
 	background-color: black;
 	width: 1px;
-	height: 5px;
+	height: 8px;
 	margin-top: 2px;
 }
 
