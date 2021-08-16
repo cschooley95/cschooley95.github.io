@@ -19,14 +19,14 @@ require([
   view.when(function () {
     const OGpoints = map.layers.getItemAt(1);
 
-    const Legend = new Legend({
+    const legend = new Legend({
       view:view,
       layerInfos: [{
         layer: OGpoints,
         title: "Oil and Gas Well Status"
       }
     ]
-  })
+  });
 });
 
   const events = [
@@ -87,6 +87,6 @@ require([
   });
   
   view.ui.add(timeSlider)
-  view.ui.add(Legend, "top-right")
-  
+  view.ui.add(legend, "top-right")
+
 });
