@@ -11,21 +11,21 @@ body,
 	left: 2%;
 	right: 2%;
 	bottom: 20px;
-	margin: 0 20px ;
+	margin: 20px ;
   }
 
 #timeSlider .custom-labels{
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 10px;
 	color: red;
-	margin-top: -30px;
+	margin-top: -35px;
 }
 
 #timeSlider .custom-ticks{
 	background-color: black;
 	width: 1px;
-	height: 3px;
-	margin-top: -25px;
+	height: 10px;
+	margin-top: -30px;
 }
 
 #timeSlider .custom-labels2{
@@ -38,5 +38,10 @@ body,
 #timeSlider .custom-ticks2{
 	background-color: black;
 	width: 1px;
-	height: 8px;
+	height: 5px;
+	margin-top: 5px;
+}
+
+.esri-time-slider__slider .esri-slider {
+    margin-top: -5px;
 }
