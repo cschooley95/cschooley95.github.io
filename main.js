@@ -87,6 +87,17 @@ const timeSlider = new TimeSlider({
   ]
 });
 
-view.ui.add(timeSlider)
+view.ui.add(timeSlider);
+
+const infoDiv = document.getElementById("statsDiv");
+const infoDivExpand = new Expand({
+  collapsedIconClass: "esri-icon-collapse",
+  expandTooltip: "Expand Oil and Gas Industry Info",
+  view:view,
+  content: infoDiv,
+  expanded: true
+});
+
+view.ui.add(infoDivExpand, "top-right")
 
 });
