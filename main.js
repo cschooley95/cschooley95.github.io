@@ -118,15 +118,7 @@ timeSlider.timeExtent = { start, end };
 
 
 
-  layer.effect = {
-    filter: {
-      timeExtent: timeSlider.timeExtent,
-      geometry: view.extent 
-    },
-    excludedEffect: "grayscale(20%) opacity(12%)"
-  };
-
-  const statquery = layerView.effect.filter.createQuery();
+  const statquery = layer.filter.createQuery();
   statquery.outStatistics = [
     GDP
   ];
@@ -156,10 +148,16 @@ timeSlider.timeExtent = { start, end };
         result.features[0].attributes["GDP"] +
          "billion dollars </span> were added to Utah's GDP by the Oil and Gas Industry in" +
          timeSlider.timeExtent.end.toLocaleDateString() + ".<br/>";
+
+         if (htmls[0] == undefined) {
+          statsDiv.innerHTML = yearHtml;
+        } else {
+          statsDiv.innerHTML =
+            yearHtml + htmls[0] + htmls[1] + htmls[2] + htmls[3]; 
       }
     }
     }
-  );
+  });
 
 });
 
