@@ -88,7 +88,6 @@ require([
   });
   
   view.ui.add(timeSlider)
-  view.ui.add(legendExpand, "top-left")
 
 });
 
