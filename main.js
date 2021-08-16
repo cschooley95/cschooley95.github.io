@@ -21,11 +21,9 @@ view.when(function () {
 
     const legend = new Legend({
       view:view,
-      layerInfos: [{
-        layer: OGpoints,
+      layerInfos: {
         title: "Oil and Gas Well Status"
       }
-    ]
   });
 
 
