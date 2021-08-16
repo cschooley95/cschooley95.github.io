@@ -16,7 +16,7 @@ require([
     map: map
   });
 
-  view.when(function () {
+view.when(function () {
     const OGpoints = map.layers.getItemAt(1);
 
     const legend = new Legend({
@@ -27,7 +27,7 @@ require([
       }
     ]
   });
-});
+
 
   const events = [
     {name:`Great Recession`, date: 2008},
@@ -89,4 +89,5 @@ require([
   view.ui.add(timeSlider)
   view.ui.add(legend, "top-right")
 
+});
 });
