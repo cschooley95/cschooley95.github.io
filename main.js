@@ -6,7 +6,6 @@ require([
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
-let layerView;
 
   // Create Map
 const map = new Map({
@@ -106,97 +105,5 @@ const timeSlider = new TimeSlider({
 
 // add time slider to view
 view.ui.add(timeSlider);
-
-view.whenLayerView(layer).then((lv) => {
-  layerView = lv;
-
-  const start = new Date(1900, 0, 1);
-  timeSlider.fullTimeExtent = {
-    start: start,
-    end: layer.timeInfo.fullTimeExtent.end 
-  };
-
-let end = new Date(start);
-end.setDate(end.getDate() + 5);
-
-timeSlider.timeExtent = { start, end };
-
-});
-
-// watch for time slider timeExtent change
-timeSlider.watch("timeExtent", () => {
-  // only show OG wells in the current time extent
-  layer.definitionExpression =
-    "OrigComplDate <= " + timeSlider.timeExtent.end.getTime();
-
-  // now gray out oil wells before time extent
-  layer.effect = {
-    filter: {
-      timeExtent: timeSlider.timeExtent,
-      geometry: view.extent
-    },
-    excludedEffect: "grayscale(20%) opacity(12%)"
-  };
-
-  const statquery = layer.effect.filter.createQuery();
-  statquery.outStatistics = [
-    GDP
-  ];
-
-  layer.queryFeatures(statquery)
-  .then((result) => {
-    let htmls = [];
-    statsDiv.innerHTML = "";
-    if (result.error) {
-      return result.error;
-    } else {
-      if (result.queryFeatures.length >= 1) {
-        const attributes = result.features[0].attributes;
-        for (name in statsFields) {
-          if (attributes[name] && attributes[name] != null){
-            const html =
-            "<br/>" +
-            statsFields[name] +
-            ": <b><span>" +
-            attributes[name].toFixed(2) +
-            "</span></b>";
-            htmls.push(html);
-          }
-        }
-        const yearHtml =
-        "<span>" +
-        result.features[0].attributes["GDP"] +
-         "billion dollars </span> were added to Utah's GDP by the Oil and Gas Industry in" +
-         timeSlider.timeExtent.end.toLocaleDateString() + ".<br/>";
-
-         if (htmls[0] == undefined) {
-          statsDiv.innerHTML = yearHtml;
-        } else {
-          statsDiv.innerHTML =
-            yearHtml + htmls[0] + htmls[1] + htmls[2] + htmls[3]; 
-      }
-    }
-    }
-  });
-
-const GDP = {
-  onStatisticField: "GDP",
-  outStatisticFieldName: "GDP_billions",
-  statisticType: "avg"
-};
-
-const statsDiv = document.getElementById("statsDiv")
-const infoDiv = document.getElementById("infoDiv");
-const infoDivExpand = new Expand({
-  collapsedIconClass: "esri-icon-collapse",
-  expandTooltip: "Expand Oil and Gas Industry Info",
-  view:view,
-  content: infoDiv,
-  expanded: true
-});
-
-view.ui.add(infoDivExpand, "top-right")
-
-});
 
 });
