@@ -6,6 +6,7 @@ require([
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
+let layerView;
 
   // Create Map
 const map = new Map({
