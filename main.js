@@ -30,9 +30,9 @@ OGpoints = Layer.fromPortalItem({
   portalItem: {
     id: "1e9a6937760e46d3bd047c108ebf8246"
   }
-  }).then(function(layer) {
-    map.add(layer);
   });
+
+  map.add(layer);
 
 // Create a collapsible legend
 const legendExpand = new Expand({
