@@ -203,3 +203,5 @@ const infoDivExpand = new Expand({
 });
 
 view.ui.add(infoDivExpand, "top-right")
+
+});
