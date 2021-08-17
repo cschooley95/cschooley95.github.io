@@ -32,7 +32,7 @@ OGpoints = Layer.fromPortalItem({
   }
   });
 
-  map.add(layer);
+map.add(OGpoints);
 
 // Create a collapsible legend
 const legendExpand = new Expand({
