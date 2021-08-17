@@ -31,18 +31,9 @@ Layer.fromPortalItem({
     id: "1e9a6937760e46d3bd047c108ebf8246"
   }
   })
-  .then(addLayer)
-  .catch(rejection);
-
-        // Adds the layer to the map once it loads
-        function addLayer(layer) {
-          map.add(layer);
-        }
-
-        function rejection(error) {
-          console.log("Layer failed to load: ", error);
-        }
-      });
+  .then((OGpoints) => {
+    map.add(OGpoints)
+  });
 
 // Create a collapsible legend
 const legendExpand = new Expand({
