@@ -8,7 +8,7 @@ require([
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
 
 const map = new Map({
-  basemap: "light-gray-vector"
+  basemap: "topo"
 });
 
 const view = new MapView({
