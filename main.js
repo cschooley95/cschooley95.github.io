@@ -1,17 +1,10 @@
 require([
   "esri/Map",
   "esri/views/MapView",
-  "esri/layers/FeatureLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
-
-// Layer Renderer
-const colorVisVar = {
-  "type": "color",
-  "field": "WellStatus"
-}
+], function (Map, MapView, Expand, Legend, TimeSlider) {
 
   // Create Map
 const map = new Map({
@@ -23,7 +16,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-111.65124179920204, 39.707361735142236],
-  zoom:8
+  zoom:7
 });
 
 Layer.fromPortalItem({
