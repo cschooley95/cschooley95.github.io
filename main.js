@@ -1,23 +1,27 @@
 require([
-  "esri/WebMap",
+  "esri/Map",
   "esri/views/MapView",
+  "esri/layers/FeatureLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (WebMap, MapView, Expand, Legend, TimeSlider) {
+], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
 
-const map = new WebMap({
-  portalItem: { 
-    id: "1e9a6937760e46d3bd047c108ebf8246"
-  }
+const map = new Map({
+  basemap: "light-gray-vector"
 });
 
 const view = new MapView({
   container: "viewDiv",
-  map: map
+  map: map,
+  center: [-111.65124179920204, 39.707361735142236],
+  zoom:5
 });
 
-const layer = this.MapView.map.findLayerById('dd28d5595a2940929574e79522bb4245')
+const layer = new FeatureLayer({
+  url:
+  "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
+})
 
 view.whenLayerView(layer).then((lv) => {
   layerView = lv;
