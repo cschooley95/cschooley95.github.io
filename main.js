@@ -116,7 +116,7 @@ view.whenLayerView(layer).then((lv) => {
   };
 
 let end = new Date(start);
-end.setDate(end.getDate() + 1);
+end.setDate(end.getDate() + 5);
 
 timeSlider.timeExtent = { start, end };
 
