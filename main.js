@@ -18,98 +18,14 @@ const view = new MapView({
   zoom:5
 });
 
-const layer = new FeatureLayer({
+const OGpoints = new FeatureLayer({
   url:
   "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
 })
 
-view.whenLayerView(layer).then((lv) => {
-  layerView = lv;
-
-  const start = new Date(1900, 0, 1);
-  timeSlider.fullTimeExtent = {
-    start: start,
-    end: layer.timeInfo.fullTimeExtent.end 
-  };
-
-timeSlider.watch("timeExtent", function(value) {
-  layerView.filter = {
-    timeExtent:value
-  }
-}
-)
-
-let end = new Date(start);
-end.setDate(end.getDate() + 1);
-
-timeSlider.timeExtent = { start, end };
-
-});
-
-
-
-  const statquery = layer.createQuery();
-  statquery.outStatistics = [
-    GDP
-  ];
-
-  layer.queryFeatures(statquery)
-  .then((result) => {
-    let htmls = [];
-    statsDiv.innerHTML = "";
-    if (result.error) {
-      return result.error;
-    } else {
-      if (result.queryFeatures.length >= 1) {
-        const attributes = result.features[0].attributes;
-        for (name in statsFields) {
-          if (attributes[name] && attributes[name] != null){
-            const html =
-            "<br/>" +
-            statsFields[name] +
-            ": <b><span>" +
-            attributes[name].toFixed(2) +
-            "</span></b>";
-            htmls.push(html);
-          }
-        }
-        const yearHtml =
-        "<span>" +
-        result.features[0].attributes["GDP"] +
-         "billion dollars </span> were added to Utah's GDP by the Oil and Gas Industry in" +
-         timeSlider.timeExtent.end.toLocaleDateString() + ".<br/>";
-
-         if (htmls[0] == undefined) {
-          statsDiv.innerHTML = yearHtml;
-        } else {
-          statsDiv.innerHTML =
-            yearHtml + htmls[0] + htmls[1] + htmls[2] + htmls[3]; 
-      }
-    }
-    }
-  });
-
-const GDPamount = {
-  onStatisticField: "GDP",
-  outStatisticFieldName: "GDP_billions",
-  statisticType: "avg"
-};
-
-const statsFields = {
-  GDPamount: "GDP"
-};
-
-const statsDiv = document.getElementById("statsDiv")
-const infoDiv = document.getElementById("infoDiv");
-const infoDivExpand = new Expand({
-  collapsedIconClass: "esri-icon-collapse",
-  expandTooltip: "Expand Oil and Gas Industry Info",
-  view:view,
-  content: infoDiv,
-  expanded: true
-});
-
-view.ui.add(infoDivExpand, "top-right")
+view.when(function() {
+  map.add(OGpoints);
+})
 
 const legendExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
