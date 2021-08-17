@@ -1,15 +1,22 @@
 require([
   "esri/Map",
   "esri/views/MapView",
-  "esri/layers/Layer",
+  "esri/layers/FeatureLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
+], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
+
+  const layer = new FeatureLayer({
+    portalItem: {
+      id: "dd28d5595a2940929574e79522bb4245"
+    }
+  });
 
   // Create Map
 const map = new Map({
-  basemap: "topo"
+  basemap: "topo",
+  layers: [layer]
 });
 
  // Set the map view
@@ -19,15 +26,6 @@ const view = new MapView({
   center: [-111.65124179920204, 39.707361735142236],
   zoom:7
 });
-
-const layer = new Layer.fromPortalItem({
-  portalItem: {
-    id: "dd28d5595a2940929574e79522bb4245"
-  }
-  })
-  .then((layer) => {
-    map.add(layer)
-  });  
 
 // Create a collapsible legend
 const legendExpand = new Expand({
