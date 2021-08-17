@@ -15,7 +15,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-111.65124179920204, 39.707361735142236],
-  zoom:5
+  zoom:12
 });
 
 const OGpoints = new FeatureLayer({
