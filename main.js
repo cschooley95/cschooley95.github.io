@@ -26,7 +26,7 @@ const view = new MapView({
   zoom:8
 });
 
-Layer.fromPortalItem({
+OGpoints = Layer.fromPortalItem({
   portalItem: {
     id: "1e9a6937760e46d3bd047c108ebf8246"
   }
