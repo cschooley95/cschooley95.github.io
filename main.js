@@ -6,6 +6,7 @@ require([
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
+  let layerView; 
 
   // Create Map
 const map = new Map({
@@ -115,13 +116,6 @@ view.whenLayerView(layer).then((lv) => {
     start: start,
     end: layer.timeInfo.fullTimeExtent.end 
   };
-
-timeSlider.watch("timeExtent", function(value) {
-  layerView.filter = {
-    timeExtent:value
-  }
-}
-)
 
 let end = new Date(start);
 end.setDate(end.getDate() + 1);
