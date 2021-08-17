@@ -23,7 +23,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-111.65124179920204, 39.707361735142236],
-  zoom:12
+  zoom:8
 });
 
 Layer.fromPortalItem({
