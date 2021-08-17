@@ -102,19 +102,5 @@ const timeSlider = new TimeSlider({
 });
 
 // add time slider to view
-view.ui.add(timeSlider);
-
-timeSlider.watch("timeExtent", function () {
-  layer.filter = {
-    where: "OrigComplDate <=" + timeSlider.fullTimeExtent.end.getTime()
-  }
-
-  layer.effect = {
-    filter: {
-      timeExtent: timeSlider.timeExtent,
-      geometry: view.extent
-    },
-    excludedEffect: "grayscale(80%) opacity(20%)"
-  };
-})
+view.ui.add(timeSlider)
 });
