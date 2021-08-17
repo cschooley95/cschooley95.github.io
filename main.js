@@ -130,7 +130,7 @@ timeSlider.watch("timeExtent", () => {
     "OrigComplDate <= " + timeSlider.timeExtent.end.getTime();
 
   // now gray out oil wells before time extent
-  layerView.effect = {
+  layer.effect = {
     filter: {
       timeExtent: timeSlider.timeExtent,
       geometry: view.extent
@@ -138,7 +138,7 @@ timeSlider.watch("timeExtent", () => {
     excludedEffect: "grayscale(20%) opacity(12%)"
   };
 
-  const statquery = layerView.effect.filter.createQuery();
+  const statquery = layer.effect.filter.createQuery();
   statquery.outStatistics = [
     GDP
   ];
