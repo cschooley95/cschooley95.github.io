@@ -47,6 +47,10 @@ body,
     margin-top: -5px;
 }
 
+.esri-widget {
+    box-sizing: border-box;
+}
+
 #infoDiv {
 	height: 200px;
 	padding: 10px;
