@@ -6,7 +6,6 @@ require([
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
-  let layerView; 
 
   // Create Map
 const map = new Map({
@@ -106,7 +105,6 @@ const timeSlider = new TimeSlider({
 
 // add time slider to view
 view.ui.add(timeSlider);
-});
 
 view.whenLayerView(layer).then((lv) => {
   layerView = lv;
@@ -197,5 +195,7 @@ const infoDivExpand = new Expand({
 });
 
 view.ui.add(infoDivExpand, "top-right")
+
+});
 
 });
