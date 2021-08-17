@@ -7,10 +7,18 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
 
+// Layer Renderer
+const colorVisVar = {
+  "type": "color",
+  "field": "WellStatus"
+}
+
+  // Create Map
 const map = new Map({
   basemap: "topo"
 });
 
+ // Set the map view
 const view = new MapView({
   container: "viewDiv",
   map: map,
@@ -18,15 +26,15 @@ const view = new MapView({
   zoom:12
 });
 
-const OGpoints = new FeatureLayer({
-  url:
-  "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
-})
+Layer.fromPortalItem({
+  portalItem: {
+    id: "1e9a6937760e46d3bd047c108ebf8246"
+  }
+  }).then(function(layer) {
+    map.add(layer);
+  });
 
-view.when(function() {
-  map.add(OGpoints);
-})
-
+// Create a collapsible legend
 const legendExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
   expandIconClass: "esri-icon-expand",
@@ -39,12 +47,13 @@ const legendExpand = new Expand({
 });
 view.ui.add(legendExpand, "top-left");
 
-
+// Create events for the time slider
 const events = [
   {name:`Great Recession`, date: 2008},
   {name: `Covid-19 Pandemic`, date: 2020}
 ];
 
+// Create time slider with interval set to 5 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
     mode: "time-window",
@@ -57,11 +66,13 @@ const timeSlider = new TimeSlider({
       }
     },
 
+    // time slider time extent
     fullTimeExtent: {
         start: new Date(1900,0,1),
         end: new Date(2022,0,1)
     },
 
+    // configure ticks for dates
     tickConfigs: [{
       mode: "position",
       values: [
@@ -97,6 +108,7 @@ const timeSlider = new TimeSlider({
   ]
 });
 
+// add time slider to view
 view.ui.add(timeSlider);
 });
 
