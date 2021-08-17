@@ -118,7 +118,7 @@ timeSlider.timeExtent = { start, end };
 
 
 
-  const statquery = layer.filter.createQuery();
+  const statquery = layer.createQuery();
   statquery.outStatistics = [
     GDP
   ];
