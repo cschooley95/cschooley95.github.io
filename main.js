@@ -42,7 +42,7 @@ const timeSlider = new TimeSlider({
     playRate: 750,
     stops: {
       interval: {
-        value: 1,
+        value: 5,
         unit: "years"
       }
     },
