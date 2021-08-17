@@ -1,10 +1,11 @@
 require([
   "esri/Map",
   "esri/views/MapView",
+  "esri/layers/Layer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, Expand, Legend, TimeSlider) {
+], function (Map, MapView, Layer, Expand, Legend, TimeSlider) {
 
   // Create Map
 const map = new Map({
@@ -24,8 +25,8 @@ Layer.fromPortalItem({
     id: "1e9a6937760e46d3bd047c108ebf8246"
   }
   })
-  .then((OGpoints) => {
-    map.add(OGpoints)
+  .then((layer) => {
+    map.add(layer)
   });
 
 // Create a collapsible legend
