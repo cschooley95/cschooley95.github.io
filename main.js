@@ -11,8 +11,7 @@ let OGLayerView;
 
   const layer = new FeatureLayer({
     portalItem: {
-      id: "dd28d5595a2940929574e79522bb4245",
-      outFields= ["*"], /////LAST CHANGE////
+      id: "dd28d5595a2940929574e79522bb4245"
     }
   });
 
