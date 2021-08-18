@@ -122,18 +122,18 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 1825);
+end.setDate(end.getDate() + 1825); // the number here is in days (1825 = 5 years)
 
 timeSlider.timeExtent = {start,end};
 
 });
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", (timeExtent) => {
+timeSlider.watch("timeExtent", () => {
 
   OGLayerView.effect = {
     filter: {
-      timeExtent,
+      timeExtent:timeSlider.timeExtent,
       geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
