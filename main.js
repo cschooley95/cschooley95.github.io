@@ -123,7 +123,7 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 1);
+end.setDate(end.getDate() + 5);
 
 timeSlider.timeExtent = {start,end};
 
@@ -146,5 +146,4 @@ timeSlider.watch("timeExtent", function() {
     excludedEffect: "grayscale(80%) opacity(20%)"
   }
 })
-
 });
