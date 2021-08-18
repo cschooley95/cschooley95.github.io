@@ -167,8 +167,14 @@ layer.queryFeatures(statQuery).then((result) => {
           htmls.push(html) // push html into code into information box with attribute information
         }
       }
+      if (htmls[0] == undefined) {
+        statsDiv.innerHTML = yearHtml;
+      } else {
+        statsDiv.innerHTML =
+          htmls[0];
     }
   }
+}
 })
 .catch((error) => {
   console.log(error);
