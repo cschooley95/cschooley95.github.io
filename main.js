@@ -139,7 +139,7 @@ timeSlider.watch("timeExtent", function() {
 
   OGLayerView.effect = {
     filter: {
-      timeExtent: timeSlider.timeExtent,
+      timeExtent: timeSlider.timeExtent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   }
