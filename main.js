@@ -122,7 +122,7 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 20);
+end.setDate(end.getDate() + 1825);
 
 timeSlider.timeExtent = {start,end};
 
