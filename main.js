@@ -51,7 +51,6 @@ const events = [
 // Create time slider with interval set to 5 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
-    mode: "time-window",
     view: view,
     playRate: 750,
     stops: {
@@ -119,7 +118,7 @@ view.whenLayerView(layer).then((layerView) => {
     end: layer.timeInfo.fullTimeExtent.end
   };
 
-// Show 1 year intervals
+// Show 5 year intervals
 
 let end = new Date(start);
 
