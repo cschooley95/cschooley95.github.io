@@ -103,7 +103,7 @@ const timeSlider = new TimeSlider({
 });
 
 // add time slider to view
-view.ui.add(timeSlider)
+view.ui.add(timeSlider);
 
 // Creating view layer???
 view.whenLayerView(layer).then((layerView) => {
