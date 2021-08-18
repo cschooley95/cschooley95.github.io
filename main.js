@@ -7,6 +7,8 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
 
+let OGLayerView;
+
   const layer = new FeatureLayer({
     portalItem: {
       id: "dd28d5595a2940929574e79522bb4245"
@@ -103,4 +105,5 @@ const timeSlider = new TimeSlider({
 
 // add time slider to view
 view.ui.add(timeSlider)
+
 });
