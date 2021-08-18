@@ -145,7 +145,7 @@ OGLayerView.filter = {
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
-  EmploymentAvg
+  GDPAvg
 ];
 
 layer.queryFeatures(statQuery).then((result) => {
@@ -191,9 +191,9 @@ layer.queryFeatures(statQuery).then((result) => {
 
 });
 
-const EmploymentAvg = {
-  onstatisticField: "Employment",
-  outStatisticFieldName: "Employment_Average",
+const GDPAvg = {
+  onstatisticField: "GDP",
+  outStatisticFieldName: "GDP_Average",
   statisticType: "avg"
 };
 
