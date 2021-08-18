@@ -62,10 +62,10 @@ const timeSlider = new TimeSlider({
     },
 
     // time slider time extent
-    fullTimeExtent: {
-        start: new Date(1900,0,1),
-        end: new Date(2022,0,1)
-    },
+    //fullTimeExtent: {
+       // start: new Date(1900,0,1),
+       // end: new Date(2022,0,1)
+    //},
 
     // configure ticks for dates
     tickConfigs: [{
@@ -105,5 +105,46 @@ const timeSlider = new TimeSlider({
 
 // add time slider to view
 view.ui.add(timeSlider)
+
+// Creating view layer???
+view.whenLayerView(layer).then((layerView) => {
+  OGLayerView = layerView;
+
+// Setting start date for time slider
+  const start = new Date(1900, 0, 1);
+
+ // Extent for time Slider 
+  timeSlider.fullTimeExtent = {
+    start: start,
+    end: layer.timeInfo.fullTimeExtent.end
+  };
+
+// Show 1 year intervals
+
+let end = new Date(start);
+
+end.setDate(end.getDate() + 1);
+
+timeSlider.timeExtent = {start,end};
+
+});
+
+// watch timeslider timeExtent change
+timeSlider.watch("timeExtent", function() {
+
+  //show wells up until the time slider's current time extent
+
+  OGLayerView.filter = {
+    where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
+  }
+
+  OGLayerView.effect = {
+    filter: {
+      timeExtent: timeSlider.timeExtent,
+      geometry: view.extent
+    },
+    excludedEffect: "grayscale(80%) opacity(20%)"
+  }
+})
 
 });
