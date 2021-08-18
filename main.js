@@ -157,7 +157,7 @@ layer.queryFeatures(statQuery).then((result) => {
     if (result.feature.length >= 1) {
       const attributes = result.features[0].attributes;
       for (stat in statsFields) {
-        if (attributes[name] && attributes[name] != null) {
+        if (attributes[stat] && attributes[stat] != null) {
           const html =
           "<br/>" +
           statsFields[stat] +
