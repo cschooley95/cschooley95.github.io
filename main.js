@@ -122,24 +122,19 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 5);
+end.setDate(end.getDate() + 20);
 
 timeSlider.timeExtent = {start,end};
 
 });
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", () => {
-
-  //show wells up until the time slider's current time extent
-
-  OGLayerView.filter = {
-    where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
-  };
+timeSlider.watch("timeExtent", (timeExtent) => {
 
   OGLayerView.effect = {
     filter: {
-      timeExtent: timeSlider.timeExtent
+      timeExtent,
+      geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   }
