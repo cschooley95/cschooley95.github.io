@@ -51,7 +51,6 @@ const events = [
 // Create time slider with interval set to 5 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
-    view: view,
     playRate: 750,
     stops: {
       interval: {
