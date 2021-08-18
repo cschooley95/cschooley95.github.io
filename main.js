@@ -129,13 +129,13 @@ timeSlider.timeExtent = {start,end};
 });
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", function() {
+timeSlider.watch("timeExtent", () => {
 
   //show wells up until the time slider's current time extent
 
   OGLayerView.filter = {
     where: "Year <=" + timeSlider.timeExtent.end.getTime()
-  }
+  };
 
   OGLayerView.effect = {
     filter: {
