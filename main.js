@@ -167,6 +167,15 @@ layer.queryFeatures(statQuery).then((result) => {
           htmls.push(html) // push html into code into information box with attribute information
         }
       }
+      const yearHtml =
+        "<span>" +
+        result.features[0].attributes["Employment_Average"] +
+        "</span> earthquakes were recorded between " +
+        timeSlider.timeExtent.start.toLocaleDateString() +
+        " - " +
+        timeSlider.timeExtent.end.toLocaleDateString() +
+        ".<br/>";
+
       if (htmls[0] == undefined) {
         statsDiv.innerHTML = yearHtml;
       } else {
