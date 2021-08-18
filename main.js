@@ -169,7 +169,7 @@ layer.queryFeatures(statQuery).then((result) => {
       }
       const yearHtml =
         "<span>" +
-        result.features[0].attributes["Employment_Average"] +
+        result.features[0].attributes["GDP_Average"] +
         "</span> earthquakes were recorded between " +
         timeSlider.timeExtent.start.toLocaleDateString() +
         " - " +
