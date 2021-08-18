@@ -133,13 +133,68 @@ timeSlider.watch("timeExtent", () => {
 OGLayerView.filter = {
   where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime(),
 }
-
+// add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
       timeExtent:timeSlider.timeExtent,
       geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
+  };
+
+// Run statistics for GDP within current time extent
+const statQuery = OGLayerView.effect.filter.createQuery();
+statQuery.outStatistics = [
+  EmploymentAvg
+];
+
+layer.queryFeatures(statQuery).then((result) => {
+  let htmls = [];
+  statsDiv.innerHTML = "";
+  if (result.error) {
+    return result.error;
+  } else {
+    if (result.feature.length >= 1) {
+      const attributes = result.features[0].attributes;
+      for (name in statsFields) {
+        if (attributes[name] && attributes[name] != null) {
+          const html =
+          "<br/>" +
+          statsFields[name] +
+          ": <b><span>" + // setting bolding and styling
+          attributes[name].toFixed(0) + // How many decimal places
+          "</span></b>"; // setting bolding and styling to attribute information
+          htmls.push(html) // push html into code into information box with attribute information
+        }
+      }
+    }
   }
 })
+.catch((error) => {
+  console.log(error);
+});
+
+});
+
+const EmploymentAvg ={
+  onstatisticField: "Employment",
+  outStatisticFieldName: "Employment_Average",
+  statisticType: "avg"
+};
+
+const statsFields = {
+  Employment_Avearge: "Employment Average"
+};
+
+const statsDiv = document.getElementById("statsDiv");
+        const infoDiv = document.getElementById("infoDiv");
+        const infoDivExpand = new Expand({
+          collapsedIconClass: "esri-icon-collapse",
+          expandIconClass: "esri-icon-expand",
+          expandTooltip: "Expand Oil and Gas Industry info",
+          view: view,
+          content: infoDiv,
+          expanded: true
+        });
+        view.ui.add(infoDivExpand, "top-right");
 });
