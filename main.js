@@ -156,13 +156,13 @@ layer.queryFeatures(statQuery).then((result) => {
   } else {
     if (result.feature.length >= 1) {
       const attributes = result.features[0].attributes;
-      for (name in statsFields) {
+      for (stat in statsFields) {
         if (attributes[name] && attributes[name] != null) {
           const html =
           "<br/>" +
-          statsFields[name] +
+          statsFields[stat] +
           ": <b><span>" + // setting bolding and styling
-          attributes[name].toFixed(0) + // How many decimal places
+          attributes[stat].toFixed(0) + // How many decimal places
           "</span></b>"; // setting bolding and styling to attribute information
           htmls.push(html) // push html into code into information box with attribute information
         }
@@ -176,7 +176,7 @@ layer.queryFeatures(statQuery).then((result) => {
 
 });
 
-const EmploymentAvg ={
+const EmploymentAvg = {
   onstatisticField: "Employment",
   outStatisticFieldName: "Employment_Average",
   statisticType: "avg"
