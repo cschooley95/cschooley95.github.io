@@ -134,7 +134,7 @@ timeSlider.watch("timeExtent", function() {
   //show wells up until the time slider's current time extent
 
   OGLayerView.filter = {
-    where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
+    where: "Year <=" + timeSlider.timeExtent.end.getTime()
   }
 
   OGLayerView.effect = {
