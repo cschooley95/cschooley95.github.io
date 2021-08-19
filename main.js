@@ -192,7 +192,7 @@ layer.queryFeatures(statQuery).then((result) => {
 });
 
 const GDPAvg = {
-  onstatisticField: "GDP",
+  onstatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
   statisticType: "avg"
 };
