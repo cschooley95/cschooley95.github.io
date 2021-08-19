@@ -141,76 +141,80 @@ OGLayerView.filter = {
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
+});
 
-  const GDPAvg = {
-    onstatisticField: "GDP_billions_",
-    outStatisticFieldName: "GDP_Average",
-    statisticType: "avg"
-  };
-  
-  const statsFields = {
-    GDP_Average: "GDP Average"
-  };
+
+
+// Readd statistics here
+
+
+const GDPAvg = {
+  onstatisticField: "GDP_billions_",
+  outStatisticFieldName: "GDP_Average",
+  statisticType: "avg"
+};
+
+const statsFields = {
+  GDP_Average: "GDP Average"
+};
 
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
-  GDPAvg
+GDPAvg
 ];
 
 layer.queryFeatures(statQuery).then((result) => {
-  let htmls = [];
-  statsDiv.innerHTML = "";
-  if (result.error) {
-    return result.error;
-  } else {
-    if (result.feature.length >= 1) {
-      const attributes = result.features[0].attributes;
-      for (stat in statsFields) {
-        if (attributes[stat] && attributes[stat] != null) {
-          const html =
-          "<br/>" +
-          statsFields[stat] +
-          ": <b><span>" + // setting bolding and styling
-          attributes[stat].toFixed(0) + // How many decimal places
-          "</span></b>"; // setting bolding and styling to attribute information
-          htmls.push(html) // push html into code into information box with attribute information
-        }
+let htmls = [];
+statsDiv.innerHTML = "";
+if (result.error) {
+  return result.error;
+} else {
+  if (result.feature.length >= 1) {
+    const attributes = result.features[0].attributes;
+    for (stat in statsFields) {
+      if (attributes[stat] && attributes[stat] != null) {
+        const html =
+        "<br/>" +
+        statsFields[stat] +
+        ": <b><span>" + // setting bolding and styling
+        attributes[stat].toFixed(0) + // How many decimal places
+        "</span></b>"; // setting bolding and styling to attribute information
+        htmls.push(html) // push html into code into information box with attribute information
       }
-      const yearHtml =
-        "<span>" +
-        result.features[0].attributes["GDP_Average"] +
-        "</span> earthquakes were recorded between " +
-        timeSlider.timeExtent.start.toLocaleDateString() +
-        " - " +
-        timeSlider.timeExtent.end.toLocaleDateString() +
-        ".<br/>";
-
-      if (htmls[0] == undefined) {
-        statsDiv.innerHTML = yearHtml;
-      } else {
-        statsDiv.innerHTML =
-          htmls[0];
     }
+    const yearHtml =
+      "<span>" +
+      result.features[0].attributes["GDP_Average"] +
+      "</span> earthquakes were recorded between " +
+      timeSlider.timeExtent.start.toLocaleDateString() +
+      " - " +
+      timeSlider.timeExtent.end.toLocaleDateString() +
+      ".<br/>";
+
+    if (htmls[0] == undefined) {
+      statsDiv.innerHTML = yearHtml;
+    } else {
+      statsDiv.innerHTML =
+        htmls[0];
   }
+}
 }
 })
 .catch((error) => {
-  console.log(error);
+console.log(error);
 });
-
-});
-
 
 const statsDiv = document.getElementById("statsDiv");
-        const infoDiv = document.getElementById("infoDiv");
-        const infoDivExpand = new Expand({
-          collapsedIconClass: "esri-icon-collapse",
-          expandIconClass: "esri-icon-expand",
-          expandTooltip: "Expand Oil and Gas Industry info",
-          view: view,
-          content: infoDiv,
-          expanded: true
-        });
-        view.ui.add(infoDivExpand, "top-right");
+      const infoDiv = document.getElementById("infoDiv");
+      const infoDivExpand = new Expand({
+        collapsedIconClass: "esri-icon-collapse",
+        expandIconClass: "esri-icon-expand",
+        expandTooltip: "Expand Oil and Gas Industry info",
+        view: view,
+        content: infoDiv,
+        expanded: true
+      });
+      view.ui.add(infoDivExpand, "top-right");
+
 });
