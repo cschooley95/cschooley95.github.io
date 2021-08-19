@@ -143,26 +143,13 @@ OGLayerView.filter = {
   };
 });
 
-
-
-// Readd statistics here
-
-
-const GDPAvg = {
-  onstatisticField: "GDP_billions_",
-  outStatisticFieldName: "GDP_Average",
-  statisticType: "avg"
-};
-
-const statsFields = {
-  GDP_Average: "GDP Average"
-};
-
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
 GDPAvg
 ];
+
+// Readd statistics here
 
 layer.queryFeatures(statQuery).then((result) => {
 let htmls = [];
@@ -173,12 +160,12 @@ if (result.error) {
   if (result.feature.length >= 1) {
     const attributes = result.features[0].attributes;
     for (stat in statsFields) {
-      if (attributes[stat] && attributes[stat] != null) {
+      if (attributes[name] && attributes[name] != null) {
         const html =
         "<br/>" +
-        statsFields[stat] +
+        statsFields[name] +
         ": <b><span>" + // setting bolding and styling
-        attributes[stat].toFixed(0) + // How many decimal places
+        attributes[name].toFixed(0) + // How many decimal places
         "</span></b>"; // setting bolding and styling to attribute information
         htmls.push(html) // push html into code into information box with attribute information
       }
@@ -186,9 +173,9 @@ if (result.error) {
     const yearHtml =
       "<span>" +
       result.features[0].attributes["GDP_Average"] +
-      "</span> earthquakes were recorded between " +
+      "</span> billion dollars was added to Utah's GDP by the Oil and Gas Industry between" +
       timeSlider.timeExtent.start.toLocaleDateString() +
-      " - " +
+      " and " +
       timeSlider.timeExtent.end.toLocaleDateString() +
       ".<br/>";
 
@@ -196,7 +183,7 @@ if (result.error) {
       statsDiv.innerHTML = yearHtml;
     } else {
       statsDiv.innerHTML =
-        htmls[0];
+        yearHtml + htmls[0];
   }
 }
 }
@@ -204,6 +191,16 @@ if (result.error) {
 .catch((error) => {
 console.log(error);
 });
+
+const GDPAvg = {
+  onstatisticField: "GDP_billions_", //using field name instead of field alias??? Don't know if I should. I have tried both ways now
+  outStatisticFieldName: "GDP_Average",
+  statisticType: "avg"
+};
+
+const statsFields = {
+  GDP_Average: "GDP Average"
+};
 
 const statsDiv = document.getElementById("statsDiv");
       const infoDiv = document.getElementById("infoDiv");
