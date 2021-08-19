@@ -198,7 +198,7 @@ const GDPAvg = {
 };
 
 const statsFields = {
-  Employment_Avearge: "Employment Average"
+  GDP_Average: "GDP Average"
 };
 
 const statsDiv = document.getElementById("statsDiv");
