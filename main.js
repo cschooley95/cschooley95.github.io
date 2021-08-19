@@ -142,6 +142,16 @@ OGLayerView.filter = {
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
 
+  const GDPAvg = {
+    onstatisticField: "GDP_billions_",
+    outStatisticFieldName: "GDP_Average",
+    statisticType: "avg"
+  };
+  
+  const statsFields = {
+    GDP_Average: "GDP Average"
+  };
+
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
@@ -191,15 +201,6 @@ layer.queryFeatures(statQuery).then((result) => {
 
 });
 
-const GDPAvg = {
-  onstatisticField: "GDP_billions_",
-  outStatisticFieldName: "GDP_Average",
-  statisticType: "avg"
-};
-
-const statsFields = {
-  GDP_Average: "GDP Average"
-};
 
 const statsDiv = document.getElementById("statsDiv");
         const infoDiv = document.getElementById("infoDiv");
