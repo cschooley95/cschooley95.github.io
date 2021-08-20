@@ -175,7 +175,7 @@ if (result.error) {
     const GDPHtml =
     "<br/>Added " +
     "<span>" +
-    result.features[0].attributes["GDP_Average"].toFixed(2) +
+    result.features[0].attributes["GDP_Average"].toFixed(1) +
     "</span> billion dollars to Utah's Gross Domestic Product" +
     ".<br />";
 
