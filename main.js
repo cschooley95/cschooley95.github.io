@@ -188,8 +188,14 @@ if (result.error) {
     "</span> employees. This includes direct and supporting employees" +
     ".<br />";
 
+    const referenceHtml =
+    "<br/>"+
+    "<i><font size = '2'>" +
+    "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
+     "</font></i>";
+
     statsDiv.innerHTML =
-      yearHtml + "<ul> <li>" + oilHtml + "</li> <li>"  + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>";
+      yearHtml + "<ul> <li>" + oilHtml + "</li> <li>"  + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
