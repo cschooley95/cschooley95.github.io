@@ -176,10 +176,10 @@ if (result.error) {
 
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
     const employmentHtml =
-    "Added " +
+    "Directly employed " +
     "<span>" +
-    result.features[0].attributes["Employment_Count"].toLocaleDateString("en-US", thousandsSep) +
-    "</span> billion dollars to Utah's Gross Domestic Product" +
+    result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
+    "</span> employees" +
     ".<br />";
 
     statsDiv.innerHTML =
