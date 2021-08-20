@@ -208,7 +208,7 @@ const wellCounts = {
   onStatisticField: "API",
   outStatisticFieldName: "Well_Counts",
   statisticType: "count"
-},
+};
 
 const statsFields = {
   GDP_Average: "Global Domestic Product (GDP)",
