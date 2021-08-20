@@ -166,6 +166,12 @@ if (result.error) {
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       "</span> the Oil and Gas Industry:<br />";
     
+    const oilHtml =
+    "Utah had <span>" +
+    result.features[0].attributes["Well_Counts"] +
+    "</span> oil and gas wells" +
+    ".<br/ >";
+
     const GDPHtml =
     "<br/>Added " +
     "<span>" +
@@ -182,7 +188,7 @@ if (result.error) {
     ".<br />";
 
     statsDiv.innerHTML =
-      yearHtml + GDPHtml + employmentHtml;
+      oilHtml + yearHtml + GDPHtml + employmentHtml;
 }
 }
 })
