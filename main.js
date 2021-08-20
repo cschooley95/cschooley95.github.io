@@ -170,12 +170,20 @@ if (result.error) {
     const GDPHtml =
     "Added " +
     "<span>" +
-      result.features[0].attributes["GDP_Average"].toFixed(2) +
-      "</span> billion dollars to Utah's Gross Domestic Product" +
-      ".<br />";
+    result.features[0].attributes["GDP_Average"].toFixed(2) +
+    "</span> billion dollars to Utah's Gross Domestic Product" +
+    ".<br />";
+
+    var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
+    const employmentHtml =
+    "Added " +
+    "<span>" +
+    result.features[0].attributes["Employment_Count"].toLocaleDateString("en-US", thousandsSep) +
+    "</span> billion dollars to Utah's Gross Domestic Product" +
+    ".<br />";
 
     statsDiv.innerHTML =
-      yearHtml + GDPHtml;
+      yearHtml + GDPHtml + employmentHtml;
 }
 }
 })
