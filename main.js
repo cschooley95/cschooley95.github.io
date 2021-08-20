@@ -26,7 +26,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-110.16577367032687, 39.014084295303114],    // Centered on Green River for now
-  zoom:7
+  zoom:6.8
 });
 
 // Create a collapsible legend
