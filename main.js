@@ -164,10 +164,10 @@ if (result.error) {
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       "</span> and <span>" +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      "</span> the Oil and Gas Industry:<br />";
+      "</span> the Oil and Gas Industry in Utah:<br />";
     
     const oilHtml =
-    "Utah had <span>" +
+    "Had <span>" +
     result.features[0].attributes["Well_Counts"] +
     "</span> oil and gas wells" +
     ".<br/ >";
