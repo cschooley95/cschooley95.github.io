@@ -156,7 +156,7 @@ if (result.error) {
 } else {
   if (result.features.length >= 1) {
     const attributes = result.features[0].attributes;
-    for (stat in statsFields) {
+    for (name in statsFields) {
       if (attributes[name] && attributes[name] != null) {
         const html =
         "<br/>" +
