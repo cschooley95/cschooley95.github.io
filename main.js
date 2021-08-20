@@ -161,7 +161,7 @@ if (result.error) {
     for (name in statsFields) {
       if (attributes[name] && attributes[name] != null) {
         const html =
-        "<br/>" +
+        "<br />" +
         statsFields[name] +
         ": <b><span>" + // setting bolding and styling
         attributes[name].toLocaleString("en-US",{maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
@@ -179,14 +179,14 @@ if (result.error) {
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       " and " +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      ".<br/>";
+      ".<br />";
     
     const GDPHtml =
     "Added " +
     "<span>" +
       result.features[0].attributes["GDP_Average"].toFixed(2) +
       "</span> billion dollars to Utah's Gross Domestic Product" +
-      ".<br/>";
+      ".<br />";
 
     if (htmls[0] == undefined) {
       statsDiv.innerHTML = yearHtml;
