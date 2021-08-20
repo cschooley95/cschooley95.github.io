@@ -171,7 +171,7 @@ if (result.error) {
     }
     const yearHtml =
       "<span>" +
-      result.features[0].attributes["Well_Counts"].toFixed(0) +
+      result.features[0].attributes["Well_Counts"].toLocaleString() +
       "</span> wells were in Utah between" +
       timeSlider.timeExtent.start.toLocaleDateString() +
       " and " +
