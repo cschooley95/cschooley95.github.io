@@ -69,8 +69,7 @@ const timeSlider = new TimeSlider({
     tickConfigs: [{
       mode: "position",
       values: [
-        new Date(1969, 0, 1), new Date(1970, 0, 1),
-        new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
+        new Date(1970, 0, 1), new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
       ].map((date) => date.getTime()),
       labelsVisible: true,
       labelFormatFunction: (value) => {
@@ -109,7 +108,7 @@ view.whenLayerView(layer).then((layerView) => {
   OGLayerView = layerView;
 
 // Setting start date for time slider
-  const start = new Date(1969, 0, 1);
+  const start = new Date(1970, 0, 1);
 
  // Extent for time Slider 
   timeSlider.fullTimeExtent = {
@@ -189,8 +188,7 @@ if (result.error) {
     ".<br />";
 
     const referenceHtml =
-    "<br/>"+
-    "<i><font size = '2'>" +
+    "<i><font size = '1'>" +
     "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
 
