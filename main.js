@@ -180,7 +180,7 @@ if (result.error) {
       statsDiv.innerHTML = yearHtml;
     } else {
       statsDiv.innerHTML =
-        yearHtml + htmls[0];
+        yearHtml + htmls[0] + htmls[1];
   }
 }
 }
@@ -191,13 +191,20 @@ console.log(error);
 });
 
 const GDPAvg = {
-  onStatisticField: "GDP_billions_", //using field name instead of field alias??? Don't know if I should. I have tried both ways now
+  onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
   statisticType: "avg"
 };
 
+const employmentCount = {
+  onStatisticField: "EmploymentNumbers",
+  outStatisticFieldName: "Employment_Count",
+  statisticType: "count"
+}
+
 const statsFields = {
-  GDP_Average: "GDP Average"
+  GDP_Average: "Global Domestic Product (GDP)",
+  Employment_Count: "Number of Employees"
 };
 
 const statsDiv = document.getElementById("statsDiv");
