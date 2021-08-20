@@ -182,7 +182,7 @@ if (result.error) {
       ".<br/>";
     
     const GDPHtml =
-    "Added "
+    "Added " +
     "<span>" +
       result.features[0].attributes["GDP_Average"].toFixed(2) +
       "</span> billion dollars to Utah's Gross Domestic Product" +
