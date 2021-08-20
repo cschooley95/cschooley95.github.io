@@ -209,7 +209,7 @@ const GDPAvg = {
 };
 
 const employmentCount = {
-  onStatisticField: "EmploymentNumbers",
+  onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
   statisticType: "avg"
 };
