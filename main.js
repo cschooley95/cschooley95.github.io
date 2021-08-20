@@ -151,7 +151,6 @@ wellCounts
 ];
 
 layer.queryFeatures(statQuery).then((result) => {
-let htmls = [];
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
@@ -165,10 +164,10 @@ if (result.error) {
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       "</span> and <span>" +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      "</span>:<br />";
+      "</span> the Oil and Gas Industry:<br />";
     
     const GDPHtml =
-    "Added " +
+    "<br/>Added " +
     "<span>" +
     result.features[0].attributes["GDP_Average"].toFixed(2) +
     "</span> billion dollars to Utah's Gross Domestic Product" +
