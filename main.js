@@ -141,7 +141,6 @@ OGLayerView.filter = {
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
-});
 
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
@@ -149,15 +148,13 @@ statQuery.outStatistics = [
 GDPAvg
 ];
 
-// Readd statistics here
-
 layer.queryFeatures(statQuery).then((result) => {
 let htmls = [];
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
 } else {
-  if (result.feature.length >= 1) {
+  if (result.features.length >= 1) {
     const attributes = result.features[0].attributes;
     for (stat in statsFields) {
       if (attributes[name] && attributes[name] != null) {
@@ -191,9 +188,10 @@ if (result.error) {
 .catch((error) => {
 console.log(error);
 });
+});
 
 const GDPAvg = {
-  onstatisticField: "GDP_billions_", //using field name instead of field alias??? Don't know if I should. I have tried both ways now
+  onStatisticField: "GDP_billions_", //using field name instead of field alias??? Don't know if I should. I have tried both ways now
   outStatisticFieldName: "GDP_Average",
   statisticType: "avg"
 };
