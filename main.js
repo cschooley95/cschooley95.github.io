@@ -136,8 +136,7 @@ OGLayerView.filter = {
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent,
-      geometry: view.extent
+      timeExtent:timeSlider.timeExtent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
@@ -206,13 +205,13 @@ console.log(error);
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
-  statisticType: "min"
+  statisticType: "max"
 };
 
 const employmentCount = {
   onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
-  statisticType: "min"
+  statisticType: "max"
 };
 
 const wellCounts = {
