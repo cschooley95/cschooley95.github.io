@@ -51,7 +51,6 @@ const events = [
 // Create time slider with interval set to 5 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
-    mode: "instant",
     playRate: 750,
     stops: {
       interval: {
@@ -142,7 +141,7 @@ OGLayerView.filter = {
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.createQuery();
+const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
