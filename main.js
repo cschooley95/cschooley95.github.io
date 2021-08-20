@@ -164,18 +164,21 @@ if (result.error) {
         "<br/>" +
         statsFields[name] +
         ": <b><span>" + // setting bolding and styling
-        attributes[name].toLocaleString({maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
+        attributes[name].toLocaleString("en-US",{maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
         "</span></b>"; // setting bolding and styling to attribute information
         htmls.push(html) // push html into code into information box with attribute information
       }
     }
+
+    var yearOnly = {year:'numeric'}; //set to show year only in date strings
+
     const yearHtml =
       "<span>" +
       result.features[0].attributes["Well_Counts"].toLocaleString() +
       "</span> wells were in Utah between" +
-      timeSlider.timeExtent.start.toLocaleDateString() +
+      timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       " and " +
-      timeSlider.timeExtent.end.toLocaleDateString() +
+      timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       ".<br/>";
 
     if (htmls[0] == undefined) {
