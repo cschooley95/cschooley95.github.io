@@ -182,10 +182,10 @@ if (result.error) {
 
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
     const employmentHtml =
-    "Directly employed " +
+    "Employed " +
     "<span>" +
     result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
-    "</span> employees" +
+    "</span> employees. This includes direct and supporting employees" +
     ".<br />";
 
     statsDiv.innerHTML =
