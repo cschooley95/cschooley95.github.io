@@ -145,7 +145,9 @@ OGLayerView.filter = {
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
-GDPAvg
+GDPAvg,
+employmentCount,
+wellCounts
 ];
 
 layer.queryFeatures(statQuery).then((result) => {
@@ -169,8 +171,8 @@ if (result.error) {
     }
     const yearHtml =
       "<span>" +
-      result.features[0].attributes["GDP_Average"].toFixed(1) +
-      "</span> billion dollars was added to Utah's GDP by the Oil and Gas Industry between" +
+      result.features[0].attributes["Well_Counts"].toFixed(0) +
+      "</span> wells were in Utah between" +
       timeSlider.timeExtent.start.toLocaleDateString() +
       " and " +
       timeSlider.timeExtent.end.toLocaleDateString() +
@@ -199,8 +201,14 @@ const GDPAvg = {
 const employmentCount = {
   onStatisticField: "EmploymentNumbers",
   outStatisticFieldName: "Employment_Count",
+  statisticType: "avg"
+};
+
+const wellCounts = {
+  onStatisticField: "API",
+  outStatisticFieldName: "Well_Counts",
   statisticType: "count"
-}
+},
 
 const statsFields = {
   GDP_Average: "Global Domestic Product (GDP)",
