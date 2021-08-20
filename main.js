@@ -164,7 +164,7 @@ if (result.error) {
         "<br/>" +
         statsFields[name] +
         ": <b><span>" + // setting bolding and styling
-        attributes[name].toLocaleString().toFixed(0) + // set to one decimal place, add thousands seperators
+        attributes[name].toLocaleString({maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
         "</span></b>"; // setting bolding and styling to attribute information
         htmls.push(html) // push html into code into information box with attribute information
       }
