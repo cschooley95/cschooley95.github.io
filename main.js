@@ -142,7 +142,7 @@ OGLayerView.filter = {
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery();
+const statQuery = OGLayerView.createQuery();
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
