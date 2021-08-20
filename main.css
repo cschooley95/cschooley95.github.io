@@ -59,14 +59,3 @@ body,
 	font-size: 14pt;
 	font-weight: bolder;
 }
-
-#titleDiv {
-	padding: 10px
-}
-
-#titleText {
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: 20pt;
-	font-weight: 60;
-	padding-bottom: 10px;
-}
