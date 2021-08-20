@@ -15,7 +15,7 @@ body,
   }
 
 #timeSlider .custom-labels{
-	font-family:'Times New Roman', Times, serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	color: red;
 	margin-top: -35px;
@@ -29,7 +29,7 @@ body,
 }
 
 #timeSlider .custom-labels2{
-	font-family: 'Times New Roman', Times, serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
 	color: black;
