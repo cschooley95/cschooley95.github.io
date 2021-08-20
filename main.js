@@ -156,21 +156,8 @@ statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
 } else {
-  if (result.features.length >= 1) {
-    const attributes = result.features[0].attributes;
-    for (name in statsFields) {
-      if (attributes[name] && attributes[name] != null) {
-        const html =
-        "<br/>" +
-        statsFields[name] +
-        ": <b><span>" + // setting bolding and styling
-        attributes[name].toLocaleString("en-US",{maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
-        "</span></b>"; // setting bolding and styling to attribute information
-        htmls.push(html) // push html into code into information box with attribute information
-      }
-    }
-
-    var yearOnly = {year:'numeric'}; //set to show year only in date strings
+  
+  var yearOnly = {year:'numeric'}; //set to show year only in date strings
 
     const yearHtml =
       "<span>" +
@@ -194,7 +181,7 @@ if (result.error) {
       statsDiv.innerHTML =
         yearHtml + GDPHtml + htmls[0] + htmls[1];
   }
-}
+
 }
 })
 .catch((error) => {
