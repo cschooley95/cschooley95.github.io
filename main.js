@@ -54,7 +54,7 @@ const timeSlider = new TimeSlider({
     playRate: 750,
     stops: {
       interval: {
-        value: 5,
+        value: 1,
         unit: "years"
       }
     },
@@ -121,7 +121,7 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 1825); // the number here is in days (1825 = 5 years)
+end.setDate(end.getDate() + 365); // the number here is in days (1825 = 5 years)
 
 timeSlider.timeExtent = {start,end};
 
