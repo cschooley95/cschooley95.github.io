@@ -188,7 +188,7 @@ if (result.error) {
     ".<br />";
 
     statsDiv.innerHTML =
-      oilHtml + yearHtml + GDPHtml + employmentHtml;
+      "<ul> <li>" + oilHtml + "</li> <li>" + yearHtml + "</li> <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>";
 }
 }
 })
