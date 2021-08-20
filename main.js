@@ -166,9 +166,10 @@ if (result.error) {
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       "</span> the Oil and Gas Industry in Utah:<br />";
     
+      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
     const oilHtml =
     "Had <span>" +
-    result.features[0].attributes["Well_Counts"] +
+    result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
     "</span> oil and gas wells" +
     ".<br/ >";
 
