@@ -157,29 +157,15 @@ if (result.error) {
   return result.error;
 } else {
   if (result.features.length >= 1) {
-    const attributes = result.features[0].attributes;
-    for (name in statsFields) {
-      if (attributes[name] && attributes[name] != null) {
-        const html =
-        "<br />" +
-        statsFields[name] +
-        ": <b><span>" + // setting bolding and styling
-        attributes[name].toLocaleString("en-US",{maximumFractionDigits:0}) + // set to one decimal place, add thousands seperators
-        "</span></b>"; // setting bolding and styling to attribute information
-        htmls.push(html) // push html into code into information box with attribute information
-      }
-    }
 
     var yearOnly = {year:'numeric'}; //set to show year only in date strings
-
     const yearHtml =
+      "Between " +
       "<span>" +
-      result.features[0].attributes["Well_Counts"].toLocaleString() +
-      "</span> wells were in Utah between " +
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
-      " and " +
+      "</span> and <span>" +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      ".<br />";
+      "</span>:<br />";
     
     const GDPHtml =
     "Added " +
@@ -188,12 +174,8 @@ if (result.error) {
       "</span> billion dollars to Utah's Gross Domestic Product" +
       ".<br />";
 
-    if (htmls[0] == undefined) {
-      statsDiv.innerHTML = yearHtml;
-    } else {
-      statsDiv.innerHTML =
-        yearHtml + GDPHtml + htmls[0] + htmls[1];
-  }
+    statsDiv.innerHTML =
+      yearHtml + GDPHtml;
 }
 }
 })
@@ -218,11 +200,6 @@ const wellCounts = {
   onStatisticField: "API",
   outStatisticFieldName: "Well_Counts",
   statisticType: "count"
-};
-
-const statsFields = {
-  GDP_Average: "Global Domestic Product (GDP)",
-  Employment_Count: "Number of Employees"
 };
 
 const statsDiv = document.getElementById("statsDiv");
