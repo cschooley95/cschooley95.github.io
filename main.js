@@ -177,7 +177,7 @@ if (result.error) {
     "Added " +
     "<span>" +
     result.features[0].attributes["GDP_Average"].toFixed(1) +
-    "</span> billion dollars to Utah's Gross Domestic Product" +
+    "</span> million dollars to Utah's Gross Domestic Product" +
     ".<br />";
 
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
