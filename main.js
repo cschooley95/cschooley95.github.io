@@ -175,17 +175,24 @@ if (result.error) {
     const yearHtml =
       "<span>" +
       result.features[0].attributes["Well_Counts"].toLocaleString() +
-      "</span> wells were in Utah between" +
+      "</span> wells were in Utah between " +
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       " and " +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
+      ".<br/>";
+    
+    const GDPHtml =
+    "Added "
+    "<span>" +
+      result.features[0].attributes["GDP_Average"].toFixed(2) +
+      "</span> billion dollars to Utah's Gross Domestic Product" +
       ".<br/>";
 
     if (htmls[0] == undefined) {
       statsDiv.innerHTML = yearHtml;
     } else {
       statsDiv.innerHTML =
-        yearHtml + htmls[0] + htmls[1];
+        yearHtml + GDPHtml + htmls[0] + htmls[1];
   }
 }
 }
