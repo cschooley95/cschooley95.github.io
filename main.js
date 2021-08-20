@@ -169,7 +169,7 @@ if (result.error) {
     }
     const yearHtml =
       "<span>" +
-      result.features[0].attributes["GDP_Average"] +
+      result.features[0].attributes["GDP_Average"].toFixed(1) +
       "</span> billion dollars was added to Utah's GDP by the Oil and Gas Industry between" +
       timeSlider.timeExtent.start.toLocaleDateString() +
       " and " +
