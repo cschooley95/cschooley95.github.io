@@ -139,11 +139,13 @@ where:"OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
       timeExtent:timeSlider.timeExtent,
       geometry: view.extent
     },
-    excludedEffect: "grayscale(30%) opacity(15%)"
+    excludedEffect: "grayscale(50%) opacity(20%)"
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery();
+const statQuery = OGLayerView.effect.filter.createQuery(
+  timeExtent = timeSlider.timeExtent
+);
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
@@ -166,7 +168,7 @@ if (result.error) {
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       "</span> the Oil and Gas Industry in Utah:<br />";
     
-      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
+    var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
     const oilHtml =
     "Had <span>" +
     result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
@@ -206,13 +208,13 @@ console.log(error);
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
-  statisticType: "max"
+  statisticType: "avg"
 };
 
 const employmentCount = {
   onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
-  statisticType: "max"
+  statisticType: "avg"
 };
 
 const wellCounts = {
