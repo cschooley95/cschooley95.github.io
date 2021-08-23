@@ -120,25 +120,24 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 364); // the number here is in days (1825 = 5 years)
+end.setDate(end.getDate() + 365); // the number here is in days (1825 = 5 years)
 
 timeSlider.timeExtent = {start,end};
 
 });
 
- //watch timeslider timeExtent change
+// watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-layer.definitionExpression = "OrigComplYear <=" + timeSlider.timeExtent.end.getTime();
-
-
- //add grayscale effect to old wells (may or may not keep this)
+OGLayerView.filter = {
+  where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime(),
+}
+// add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent,
-      geometry: view.extent
+      timeExtent:timeSlider.timeExtent
     },
-    excludedEffect: "grayscale(50%) opacity(20%)"
+    excludedEffect: "grayscale(80%) opacity(20%)"
   };
 
 // Run statistics for GDP within current time extent
@@ -149,7 +148,7 @@ employmentCount,
 wellCounts
 ];
 
-OGLayerView.queryFeatures(statQuery).then((result) => {
+layer.queryFeatures(statQuery).then((result) => {
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
@@ -165,7 +164,7 @@ if (result.error) {
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       "</span> the Oil and Gas Industry in Utah:<br />";
     
-    var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
+      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
     const oilHtml =
     "Had <span>" +
     result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
@@ -205,13 +204,13 @@ console.log(error);
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
-  statisticType: "avg"
+  statisticType: "max"
 };
 
 const employmentCount = {
   onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
-  statisticType: "avg"
+  statisticType: "max"
 };
 
 const wellCounts = {
