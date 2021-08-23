@@ -134,7 +134,8 @@ layer.definitionExpression =  "OrigComplDate <=" + timeSlider.timeExtent.end.get
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent
+      timeExtent:timeSlider.timeExtent,
+      geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
