@@ -142,9 +142,7 @@ layer.definitionExpression = "OrigComplYear <=" + timeSlider.timeExtent.end.getT
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(
-  timeExtent = timeSlider.timeExtent
-);
+const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
