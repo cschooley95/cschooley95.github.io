@@ -148,7 +148,7 @@ employmentCount,
 wellCounts
 ];
 
-OGLayerView.queryFeatures(statQuery).then((result) => {
+layer.queryFeatures(statQuery).then((result) => {
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
