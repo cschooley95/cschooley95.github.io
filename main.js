@@ -204,13 +204,13 @@ console.log(error);
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
-  statisticType: "max"
+  statisticType: "avg"
 };
 
 const employmentCount = {
   onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
-  statisticType: "max"
+  statisticType: "avg"
 };
 
 const wellCounts = {
