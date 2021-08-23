@@ -129,7 +129,7 @@ timeSlider.timeExtent = {start,end};
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-OGLayerView.fitler = {
+OGLayerView.filter = {
 where:"OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
 }
 
