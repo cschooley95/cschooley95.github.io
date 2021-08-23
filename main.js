@@ -143,7 +143,7 @@ timeSlider.timeExtent = {start,end};
   //};
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(
+const statQuery = OGLayerView.createQuery(
   timeExtent = timeSlider.timeExtent
 );
 statQuery.outStatistics = [
@@ -152,7 +152,7 @@ employmentCount,
 wellCounts
 ];
 
-layer.queryFeatures(statQuery).then((result) => {
+OGLayerView.queryFeatures(statQuery).then((result) => {
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
