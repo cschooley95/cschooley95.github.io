@@ -127,11 +127,11 @@ timeSlider.timeExtent = {start,end};
 });
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", () => {
-  //oil wells that popped up before the end of the current time extent
-//OGLayerView.filter = {
-  //where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime(),
-//}
+timeSlider.watch("timeExtent", function(value){
+//oil wells that popped up before the end of the current time extent
+OGLayerView.filter = {
+  timeExtent: value,
+}
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
