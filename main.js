@@ -143,7 +143,7 @@ where:"OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(
+const statQuery = OGLayerView.createQuery(
   timeExtent = timeSlider.timeExtent
 );
 statQuery.outStatistics = [
