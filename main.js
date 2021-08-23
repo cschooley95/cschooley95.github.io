@@ -127,20 +127,20 @@ timeSlider.timeExtent = {start,end};
 });
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", () => {
+//timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-OGLayerView.filter = {
-where:"OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
-}
+//OGLayerView.filter = {
+//where:"OrigComplDate <=" + timeSlider.timeExtent.end.getTime()
+//}
 
 // add grayscale effect to old wells (may or may not keep this)
-  OGLayerView.effect = {
-    filter: {
-      timeExtent:timeSlider.timeExtent,
-      geometry: view.extent
-    },
-    excludedEffect: "grayscale(50%) opacity(20%)"
-  };
+  //OGLayerView.effect = {
+    //filter: {
+      //timeExtent:timeSlider.timeExtent,
+      //geometry: view.extent
+    //},
+    //excludedEffect: "grayscale(50%) opacity(20%)"
+  //};
 
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery(
@@ -202,7 +202,6 @@ if (result.error) {
 })
 .catch((error) => {
 console.log(error);
-});
 });
 
 const GDPAvg = {
