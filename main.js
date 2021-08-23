@@ -120,7 +120,7 @@ view.whenLayerView(layer).then((layerView) => {
 
 let end = new Date(start);
 
-end.setDate(end.getDate() + 365); // the number here is in days (1825 = 5 years)
+end.setDate(end.getDate() + 364); // the number here is in days (1825 = 5 years)
 
 timeSlider.timeExtent = {start,end};
 
