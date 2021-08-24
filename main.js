@@ -141,7 +141,9 @@ OGLayerView.filter = {
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(); //Is this where I need to filter to extent? I don't think so
+const statQuery = OGLayerView.effect.filter.createQuery(
+  timeExtent = timeSlider.timeExtent
+); //Is this where I need to filter to extent? I don't think so
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
