@@ -129,13 +129,13 @@ timeSlider.timeExtent = {start,end};
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-OGLayerView.filter = {
-  timeExtent: timeSlider.timeExtent, ///PERHAPS THIS IS THE ISSUE WITH IT GOING BEFORE
-}                                                                  /// I have removed it/adjusted it and continues so maybe not
+OGLayerView.definitionExpression = 
+  "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           /// I have removed it/adjusted it and continues so maybe not
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent //Thought this filter would do the time extent as I wanted
+      timeExtent:timeSlider.timeExtent,//Thought this filter would do the time extent as I wanted
+      geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
