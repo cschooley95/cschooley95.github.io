@@ -16,13 +16,9 @@ require([
   });
 
   const table = new GeoJSONLayer({
-    url: "https://cschooley95.github.io/blob/gh-pages/OGTimeTableGeoJson.geojson",
-    timeInfo: {
-      startField: "ComplOrigDate",
-      interval: {
-        unit: "years",
-        value:1
-      }
+    portalItem: {
+      id: "770811c427724622ab85161500528577",
+      visible = false
     }
   });
 
@@ -210,7 +206,7 @@ timeSlider.watch("timeExtent", () => {
   }
 
 // Run statistics for GDP within current time extent
-const tableQuery = table.createQuery();
+const tableQuery = table.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
 employmentCount
