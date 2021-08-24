@@ -7,6 +7,7 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
   let OGLayerView;
+  let TableLayerView;
 
   const layer = new FeatureLayer({
     portalItem: {
@@ -131,25 +132,25 @@ timeSlider.timeExtent = {start,end};
 
 });
 
+/////// OG point layer
+
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
 OGLayerView.definitionExpression = 
-  "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           /// I have removed it/adjusted it and continues so maybe not
+  "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent,//Thought this filter would do the time extent as I wanted
+      timeExtent:timeSlider.timeExtent,
       geometry: view.extent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(); //Is this where I need to filter to extent? I don't think so
+const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
-GDPAvg,
-employmentCount,
 wellCounts
 ];
 
@@ -176,6 +177,51 @@ if (result.error) {
     "</span> oil and gas wells" +
     ".<br/ >";
 
+    statsDiv.innerHTML =
+      yearHtml + "<ul> <li>" + oilHtml + "</li> <li>" + "</ul>";
+}
+}
+})
+.catch((error) => {
+console.log(error);
+});
+});
+
+const wellCounts = {
+  onStatisticField: "API",
+  outStatisticFieldName: "Well_Counts",
+  statisticType: "count"
+};
+
+//// Table view
+
+// Creating view layer???
+view.whenLayerView(table).then((tableView) => {
+  TableLayerView = tableView;
+
+// watch timeslider timeExtent change
+timeSlider.watch("timeExtent", () => {
+  //oil wells that popped up before the end of the current time extent
+  TableLayerView.filter = {
+    filter: {
+      timeExtent:timeSlider.timeExtent,
+    },
+  }
+
+// Run statistics for GDP within current time extent
+const tableQuery = TableLayerView.filter.createQuery();
+statQuery.outStatistics = [
+GDPAvg,
+employmentCount
+];
+
+layer.queryFeatures(tableQuery).then((result) => {
+statsDiv.innerHTML = "";
+if (result.error) {
+  return result.error;
+} else {
+  if (result.features.length >= 1) {
+
     const GDPHtml =
     "Added " +
     "<span>" +
@@ -197,7 +243,7 @@ if (result.error) {
      "</font></i>";
 
     statsDiv.innerHTML =
-      yearHtml + "<ul> <li>" + oilHtml + "</li> <li>"  + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+      "<ul>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
@@ -218,12 +264,6 @@ const employmentCount = {
   statisticType: "avg"
 };
 
-const wellCounts = {
-  onStatisticField: "API",
-  outStatisticFieldName: "Well_Counts",
-  statisticType: "count"
-};
-
 const statsDiv = document.getElementById("statsDiv");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
@@ -236,4 +276,5 @@ const statsDiv = document.getElementById("statsDiv");
       });
       view.ui.add(infoDivExpand, "top-right");
 
+});
 });
