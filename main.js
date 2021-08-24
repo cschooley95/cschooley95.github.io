@@ -7,7 +7,6 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
 
-let OGLayerView;
 
   const layer = new FeatureLayer({
     portalItem: {
@@ -15,10 +14,18 @@ let OGLayerView;
     }
   });
 
+  let OGLayerView;
+
+  const table = new FeatureLayer({
+    portalItem: {
+      id: "0d8f9e9a9d404a94a83358957b84bab6"
+    }
+  });
+
   // Create Map
 const map = new Map({
   basemap: "topo",
-  layers: [layer]
+  layers: [layer, table]
 });
 
  // Set the map view
