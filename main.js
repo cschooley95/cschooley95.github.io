@@ -14,7 +14,6 @@ require([
     }
   });
 
-  let TableLayerView;
   const table = new FeatureLayer({
     portalItem: {
       id: "0d8f9e9a9d404a94a83358957b84bab6"
@@ -195,21 +194,17 @@ const wellCounts = {
 
 //// Table view
 
-// Creating view layer???
-view.whenLayerView(table).then((tableView) => {
-  TableLayerView = tableView;
-
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-  TableLayerView.filter = {
+  table.filter = {
     filter: {
       timeExtent:timeSlider.timeExtent,
     },
   }
 
 // Run statistics for GDP within current time extent
-const tableQuery = TableLayerView.filter.createQuery();
+const tableQuery = table.filter.createQuery();
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount
