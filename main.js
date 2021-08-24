@@ -130,7 +130,7 @@ timeSlider.timeExtent = {start,end};
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
 OGLayerView.filter = {
-  where: "OrigComplDate <=" + timeSlider.timeExtent.end.getTime(), ///PERHAPS THIS IS THE ISSUE WITH IT GOING BEFORE
+  timeExtent: timeSlider.timeExtent, ///PERHAPS THIS IS THE ISSUE WITH IT GOING BEFORE
 }                                                                  /// I have removed it/adjusted it and continues so maybe not
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
@@ -141,9 +141,7 @@ OGLayerView.filter = {
   };
 
 // Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery(
-  timeExtent = timeSlider.timeExtent
-); //Is this where I need to filter to extent? I don't think so
+const statQuery = OGLayerView.effect.filter.createQuery(); //Is this where I need to filter to extent? I don't think so
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount,
