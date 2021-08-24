@@ -194,6 +194,8 @@ const wellCounts = {
   statisticType: "count"
 };
 
+const statsDiv = document.getElementById("statsDiv");
+
 //// Table view
 
 view.whenLayerView(table).then((layerView) => {
@@ -276,6 +278,7 @@ const employmentCount = {
   outStatisticFieldName: "Employment_Count",
   statisticType: "avg"
 };
+
 
 const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
