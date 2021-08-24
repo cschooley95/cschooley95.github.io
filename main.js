@@ -29,7 +29,7 @@ require([
   // Create Map
 const map = new Map({
   basemap: "topo",
-  layers: [layer]
+  layers: [layer, table]
 });
 
  // Set the map view
