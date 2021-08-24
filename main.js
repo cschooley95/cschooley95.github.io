@@ -16,7 +16,7 @@ require([
   });
 
   const table = new GeoJSONLayer({
-    url: "OGTimeTableGeoJson.geojson",
+    url: "https://github.com/cschooley95/cschooley95.github.io/blob/gh-pages/OGTimeTableGeoJson.geojson",
     timeInfo: {
       startField: "ComplOrigDate",
       interval: {
