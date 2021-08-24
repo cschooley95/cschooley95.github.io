@@ -16,7 +16,7 @@ require([
   });
 
   const table = new GeoJSONLayer({
-    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGTimeTableGeoJson/FeatureServer/0",
+    url: "OGTimeTableGeoJson.geojson",
     timeInfo: {
       startField: "ComplOrigDate",
       interval: {
