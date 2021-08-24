@@ -14,6 +14,7 @@ require([
     }
   });
 
+  let tableView;
   const table = new FeatureLayer({
     portalItem: {
       id: "770811c427724622ab85161500528577"
@@ -196,12 +197,12 @@ const wellCounts = {
 //// Table view
 
 view.whenLayerView(table).then((layerView) => {
-  table = layerView;
+  tableView = layerView;
 
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
-  table.filter = {
+  tableView.filter = {
     filter: {
       timeExtent:timeSlider.timeExtent,
     },
@@ -209,10 +210,10 @@ timeSlider.watch("timeExtent", () => {
 
   timeSlider.watch("timeExtent", () => {
     //oil wells that popped up before the end of the current time extent
-    table.definitionExpression = 
+    tableView.definitionExpression = 
     "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
   // add grayscale effect to old wells (may or may not keep this)
-    table.effect = {
+    tableView.effect = {
       filter: {
         timeExtent:timeSlider.timeExtent,
         geometry: view.extent
@@ -221,7 +222,7 @@ timeSlider.watch("timeExtent", () => {
     };
 
 // Run statistics for GDP within current time extent
-const tableQuery = table.effect.filter.createQuery();
+const tableQuery = tableView.effect.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
 employmentCount
