@@ -7,7 +7,6 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
   let OGLayerView;
-  let TableLayerView;
 
   const layer = new FeatureLayer({
     portalItem: {
@@ -15,6 +14,7 @@ require([
     }
   });
 
+  let TableLayerView;
   const table = new FeatureLayer({
     portalItem: {
       id: "0d8f9e9a9d404a94a83358957b84bab6"
