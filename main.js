@@ -204,13 +204,13 @@ timeSlider.watch("timeExtent", () => {
   }
 
 // Run statistics for GDP within current time extent
-const tableQuery = table.filter.createQuery();
+const tableQuery = table.createQuery();
 statQuery.outStatistics = [
 GDPAvg,
 employmentCount
 ];
 
-layer.queryFeatures(tableQuery).then((result) => {
+table.queryFeatures(tableQuery).then((result) => {
 statsDiv.innerHTML = "";
 if (result.error) {
   return result.error;
