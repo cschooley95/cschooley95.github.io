@@ -18,7 +18,8 @@ require([
   const table = new GeoJSONLayer({
     portalItem: {
       id: "770811c427724622ab85161500528577"
-    }
+    },
+    visible:false
   });
 
   // Create Map
