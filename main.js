@@ -2,11 +2,10 @@ require([
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
-  "esri/layers/GeoJSONLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, FeatureLayer, GeoJSONLayer, Expand, Legend, TimeSlider) {
+], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
   let OGLayerView;
 
   const layer = new FeatureLayer({
@@ -15,7 +14,7 @@ require([
     }
   });
 
-  const table = new GeoJSONLayer({
+  const table = new FeatureLayer({
     portalItem: {
       id: "770811c427724622ab85161500528577"
     },
