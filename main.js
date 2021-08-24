@@ -239,7 +239,7 @@ if (result.error) {
      "</font></i>";
 
     statsDiv.innerHTML =
-      "<ul> <li>" +GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+      "<ul> <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
