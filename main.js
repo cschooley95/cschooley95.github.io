@@ -204,15 +204,28 @@ timeSlider.watch("timeExtent", () => {
     },
   }
 
+  timeSlider.watch("timeExtent", () => {
+    //oil wells that popped up before the end of the current time extent
+    table.definitionExpression = 
+    "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
+  // add grayscale effect to old wells (may or may not keep this)
+    table.effect = {
+      filter: {
+        timeExtent:timeSlider.timeExtent,
+        geometry: view.extent
+      },
+      excludedEffect: "grayscale(80%) opacity(20%)"
+    };
+
 // Run statistics for GDP within current time extent
-const tableQuery = table.filter.createQuery();
+const tableQuery = table.effect.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
 employmentCount
 ];
 
 table.queryFeatures(tableQuery).then((result) => {
-statsDiv.innerHTML = "";
+statsDiv1.innerHTML = "";
 if (result.error) {
   return result.error;
 } else {
@@ -238,7 +251,7 @@ if (result.error) {
     "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
 
-    statsDiv.innerHTML =
+    statsDiv1.innerHTML =
       "<ul> <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
@@ -261,6 +274,7 @@ const employmentCount = {
 };
 
 const statsDiv = document.getElementById("statsDiv");
+const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
         collapsedIconClass: "esri-icon-collapse",
@@ -272,4 +286,5 @@ const statsDiv = document.getElementById("statsDiv");
       });
       view.ui.add(infoDivExpand, "top-right");
 
+});
 });
