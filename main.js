@@ -2,10 +2,11 @@ require([
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
+  "esri/layers/GeoJSONLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
+], function (Map, MapView, FeatureLayer, GeoJSONLayer, Expand, Legend, TimeSlider) {
   let OGLayerView;
 
   const layer = new FeatureLayer({
@@ -14,9 +15,14 @@ require([
     }
   });
 
-  const table = new FeatureLayer({
-    portalItem: {
-      id: "0d8f9e9a9d404a94a83358957b84bab6"
+  const table = new GeoJSONLayer({
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGTimeTableGeoJson/FeatureServer/0",
+    timeInfo: {
+      startField: "ComplOrigDate",
+      interval: {
+        unit: "years",
+        value:1
+      }
     }
   });
 
@@ -238,7 +244,7 @@ if (result.error) {
      "</font></i>";
 
     statsDiv.innerHTML =
-      "<ul>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+      yearHtml + "<ul> <li>" + oilHtml + "</li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
