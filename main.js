@@ -291,3 +291,4 @@ const statsDiv1 = document.getElementById("statsDiv1");
 
 });
 });
+});
