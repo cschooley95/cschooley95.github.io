@@ -195,6 +195,9 @@ const wellCounts = {
 
 //// Table view
 
+view.whenLayerView(table).then((layerView) => {
+  table = layerView;
+
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
   //oil wells that popped up before the end of the current time extent
