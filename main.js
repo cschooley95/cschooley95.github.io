@@ -205,7 +205,7 @@ timeSlider.watch("timeExtent", () => {
 
 // Run statistics for GDP within current time extent
 const tableQuery = table.createQuery();
-statQuery.outStatistics = [
+tableQuery.outStatistics = [
 GDPAvg,
 employmentCount
 ];
