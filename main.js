@@ -186,15 +186,12 @@ if (result.error) {
 .catch((error) => {
 console.log(error);
 });
-});
 
 const wellCounts = {
   onStatisticField: "API",
   outStatisticFieldName: "Well_Counts",
   statisticType: "count"
 };
-
-const statsDiv = document.getElementById("statsDiv");
 
 //// Table view
 
@@ -266,6 +263,7 @@ if (result.error) {
 console.log(error);
 });
 });
+});
 
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
@@ -279,7 +277,7 @@ const employmentCount = {
   statisticType: "avg"
 };
 
-
+const statsDiv = document.getElementById("statsDiv");
 const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
