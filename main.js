@@ -277,7 +277,6 @@ const employmentCount = {
   statisticType: "avg"
 };
 
-const statsDiv = document.getElementById("statsDiv");
 const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
