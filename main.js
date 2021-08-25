@@ -194,7 +194,7 @@ if (result.error) {
     "</span> oil and gas wells.";
 
     statDiv.innerHTML =
-      yearHtml + "<ul>" + oilHtml + "</li></ul>";
+      yearHtml + "<ul><li>" + oilHtml + "</li></ul>";
 }
 }
 })
