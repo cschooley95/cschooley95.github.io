@@ -152,6 +152,42 @@ timeSlider.timeExtent = {start,end};
     };
 
 // Run statistics for GDP within current time extent
+const statQuery = OGLayerView.effect.filter.createQuery();
+statQuery.outStatistics = [
+wellCounts
+];
+
+layer.queryFeatures(statQuery).then((result) => {
+statsDiv1.innerHTML = "";
+if (result.error) {
+  return result.error;
+} else {
+  if (result.features.length >= 1) {
+
+    var yearOnly = {year:'numeric'}; //set to show year only in date strings
+    const yearHtml =
+      "Between " +
+      "<span>" +
+      timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
+      "</span> and <span>" +
+      timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
+      "</span> the Oil and Gas Industry in Utah:<br />";
+    
+      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
+    const oilHtml =
+    "Had <span>" +
+    result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
+    "</span> oil and gas wells" +
+    ".<br/ >";
+
+    statsDiv1.innerHTML =
+      yearHtml + "<ul> <li>" + oilHtml + "</li>" + "</ul>";
+}
+}
+})
+
+
+// Run statistics for GDP/employment within current time extent
 const tableQuery = tableView.effect.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
