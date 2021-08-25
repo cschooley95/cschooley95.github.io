@@ -43,14 +43,14 @@ const map = new Map({
   basemap: {
     baseLayers:[new TileLayer({
       portalItem: {
-        id:"ad7e1f1787814a2abd5557ad24a66b22"
+        id:"a66bfb7dd3b14228bf7ba42b138fe2ea"
       }
     }),
-    new VectorTileLayer({
+    new TileLayer({
       portalItem: {
-        id: "273bf8d5c8ac400183fc24e109d20bcf"
+        id: "a8588e0401e246469260f03ee44d69f1"
       },
-      blendMode: "multiply"
+      blendMode: "color"
     })
   ]
   },
