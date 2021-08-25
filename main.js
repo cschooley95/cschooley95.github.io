@@ -72,6 +72,7 @@ const legendExpand = new Expand({
   expandTooltip: "Legend",
   view: view,
   content: new Legend({
+    view:view,
     layerInfos: [{
       layer:layer,
       title:"Oil and Gas Surface Well Locations"
