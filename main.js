@@ -112,8 +112,11 @@ const timeSlider = new TimeSlider({
 view.ui.add(timeSlider);
 
 // Creating view layer???
-view.whenLayerView(layer).then((layerView) => {
+view.whenLayerView(table).then((layerView) => {
   tableView = layerView;
+
+view.whenLayerView(layer).then((layerView) => {
+    OGLayerView = layerView;
 
 // Setting start date for time slider
   const start = new Date(1970, 0, 1);
@@ -150,7 +153,7 @@ timeSlider.timeExtent = {start,end};
       },
       excludedEffect: "grayscale(80%) opacity(20%)"
     };
-    
+
     OGLayerView.definitionExpression = 
   "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
 // add grayscale effect to old wells (may or may not keep this)
