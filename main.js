@@ -187,8 +187,7 @@ timeSlider.timeExtent = {start,end};
   // add grayscale effect to old wells (may or may not keep this)
     tableView.effect = {
       filter: {
-        timeExtent:timeSlider.timeExtent,
-        geometry: view.extent
+        timeExtent:timeSlider.timeExtent
       },
       excludedEffect: "grayscale(80%) opacity(20%)"
     };
@@ -198,8 +197,7 @@ timeSlider.timeExtent = {start,end};
 // add grayscale effect to old wells (may or may not keep this)
   OGLayerView.effect = {
     filter: {
-      timeExtent:timeSlider.timeExtent,
-      geometry: view.extent
+      timeExtent:timeSlider.timeExtent
     },
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
