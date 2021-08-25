@@ -112,7 +112,7 @@ view.ui.add(timeSlider);
 
 // Creating view layer???
 view.whenLayerView(layer).then((layerView) => {
-  OGLayerView = layerView;
+  tableView = layerView;
 
 // Setting start date for time slider
   const start = new Date(1970, 0, 1);
@@ -135,9 +135,6 @@ timeSlider.timeExtent = {start,end};
 
 
 //// Table view
-
-view.whenLayerView(table).then((layerView) => {
-  tableView = layerView;
 
 // watch timeslider timeExtent change
 timeSlider.watch("timeExtent", () => {
