@@ -15,11 +15,12 @@ require([
   });
 
   let tableView;
+
   const table = new FeatureLayer({
     portalItem: {
       id: "770811c427724622ab85161500528577"
     },
-    visible:false
+    visible:true
   });
 
   // Create Map
@@ -200,6 +201,7 @@ if (result.error) {
 .catch((error) => {
 console.log(error);
 });
+});
 
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
@@ -225,7 +227,5 @@ const statsDiv1 = document.getElementById("statsDiv1");
       });
       view.ui.add(infoDivExpand, "top-right");
 
-});
-});
 });
 });
