@@ -133,65 +133,6 @@ timeSlider.timeExtent = {start,end};
 
 });
 
-/////// OG point layer
-
-// watch timeslider timeExtent change
-timeSlider.watch("timeExtent", () => {
-  //oil wells that popped up before the end of the current time extent
-OGLayerView.definitionExpression = 
-  "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
-// add grayscale effect to old wells (may or may not keep this)
-  OGLayerView.effect = {
-    filter: {
-      timeExtent:timeSlider.timeExtent,
-      geometry: view.extent
-    },
-    excludedEffect: "grayscale(80%) opacity(20%)"
-  };
-
-// Run statistics for GDP within current time extent
-const statQuery = OGLayerView.effect.filter.createQuery();
-statQuery.outStatistics = [
-wellCounts
-];
-
-layer.queryFeatures(statQuery).then((result) => {
-statsDiv.innerHTML = "";
-if (result.error) {
-  return result.error;
-} else {
-  if (result.features.length >= 1) {
-
-    var yearOnly = {year:'numeric'}; //set to show year only in date strings
-    const yearHtml =
-      "Between " +
-      "<span>" +
-      timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
-      "</span> and <span>" +
-      timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      "</span> the Oil and Gas Industry in Utah:<br />";
-    
-      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
-    const oilHtml =
-    "Had <span>" +
-    result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
-    "</span> oil and gas wells" +
-    ".<br/ >";
-
-    statsDiv.innerHTML =
-      yearHtml + "<ul> <li>" + oilHtml + "</li>" + "</ul>";
-}
-}
-})
-.catch((error) => {
-console.log(error);
-});
-
-const wellCounts = {
-  onStatisticField: "API",
-  outStatisticFieldName: "Well_Counts",
-  statisticType: "count"
-};
 
 //// Table view
 
@@ -262,7 +203,6 @@ if (result.error) {
 .catch((error) => {
 console.log(error);
 });
-});
 
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
@@ -276,7 +216,6 @@ const employmentCount = {
   statisticType: "avg"
 };
 
-const statsDiv = document.getElementById("statsDiv");
 const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
