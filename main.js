@@ -9,6 +9,18 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider) {
 
+  const state = new FeatureLayer({
+    portalItem: {
+      id: "1173c9605a2e47a3835452b67de39b79"
+    }
+  });
+
+  const county = new FeatureLayer({
+    portalItem: {
+      id: "537469e5e771434491176824b7ec5a10"
+    }
+  });
+
   let OGLayerView;
 
   const layer = new FeatureLayer({
@@ -42,7 +54,7 @@ const map = new Map({
     })
   ]
   },
-  layers: [layer,table]
+  layers: [state,county,layer,table]
 });
 
  // Set the map view
@@ -60,7 +72,10 @@ const legendExpand = new Expand({
   expandTooltip: "Legend",
   view: view,
   content: new Legend({
-    view: view
+    layerInfos: [{
+      layer:layer,
+      title:"Oil and Gas Surface Well Locations"
+    }]
   }),
   expanded: false
 });
