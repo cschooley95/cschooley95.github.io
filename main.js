@@ -236,7 +236,7 @@ if (result.error) {
      "</font></i>";
 
     statsDiv1.innerHTML =
-    yearHtml + "<ul> <li>" + oilHtml + "</li>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+    "<ul>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
