@@ -75,7 +75,7 @@ const legendExpand = new Expand({
     view:view,
     layerInfos: [{
       layer:layer,
-      title:"Oil and Gas Surface Well Locations"
+      title:"Oil and Gas Surface Well Locations (1970-Present)"
     }]
   }),
   expanded: false
