@@ -58,3 +58,7 @@ body,
 	font-size: 12pt;
 	font-weight: bolder;
 }
+
+ul + ul{
+	margin-top: -10px;
+}
