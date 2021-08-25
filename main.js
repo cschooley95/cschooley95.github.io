@@ -150,6 +150,17 @@ timeSlider.timeExtent = {start,end};
       },
       excludedEffect: "grayscale(80%) opacity(20%)"
     };
+    
+    OGLayerView.definitionExpression = 
+  "OrigComplDate <=" + timeSlider.timeExtent.end.getTime();                                                           
+// add grayscale effect to old wells (may or may not keep this)
+  OGLayerView.effect = {
+    filter: {
+      timeExtent:timeSlider.timeExtent,
+      geometry: view.extent
+    },
+    excludedEffect: "grayscale(80%) opacity(20%)"
+  };
 
 // Run statistics for GDP within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
