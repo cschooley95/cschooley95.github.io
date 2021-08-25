@@ -172,7 +172,7 @@ wellCounts
 ];
 
 layer.queryFeatures(statQuery).then((result) => {
-statsDiv1.innerHTML = "";
+statDiv.innerHTML = "";
 if (result.error) {
   return result.error;
 } else {
@@ -194,7 +194,7 @@ if (result.error) {
     "</span> oil and gas wells" +
     ".<br/ >";
 
-    statsDiv1.innerHTML =
+    statDiv.innerHTML =
       yearHtml + "<ul> <li>" + oilHtml + "</li>" + "</ul>";
 }
 }
@@ -263,6 +263,7 @@ const employmentCount = {
   statisticType: "avg"
 };
 
+const statDiv = document.getElementById("statDiv")
 const statsDiv1 = document.getElementById("statsDiv1");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
