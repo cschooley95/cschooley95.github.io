@@ -245,6 +245,12 @@ console.log(error);
 });
 });
 
+const wellCounts = {
+  onStatisticField: "API",
+  outStatisticFieldName: "Well_Counts",
+  statisticType: "count"
+};
+
 const GDPAvg = {
   onStatisticField: "GDP_billions_",
   outStatisticFieldName: "GDP_Average",
