@@ -270,3 +270,4 @@ const statsDiv1 = document.getElementById("statsDiv1");
       view.ui.add(infoDivExpand, "top-right");
 
 });
+});
