@@ -235,7 +235,7 @@ if (result.error) {
      "</font></i>";
 
     statsDiv1.innerHTML =
-    "<ul>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+    "<ul style='margin-top:0'>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
 }
 }
 })
