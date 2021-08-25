@@ -61,5 +61,5 @@ body,
 }
 
 ul + ul{
-	display: inline;
+	margin-top: -10px;
 }
