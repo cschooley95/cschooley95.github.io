@@ -2,10 +2,13 @@ require([
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
+  "esri/layers/TileLayer",
+  "esri/layers/VectorTileLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
   "esri/widgets/TimeSlider"
-], function (Map, MapView, FeatureLayer, Expand, Legend, TimeSlider) {
+], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider) {
+
   let OGLayerView;
 
   const layer = new FeatureLayer({
@@ -25,7 +28,20 @@ require([
 
   // Create Map
 const map = new Map({
-  basemap: "topo",
+  basemap: {
+    baseLayers:[new TileLayer({
+      portalItem: {
+        id:"1b243539f4514b6ba35e7d995890db1d"
+      }
+    }),
+    new VectorTileLayer({
+      portalItem: {
+        id: "273bf8d5c8ac400183fc24e109d20bcf"
+      },
+      blendMode: "multiply"
+    })
+  ]
+  },
   layers: [layer,table]
 });
 
