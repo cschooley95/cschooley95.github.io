@@ -124,7 +124,7 @@ view.whenLayerView(layer).then((layerView) => {
  // Extent for time Slider 
   timeSlider.fullTimeExtent = {
     start: start,
-    end: layer.timeInfo.fullTimeExtent.end
+    end: new Date(2019,12,31)
   };
 
 // Show 5 year intervals
