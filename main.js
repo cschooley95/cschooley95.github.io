@@ -41,10 +41,17 @@ require([
   // Create Map
 const map = new Map({
   basemap: {
-    baseLayers:[new TileLayer({
+    baseLayers:[
+      new TileLayer({
+        portalItem: {
+          id:"1b243539f4514b6ba35e7d995890db1d"
+        }
+      }),
+      new TileLayer({
       portalItem: {
         id:"a66bfb7dd3b14228bf7ba42b138fe2ea"
-      }
+      },
+      blendMode: "overlay"
     }),
     new TileLayer({
       portalItem: {
