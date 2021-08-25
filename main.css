@@ -59,12 +59,3 @@ body,
 	font-size: 12pt;
 	font-weight: bolder;
 }
-
-ul{
-	padding-left: 2rem;
-	list-style-type: none;
-}
-
-ul li {
-	padding-left: 2rem;
-}
