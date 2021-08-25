@@ -191,8 +191,7 @@ if (result.error) {
     const oilHtml =
     "Had <span>" +
     result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
-    "</span> oil and gas wells" +
-    ".<br/ >";
+    "</span> oil and gas wells.";
 
     statDiv.innerHTML =
       yearHtml + "<ul> <li>" + oilHtml + "</li>" + "</ul>";
