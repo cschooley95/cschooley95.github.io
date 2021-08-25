@@ -20,7 +20,7 @@ require([
     portalItem: {
       id: "770811c427724622ab85161500528577"
     },
-    visible:true
+    visible:false
   });
 
   // Create Map
@@ -138,14 +138,6 @@ timeSlider.timeExtent = {start,end};
 //// Table view
 
 // watch timeslider timeExtent change
-timeSlider.watch("timeExtent", () => {
-  //oil wells that popped up before the end of the current time extent
-  tableView.filter = {
-    filter: {
-      timeExtent:timeSlider.timeExtent,
-    },
-  }
-
   timeSlider.watch("timeExtent", () => {
     //oil wells that popped up before the end of the current time extent
     tableView.definitionExpression = 
@@ -227,5 +219,4 @@ const statsDiv1 = document.getElementById("statsDiv1");
       });
       view.ui.add(infoDivExpand, "top-right");
 
-});
 });
