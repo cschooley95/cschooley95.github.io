@@ -43,27 +43,21 @@ const map = new Map({
   basemap: {
     baseLayers:[
       new TileLayer({
-        portalItem: {
-          id:"9e557abc61ce41c9b8ec8b15800c20d3" // firefly hybrid with reference
-        }
-      }),
-      //new TileLayer({
-      //portalItem: {
-        //id:"a66bfb7dd3b14228bf7ba42b138fe2ea" //firefly
-      //},
-      //blendMode: "multiply"
-    //}),
+      portalItem: {
+        id:"a66bfb7dd3b14228bf7ba42b138fe2ea" //firefly
+      }
+    }),
     new TileLayer({
       portalItem: {
         id: "a8588e0401e246469260f03ee44d69f1" //shaded releif
       },
       blendMode: "multiply"
     }),
-    //new VectorTileLayer({
-      //portalItem: {
-        //id:"30d6b8271e1849cd9c3042060001f425" // firefly reference
-      //}
-    //})
+    new VectorTileLayer({
+      portalItem: {
+        id:"30d6b8271e1849cd9c3042060001f425" // firefly reference
+      }
+    })
   ]
   },
   layers: [state,county,layer,table]
