@@ -63,3 +63,35 @@ body,
 ul + ul{
 	margin-top: -10px;
 }
+
+.header{
+	overflow: hidden;
+	background-color:#20131d;
+	padding: 20px 10px;
+}
+
+.header a {
+	float: left;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 4px;
+  }
+
+  .header-right {
+	float: right;
+  }
+
+  .title {
+	float: left;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 4px;
+  }
