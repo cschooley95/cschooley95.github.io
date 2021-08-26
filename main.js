@@ -249,14 +249,14 @@ if (result.error) {
   return result.error;
 } else {
   if (result.features.length >= 1) {
-
+    if (result.features[0].attributes["GDP_Average"] != null) {
     const GDPHtml =
     "Added " +
     "<span>" +
     result.features[0].attributes["GDP_Average"].toFixed(1) +
     "</span> million dollars to Utah's Gross Domestic Product" +
     ".<br />";
-
+    
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
     const employmentHtml =
     "Employed " +
@@ -270,12 +270,16 @@ if (result.error) {
     "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
     
-    if (GDPHtml == undefined) {
-      statsDiv1.innerHTML = "Data not avaialable" + referenceHtml;
-    } else {
     statsDiv1.innerHTML =
     "<ul style='margin-top:0'>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
     }
+  else {
+    const referenceHtml =
+    "<i><font size = '1'>" +
+    "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
+     "</font></i>";
+    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not avaialable </li>" + "<li>Employment data not available</li>" + "</ul>" + referenceHtml;
+  }
 }
 }
 })
