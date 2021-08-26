@@ -263,7 +263,7 @@ if (result.error) {
     "Employed " +
     "<span>" +
     result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
-    "</span> full and part time employees. This includes direct and supporting employees" +
+    "</span> full and part time employees. <br/>This includes direct and supporting employees" +
     ".<br />";
     
     const WageHtml =
@@ -274,7 +274,7 @@ if (result.error) {
 
     const referenceHtml =
     "<i><font size = '1'>" +
-    "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
+    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
     
     statsDiv1.innerHTML =
@@ -283,7 +283,7 @@ if (result.error) {
   else {
     const referenceHtml =
     "<i><font size = '1'>" +
-    "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
+    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
     statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not avaialable </li>" + "<li>Employment data not available</li>" + "</ul>" + referenceHtml;
   }
