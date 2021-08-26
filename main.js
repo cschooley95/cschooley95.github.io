@@ -44,20 +44,20 @@ const map = new Map({
     baseLayers:[
       new TileLayer({
         portalItem: {
-          id:"1b243539f4514b6ba35e7d995890db1d"
+          id:"1b243539f4514b6ba35e7d995890db1d" // hillshade
         }
       }),
-      new TileLayer({
-      portalItem: {
-        id:"a66bfb7dd3b14228bf7ba42b138fe2ea"
-      },
-      blendMode: "overlay"
-    }),
+      //new TileLayer({
+      //portalItem: {
+        //id:"a66bfb7dd3b14228bf7ba42b138fe2ea" //firefly
+      //},
+      //blendMode: "multiply"
+    //}),
     new TileLayer({
       portalItem: {
-        id: "a8588e0401e246469260f03ee44d69f1"
+        id: "a8588e0401e246469260f03ee44d69f1" //shaded releif
       },
-      blendMode: "color"
+      blendMode: "multiply"
     })
   ]
   },
