@@ -269,9 +269,13 @@ if (result.error) {
     "<i><font size = '1'>" +
     "Estimates from the US Bureau of Economic Analysis and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
-
+    
+    if (GDPHtml == undefined) {
+      statsDiv1.innerHTML = "Data not avaialable" + referenceHtml;
+    } else {
     statsDiv1.innerHTML =
     "<ul style='margin-top:0'>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+    }
 }
 }
 })
