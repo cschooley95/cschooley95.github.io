@@ -84,7 +84,7 @@ const legendExpand = new Expand({
       title:"Oil and Gas Surface Well Locations (1970-Present)"
     }]
   }),
-  expanded: false
+  expanded: true
 });
 view.ui.add(legendExpand, "top-left");
 
