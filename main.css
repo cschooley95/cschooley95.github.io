@@ -65,20 +65,22 @@ ul + ul{
 }
 
 .header{
+	box-sizing: border-box;
 	overflow: hidden;
 	background-color:#20131d;
 	padding: 10px 5px;
+	line-height: 75px;
 }
 
 .header a {
 	float: left;
 	color: rgb(255, 255, 255);
 	text-align: center;
-	vertical-align: middle;
+	vertical-align: bottom;
 	padding: 12px;
 	text-decoration: none;
 	font-size: 18px;
-	line-height: 25px;
+	line-height: 50px;
 	border-radius: 4px;
   }
 .header a:hover{
@@ -86,7 +88,7 @@ ul + ul{
 }
 
 .purpleLogo {
-	vertical-align: middle;
+	vertical-align: bottom;
 	float: left;
   }
 
@@ -98,7 +100,8 @@ ul + ul{
 	float: left;
 	color: rgb(255, 255, 255);
 	text-align: center;
-	vertical-align: middle;
+	vertical-align: bottom;
+	line-height: 75px;
 	padding: 12px;
 	text-decoration: none;
 	font-size: 24px;
