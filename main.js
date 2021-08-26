@@ -67,7 +67,7 @@ const map = new Map({
 const view = new MapView({
   container: "viewDiv",
   map: map,
-  center: [-110.16577367032687, 39.014084295303114],    // Centered on Green River for now
+  center: [-111.591885, 40.62004744797586],    // Centered on solitude Ski Resort
   zoom:6.999
 });
 
