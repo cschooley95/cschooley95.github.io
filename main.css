@@ -67,7 +67,7 @@ ul + ul{
 .header{
 	overflow: hidden;
 	background-color:#20131d;
-	padding: 20px 10px;
+	padding: 10px 5px;
 }
 
 .header a {
@@ -79,6 +79,11 @@ ul + ul{
 	font-size: 18px;
 	line-height: 25px;
 	border-radius: 4px;
+  }
+
+purpleLogo {
+	float: left;
+	text-align: center;
   }
 
   .header-right {
