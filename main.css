@@ -48,9 +48,9 @@ body,
 }
 
 #infoDiv {
-	height: 250px;
+	height: 100%;
 	padding: 10px;
-	width: 600px;
+	width: 100%;
 	font-size: 14pt;
 }
 
