@@ -157,7 +157,7 @@ view.whenLayerView(layer).then((layerView) => {
     OGLayerView = layerView;
 
 // Setting start date for time slider
-  const start = new Date(1970, 0, 1);
+  const start = new Date(1972, 0, 1);
 
  // Extent for time Slider 
   timeSlider.fullTimeExtent = {
@@ -240,7 +240,8 @@ if (result.error) {
 const tableQuery = tableView.effect.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
-employmentCount
+employmentCount,
+wageAvg
 ];
 
 table.queryFeatures(tableQuery).then((result) => {
@@ -264,6 +265,12 @@ if (result.error) {
     result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
     "</span> full and part time employees. This includes direct and supporting employees" +
     ".<br />";
+    
+    const WageHtml =
+    "Paid employees " +
+    "<span> $"+
+    result.features[0].attributes["Wage_Average"].toFixed(2) +
+    "/hr</span> on average (adjusted for inflation).";
 
     const referenceHtml =
     "<i><font size = '1'>" +
@@ -271,7 +278,7 @@ if (result.error) {
      "</font></i>";
     
     statsDiv1.innerHTML =
-    "<ul style='margin-top:0'>" + " <li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> </ul>" + referenceHtml;
+    "<ul style='margin-top:0'>" + "<li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> <li>" + WageHtml + "</li> </ul>" + referenceHtml;
     }
   else {
     const referenceHtml =
@@ -303,6 +310,12 @@ const GDPAvg = {
 const employmentCount = {
   onStatisticField: "Employed",
   outStatisticFieldName: "Employment_Count",
+  statisticType: "avg"
+};
+
+const wageAvg= {
+  onStatisticField: "AverageInflation",
+  outStatisticFieldName: "Wage_Average",
   statisticType: "avg"
 };
 
