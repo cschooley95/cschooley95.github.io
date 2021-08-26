@@ -285,7 +285,7 @@ if (result.error) {
     "<i><font size = '1'>" +
     "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
-    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not avaialable </li>" + "<li>Employment data not available</li>" + "</ul>" + referenceHtml;
+    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not avaialable </li>" + "<li>Employment data not available</li>" + "<li>Salary data not available</li>" + "</ul>" + referenceHtml;
   }
 }
 }
