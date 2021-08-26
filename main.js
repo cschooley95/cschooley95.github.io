@@ -262,7 +262,7 @@ if (result.error) {
     "Employed " +
     "<span>" +
     result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
-    "</span> employees. This includes full and part-time direct and supporting employees" +
+    "</span> full and part time employees. This includes direct and supporting employees" +
     ".<br />";
 
     const referenceHtml =
