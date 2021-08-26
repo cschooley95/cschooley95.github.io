@@ -67,7 +67,7 @@ const map = new Map({
 const view = new MapView({
   container: "viewDiv",
   map: map,
-  center: [-111.591885, 40.62004744797586],    // Centered on solitude Ski Resort
+  center: [-109.71988355828537, 38.96201717886498],    // Centered on Thompson Springs  38.96201717886498, -109.71988355828537
   zoom:6.999
 });
 
@@ -285,7 +285,7 @@ if (result.error) {
     "<i><font size = '1'>" +
     "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining" +
      "</font></i>";
-    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not avaialable </li>" + "<li>Employment data not available</li>" + "<li>Salary data not available</li>" + "</ul>" + referenceHtml;
+    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not available </li>" + "<li>Employment data not available</li>" + "<li>Salary data not available</li>" + "</ul>" + referenceHtml;
   }
 }
 }
