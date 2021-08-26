@@ -274,7 +274,7 @@ if (result.error) {
 
     const referenceHtml =
     "<i><font size = '1'>" +
-    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining. GDP, employment, and wage calculations are averages based on current time frame." +
+    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining.<br />GDP, employment, and wage calculations are averages based on current time frame." +
      "</font></i>";
     
     statsDiv1.innerHTML =
