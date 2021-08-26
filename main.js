@@ -44,7 +44,7 @@ const map = new Map({
     baseLayers:[
       new TileLayer({
         portalItem: {
-          id:"1b243539f4514b6ba35e7d995890db1d" // hillshade
+          id:"9e557abc61ce41c9b8ec8b15800c20d3" // firefly hybrid with reference
         }
       }),
       //new TileLayer({
@@ -59,11 +59,11 @@ const map = new Map({
       },
       blendMode: "multiply"
     }),
-    new VectorTileLayer({
-      portalItem: {
-        id:"30d6b8271e1849cd9c3042060001f425"
-      }
-    })
+    //new VectorTileLayer({
+      //portalItem: {
+        //id:"30d6b8271e1849cd9c3042060001f425" // firefly reference
+      //}
+    //})
   ]
   },
   layers: [state,county,layer,table]
