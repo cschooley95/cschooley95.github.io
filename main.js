@@ -58,6 +58,11 @@ const map = new Map({
         id: "a8588e0401e246469260f03ee44d69f1" //shaded releif
       },
       blendMode: "multiply"
+    }),
+    new VectorTileLayer({
+      portalItem: {
+        id:"30d6b8271e1849cd9c3042060001f425"
+      }
     })
   ]
   },
