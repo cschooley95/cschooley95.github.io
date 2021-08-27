@@ -68,7 +68,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-109.71988355828537, 38.96201717886498],    // Centered on Thompson Springs  38.96201717886498, -109.71988355828537
-  zoom:6.985
+  zoom:6.991
 });
 
 // Create a collapsible legend
@@ -115,7 +115,7 @@ const timeSlider = new TimeSlider({
     tickConfigs: [{
       mode: "position",
       values: [
-        new Date(1972, 0, 1), new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
+        new Date(1970, 0, 1), new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
       ].map((date) => date.getTime()),
       labelsVisible: true,
       labelFormatFunction: (value) => {
@@ -157,7 +157,7 @@ view.whenLayerView(layer).then((layerView) => {
     OGLayerView = layerView;
 
 // Setting start date for time slider
-  const start = new Date(1972, 0, 1);
+  const start = new Date(1970, 0, 1);
 
  // Extent for time Slider 
   timeSlider.fullTimeExtent = {
@@ -188,7 +188,7 @@ timeSlider.timeExtent = {start,end};
       filter: {
         timeExtent:timeSlider.timeExtent
       },
-      excludedEffect: "grayscale(80%) opacity(20%)"
+      excludedEffect: "grayscale(20%) opacity(80%)"
     };
 
     OGLayerView.definitionExpression = 
@@ -223,7 +223,7 @@ if (result.error) {
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
       "</span> the Oil and Gas Industry in Utah:<br />";
     
-      var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
+    var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
     const oilHtml =
     "Had <span>" +
     result.features[0].attributes["Well_Counts"].toLocaleString("en-US", thousandsSep) +
@@ -250,27 +250,29 @@ if (result.error) {
   return result.error;
 } else {
   if (result.features.length >= 1) {
-    if (result.features[0].attributes["GDP_Average"] != null) {
-    const GDPHtml =
-    "Added " +
-    "<span>" +
-    result.features[0].attributes["GDP_Average"].toFixed(1) +
-    "</span> million dollars to Utah's Gross Domestic Product" +
-    ".<br />";
+    const GDPHtml = result.features[0].attributes["GDP_Average"] == null
+      ?"GDP data not available"
+      :"Added " +
+      "<span>" +
+      result.features[0].attributes["GDP_Average"].toFixed(1) +
+      "</span> million dollars to Utah's Gross Domestic Product" +
+      ".<br />";
     
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
-    const employmentHtml =
-    "Employed " +
-    "<span>" +
-    result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
-    "</span> full and part time employees (direct and supporting employees)" +
-    ".<br />";
-    
-    const WageHtml =
-    "Paid employees " +
-    "<span> $"+
-    result.features[0].attributes["Wage_Average"].toFixed(2) +
-    "/hr</span> on average (adjusted for inflation).";
+    const employmentHtml = result.features[0].attributes["Employment_Count"] == null
+      ?"Employment data not available"
+      :"Employed " +
+      "<span>" +
+      result.features[0].attributes["Employment_Count"].toLocaleString("en-US", thousandsSep) +
+      "</span> full and part time employees (direct and supporting employees)" +
+      ".<br />";
+
+    const WageHtml = result.features[0].attributes["Wage_Average"] == null
+      ?"Salary data not available"
+      :"Paid employees " +
+      "<span> $"+
+      result.features[0].attributes["Wage_Average"].toFixed(2) +
+      "/hr</span> on average (adjusted for inflation).";
 
     const referenceHtml =
     "<i><font size = '1'>" +
@@ -280,14 +282,6 @@ if (result.error) {
     statsDiv1.innerHTML =
     "<ul style='margin-top:0'>" + "<li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> <li>" + WageHtml + "</li> </ul>" + referenceHtml;
     }
-  else {
-    const referenceHtml =
-    "<i><font size = '1'>" +
-    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining.<br />GDP, employment and wage calculations are averages based on current time frame selection." +
-     "</font></i>";
-    statsDiv1.innerHTML = "<ul style='margin-top:0'> <li>GDP data not available </li>" + "<li>Employment data not available</li>" + "<li>Salary data not available</li>" + "</ul>" + referenceHtml;
-  }
-}
 }
 })
 .catch((error) => {
