@@ -68,7 +68,7 @@ const view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-109.71988355828537, 38.96201717886498],    // Centered on Thompson Springs  38.96201717886498, -109.71988355828537
-  zoom:6.999
+  zoom:6.9
 });
 
 // Create a collapsible legend
