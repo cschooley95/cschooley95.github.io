@@ -12,6 +12,7 @@ body,
 	right: 2%;
 	bottom: 20px;
 	margin: 10px ;
+	height: 80;
   }
 
 #timeSlider .custom-labels{
@@ -45,6 +46,7 @@ body,
 
 .esri-time-slider__slider .esri-slider {
     margin-top: -5px;
+	margin-bottom: -5px;
 }
 
 #infoDiv {
