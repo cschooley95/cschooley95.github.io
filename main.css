@@ -67,7 +67,7 @@ ul + ul{
 .header{
 	box-sizing: border-box;
 	height: 80px;
-	overflow: auto;
+	overflow: clip;
 	background-color:#20131d;
 	padding: 10px 5px;
 }
