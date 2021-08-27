@@ -66,11 +66,23 @@ ul + ul{
 
 .header{
 	box-sizing: border-box;
-	overflow: hidden;
+	overflow: auto;
 	background-color:#20131d;
 	padding: 10px 5px;
 	line-height: 50px;
 }
+
+.header a {
+	float: right;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	vertical-align: bottom;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 1px;
+  }
 
 .header a:hover{
 	background-color:#77496B;
@@ -92,7 +104,7 @@ ul + ul{
 	line-height: 25px;
 	border-radius: 1px;
   }
-  
+  }
 
   .title {
 	float: left;
