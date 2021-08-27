@@ -89,6 +89,7 @@ ul + ul{
 }
 
 .purpleLogo {
+	display: inline;
 	vertical-align: bottom;
 	float: left;
   }
@@ -106,6 +107,7 @@ ul + ul{
   }
 
   .title {
+	display: inline;
 	float: left;
 	color: rgb(255, 255, 255);
 	text-align: center;
