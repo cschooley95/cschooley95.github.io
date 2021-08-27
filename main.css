@@ -93,6 +93,7 @@ ul + ul{
 
   .header-right {
 	float: right;
+	vertical-align: bottom;
   }
 
   .title {
