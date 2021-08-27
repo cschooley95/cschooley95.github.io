@@ -65,8 +65,8 @@ ul + ul{
 }
 
 .header{
-	height: auto;
 	box-sizing: border-box;
+	height: 75px;
 	overflow: auto;
 	background-color:#20131d;
 	padding: 10px 5px;
