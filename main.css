@@ -65,11 +65,11 @@ ul + ul{
 }
 
 .header{
+	height: auto;
 	box-sizing: border-box;
 	overflow: auto;
 	background-color:#20131d;
 	padding: 10px 5px;
-	line-height: 50px;
 }
 
 .header a {
