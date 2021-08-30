@@ -361,5 +361,5 @@ view.when(function() {
     content: document.getElementById("productionPanel")
   });
 
-
+});
 });
