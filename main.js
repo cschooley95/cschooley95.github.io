@@ -329,4 +329,37 @@ const statsDiv1 = document.getElementById("statsDiv1");
       view.ui.add(infoDivExpand, "top-right");
 
 });
+
+var definition = {
+  type: "line",
+  datasets: [{
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Production19812021/FeatureServer/0",
+    query: {
+      orderByFields: "Date"
+    }
+  }
+],
+series: [
+  {
+    category: { field: "Date",
+  label: "year"},
+    value: { field: "Utah_Field_Production_of_Crude_", label: "Production of Crude Oil (thousands)"}
+  }
+]
+};
+
+var productionChart = new production.Chart("chart", definition);
+productionChart.show();
+
+view.when(function() {
+  // Display the chart in an Expand widget
+  productionExpand = new Expand({
+    expandIconClass: "esri-icon-chart",
+    expandTooltip: "the illest",
+    expanded: true,
+    view: view,
+    content: document.getElementById("productionPanel")
+  });
+
+
 });

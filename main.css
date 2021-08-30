@@ -121,3 +121,17 @@ ul + ul{
 	font-size: 24px;
 	border-radius: 1px;
   }
+
+#productionPanel {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 500px;
+	height: 250px;
+  }
+
+  .chart {
+	  height: 300px;
+  }
