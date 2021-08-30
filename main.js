@@ -358,7 +358,7 @@ view.when(function() {
     expandTooltip: "the illest",
     expanded: true,
     view: view,
-    content: document.getElementById("productionPanel")
+    content: new Chart("chart", definition)
   });
   view.ui.add(productionExpand, "bottom-right");
 
