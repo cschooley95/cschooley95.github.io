@@ -349,7 +349,6 @@ series: [
 };
 
 var cedarChart = new cedar.Chart("productionPanel", definition);
-cedarChart.show();
 
 view.when(function() {
   // Display the chart in an Expand widget
