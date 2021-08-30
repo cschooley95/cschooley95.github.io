@@ -348,16 +348,19 @@ series: [
 ]
 };
 
-view.when(function() {
-  // Display the chart in an Expand widget
-  productionExpand = new Expand({
-    expandIconClass: "esri-icon-chart",
-    expandTooltip: "the illest",
-    expanded: true,
-    view: view,
-    content: new cedar.Chart("chart", definition)
-  });
-  view.ui.add(productionExpand, "bottom-right");
+var cedarChart = new cedar.Chart("productionPanel", definition);
+cedarChart.show();
 
-});
+//view.when(function() {
+  // Display the chart in an Expand widget
+  //productionExpand = new Expand({
+   // expandIconClass: "esri-icon-chart",
+    //expandTooltip: "the illest",
+    //expanded: true,
+    //view: view,
+    //content: new cedar.Chart("productionPanel", definition)
+  //});
+  //view.ui.add(productionExpand, "bottom-right");
+
+//});
 });
