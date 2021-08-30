@@ -348,7 +348,8 @@ series: [
 ]
 };
 
-var cedarChart = new cedar.Chart("productionPanel", definition);
+//var cedarChart = new cedar.Chart("productionPanel", definition);
+
 
 view.when(function() {
   // Display the chart in an Expand widget
@@ -357,7 +358,7 @@ view.when(function() {
     expandTooltip: "the illest",
     expanded: true,
     view: view,
-    content: cedarChart
+    content: new cedar.Chart("productionPanel", definition)
   });
   view.ui.add(productionExpand, "bottom-right");
 });
