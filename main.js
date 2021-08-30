@@ -360,6 +360,7 @@ view.when(function() {
     view: view,
     content: document.getElementById("productionPanel")
   });
+  view.ui.add(productionExpand, "bottom-right");
 
 });
 });
