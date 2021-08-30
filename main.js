@@ -351,16 +351,15 @@ series: [
 var cedarChart = new cedar.Chart("productionPanel", definition);
 cedarChart.show();
 
-//view.when(function() {
+view.when(function() {
   // Display the chart in an Expand widget
-  //productionExpand = new Expand({
-   // expandIconClass: "esri-icon-chart",
-    //expandTooltip: "the illest",
-    //expanded: true,
-    //view: view,
-    //content: new cedar.Chart("productionPanel", definition)
-  //});
-  //view.ui.add(productionExpand, "bottom-right");
-
-//});
+  productionExpand = new Expand({
+    expandIconClass: "esri-icon-chart",
+    expandTooltip: "the illest",
+    expanded: true,
+    view: view,
+    content: cedarChart
+  });
+  view.ui.add(productionExpand, "bottom-right");
+});
 });
