@@ -348,9 +348,6 @@ series: [
 ]
 };
 
-var productionChart = new production.Chart("chart", definition);
-productionChart.show();
-
 view.when(function() {
   // Display the chart in an Expand widget
   productionExpand = new Expand({
@@ -358,7 +355,7 @@ view.when(function() {
     expandTooltip: "the illest",
     expanded: true,
     view: view,
-    content: new Chart("chart", definition)
+    content: new cedar.Chart("chart", definition)
   });
   view.ui.add(productionExpand, "bottom-right");
 
