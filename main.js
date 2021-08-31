@@ -352,10 +352,6 @@ series: [
   label: "Year"},
     value: { field: "Utah_Field_Production_of_Crude_", label: "Barrels of Crude Oil"}
   }
-],
-range: [
-  { date: new Date(1981)},
-  {endDate: new Date(2020)}
 ]
 };
 
