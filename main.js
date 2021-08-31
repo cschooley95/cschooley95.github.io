@@ -336,7 +336,7 @@ var definition = {
   type: "line",
   title: "Crude Oil Production",
   style: {
-    colors: ["#41c4c0"]
+    colors: ["#52c2de"]
   },
   datasets: [
     {
@@ -382,7 +382,7 @@ var definition = {
   type: "line",
   title: "Crude Oil Production",
   style: {
-    colors: ["#7a4194"] 
+    colors: ["#52c2de"] 
   },
   datasets: [
     {
@@ -427,7 +427,7 @@ var definition = {
   type: "line",
   title: "Crude Oil Production",
   style: {
-    colors: ["#77496B"]
+    colors: ["#52c2de"]
   },
   datasets: [
     {
