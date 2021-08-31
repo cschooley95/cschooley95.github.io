@@ -128,8 +128,8 @@ ul + ul{
 	line-height: 1.5em;
 	overflow: auto;
 	padding: 10px;
-	width: 00px;
-	height: 20px;
+	width: 500px;
+	height: 250px;
   }
 
   .chart {

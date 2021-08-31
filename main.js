@@ -324,42 +324,49 @@ const statsDiv1 = document.getElementById("statsDiv1");
         expandTooltip: "Expand Oil and Gas Industry info",
         view: view,
         content: infoDiv,
-        expanded: true
+        expanded: true,
+        group: "top-right"
       });
       view.ui.add(infoDivExpand, "top-right");
 
 });
 
+//Create line graph
 var definition = {
   type: "line",
-  datasets: [{
+  datasets: [
+    {
     url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Production19812021/FeatureServer/0",
     query: {
       orderByFields: "Date"
     }
-  }
+}
 ],
+
 series: [
   {
     category: { field: "Date",
-  label: "year"},
-    value: { field: "Utah_Field_Production_of_Crude_", label: "Production of Crude Oil (thousands)"}
+  label: "Year"},
+    value: { field: "Utah_Field_Production_of_Crude_", label: "Barrels of Crude Oil"}
   }
 ]
 };
 
-//var cedarChart = new cedar.Chart("productionPanel", definition);
+var cedarChart = new cedar.Chart("productionPanel", definition);
+cedarChart.show()
 
+const productionPanel = document.getElementById("productionPanel")
 
 view.when(function() {
   // Display the chart in an Expand widget
-  productionExpand = new Expand({
+  const productionExpand = new Expand({
     expandIconClass: "esri-icon-chart",
     expandTooltip: "the illest",
     expanded: true,
     view: view,
-    content: new cedar.Chart("productionPanel", definition)
+    content: productionPanel,
+    group: "top-right"
   });
-  view.ui.add(productionExpand, "bottom-right");
+  view.ui.add(productionExpand, "top-right");
 });
 });
