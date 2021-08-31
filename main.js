@@ -336,7 +336,7 @@ var definition = {
   type: "line",
   title: "Crude Oil Production",
   style: {
-    colors: ["#496c77","#6d4977","#774975"]
+    colors: ["#77496B"]
   },
   datasets: [
     {
@@ -355,24 +355,6 @@ series: [
     value: { 
       field: "Production",
       label: "Crude Oil Production"}
-  },
-  {
-    category: { 
-      field: "Year",
-      label: "Year"},
-    group: true,
-    value: { 
-      field: "Crude_Oil_Reserves",
-      label: "Crude Oil Reserves"}
-  },
-  {
-    category: { 
-      field: "Year",
-      label: "Year"},
-    group: true,
-    value: { 
-      field: "Natural_Gas_Liquids_Reserves",
-      label: "Natural Gas Reserves"}
   },
 ]
 };
