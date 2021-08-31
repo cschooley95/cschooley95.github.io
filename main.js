@@ -333,25 +333,47 @@ const statsDiv1 = document.getElementById("statsDiv1");
 
 //Create line graph
 var definition = {
-  type: "time",
+  type: "line",
   title: "Crude Oil Production",
   style: {
-    colors: ["#77496B"]
+    colors: ["#496c77","#6d4977","#774975"]
   },
   datasets: [
     {
-    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Production19812021/FeatureServer/0",
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OilGasProduction19602019/FeatureServer/0",
     query: {
-      orderByFields: "Date"
+      orderByFields: "Year"
     }
 }
 ],
 series: [
   {
-    category: { field: "Date",
-  label: "Year"},
-    value: { field: "Utah_Field_Production_of_Crude_", label: "Barrels of Crude Oil"}
-  }
+    category: { 
+      field: "Year",
+      label: "Year"},
+    group: true,
+    value: { 
+      field: "Production",
+      label: "Crude Oil Production"}
+  },
+  {
+    category: { 
+      field: "Year",
+      label: "Year"},
+    group: true,
+    value: { 
+      field: "Crude_Oil_Reserves",
+      label: "Crude Oil Reserves"}
+  },
+  {
+    category: { 
+      field: "Year",
+      label: "Year"},
+    group: true,
+    value: { 
+      field: "Natural_Gas_Liquids_Reserves",
+      label: "Natural Gas Reserves"}
+  },
 ]
 };
 
