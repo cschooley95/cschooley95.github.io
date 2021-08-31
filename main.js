@@ -334,6 +334,9 @@ const statsDiv1 = document.getElementById("statsDiv1");
 //Create line graph
 var definition = {
   type: "line",
+  style: {
+    colors: [#77496B]
+  },
   datasets: [
     {
     url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Production19812021/FeatureServer/0",
