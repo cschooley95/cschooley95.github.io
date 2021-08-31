@@ -327,7 +327,7 @@ const statsDiv1 = document.getElementById("statsDiv1");
         expanded: true,
         group: "top-right"
       });
-      view.ui.add(infoDivExpand, "top-right", 0);
+      view.ui.add({component: infoDivExpand, position: "top-right", index: 0});
 
 });
 
