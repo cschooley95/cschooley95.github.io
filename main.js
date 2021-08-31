@@ -351,10 +351,9 @@ series: [
     category: { 
       field: "Year",
       label: "Year"},
-    group: true,
     value: { 
       field: "Production",
-      label: "Crude Oil Production"}
+      label: "Crude Oil Production (in barrels)"}
   },
 ]
 };
