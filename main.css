@@ -132,6 +132,26 @@ ul + ul{
 	height: 300px;
   }
 
+#productionPanel1 {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 475px;
+	height: 300px;
+  }
+
+#productionPanel2 {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 475px;
+	height: 300px;
+  }
+
   .chart {
 	  height: 300px;
   }

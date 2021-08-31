@@ -358,6 +358,7 @@ series: [
 ]
 };
 
+
 var cedarChart = new cedar.Chart("productionPanel", definition);
 cedarChart.show()
 
@@ -375,4 +376,95 @@ view.when(function() {
   });
   view.ui.add(productionExpand, "top-right");
 });
+
+//Create line graph
+var definition = {
+  type: "line",
+  title: "Crude Oil Production",
+  style: {
+    colors: ["#77496B"]
+  },
+  datasets: [
+    {
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OilGasProduction19602019/FeatureServer/0",
+    query: {
+      orderByFields: "Year"
+    }
+}
+],
+series: [
+  {
+    category: { 
+      field: "Year",
+      label: "Year"},
+    value: { 
+      field: "Crude_Oil_Reserves",
+      label: "Crude Oil Reserves (in barrels)"}
+  },
+]
+};
+
+var cedarChart1 = new cedar.Chart("productionPanel1", definition);
+cedarChart1.show()
+
+const productionPanel1 = document.getElementById("productionPanel1")
+
+view.when(function() {
+  // Display the chart in an Expand widget
+  const productionExpand1 = new Expand({
+    expandIconClass: "esri-icon-chart",
+    expandTooltip: "Crude Oil Reserves Graph",
+    expanded: false,
+    view: view,
+    content: productionPanel1,
+    group: "top-right"
+  });
+  view.ui.add(productionExpand1, "top-right");
+});
+
+//Create line graph
+var definition = {
+  type: "line",
+  title: "Crude Oil Production",
+  style: {
+    colors: ["#77496B"]
+  },
+  datasets: [
+    {
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OilGasProduction19602019/FeatureServer/0",
+    query: {
+      orderByFields: "Year"
+    }
+}
+],
+series: [
+  {
+    category: { 
+      field: "Year",
+      label: "Year"},
+    value: { 
+      field: "Natural_Gas_Liquids_Reserves",
+      label: "Natural Gas Reserves (in barrels)"}
+  },
+]
+};
+
+var cedarChart2 = new cedar.Chart("productionPanel2", definition);
+cedarChart2.show()
+
+const productionPanel2 = document.getElementById("productionPanel2")
+
+view.when(function() {
+  // Display the chart in an Expand widget
+  const productionExpand1 = new Expand({
+    expandIconClass: "esri-icon-chart",
+    expandTooltip: "Natural Gas Reserves Graph",
+    expanded: false,
+    view: view,
+    content: productionPanel2,
+    group: "top-right"
+  });
+  view.ui.add(productionExpand1, "top-right");
+});
+
 });
