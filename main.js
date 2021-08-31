@@ -358,7 +358,6 @@ series: [
 ]
 };
 
-
 var cedarChart = new cedar.Chart("productionPanel", definition);
 cedarChart.show()
 
