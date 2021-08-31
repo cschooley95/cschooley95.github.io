@@ -73,6 +73,45 @@ const view = new MapView({
 
 view.goTo(state);
 
+//Create line graph
+var definition = {
+  type: "line",
+  datasets: [
+    {
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Production19812021/FeatureServer/0",
+    query: {
+      orderByFields: "Date"
+    }
+}
+],
+
+series: [
+  {
+    category: { field: "Date",
+  label: "Year"},
+    value: { field: "Utah_Field_Production_of_Crude_", label: "Barrels of Crude Oil"}
+  }
+]
+};
+
+var cedarChart = new cedar.Chart("productionPanel", definition);
+cedarChart.show()
+
+const productionPanel = document.getElementById("productionPanel")
+
+view.when(function() {
+  // Display the chart in an Expand widget
+  const productionExpand = new Expand({
+    expandIconClass: "esri-icon-chart",
+    expandTooltip: "Oil Production Graph",
+    expanded: false,
+    view: view,
+    content: productionPanel,
+    group: "top-right"
+  });
+  view.ui.add(productionExpand, "top-right");
+});
+
 // Create a collapsible legend
 const legendExpand = new Expand({
   collapsedIconClass: "esri-icon-collapse",
@@ -361,8 +400,8 @@ view.when(function() {
   // Display the chart in an Expand widget
   const productionExpand = new Expand({
     expandIconClass: "esri-icon-chart",
-    expandTooltip: "the illest",
-    expanded: true,
+    expandTooltip: "Oil Production Graph",
+    expanded: false,
     view: view,
     content: productionPanel,
     group: "top-right"
