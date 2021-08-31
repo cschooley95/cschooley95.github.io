@@ -334,6 +334,7 @@ const statsDiv1 = document.getElementById("statsDiv1");
 //Create line graph
 var definition = {
   type: "line",
+  title: "Crude Oil Production (1981-present)",
   style: {
     colors: ["#77496B"]
   },
