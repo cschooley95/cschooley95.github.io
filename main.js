@@ -335,7 +335,7 @@ const statsDiv1 = document.getElementById("statsDiv1");
 var definition = {
   type: "line",
   style: {
-    colors: [#77496B]
+    colors: ["#77496B"]
   },
   datasets: [
     {
