@@ -327,7 +327,7 @@ const statsDiv1 = document.getElementById("statsDiv1");
         expanded: true,
         group: "top-right"
       });
-      view.ui.add(infoDivExpand, "top-right");
+      view.ui.add(infoDivExpand, "top-right", 0);
 
 });
 
@@ -367,6 +367,6 @@ view.when(function() {
     content: productionPanel,
     group: "top-right"
   });
-  view.ui.add(productionExpand, "top-right",1);
+  view.ui.add(productionExpand, "top-right");
 });
 });
