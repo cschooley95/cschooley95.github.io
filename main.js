@@ -358,10 +358,11 @@ series: [
 ]
 };
 
-var cedarChart = new cedar.Chart("productionPanel", definition);
+var cedarChart = new cedar.Chart("chart", definition);
 cedarChart.show()
 
 const productionPanel = document.getElementById("productionPanel")
+const chart = document.getElementById("chart")
 
 view.when(function() {
   // Display the chart in an Expand widget
