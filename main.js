@@ -362,7 +362,6 @@ var cedarChart = new cedar.Chart("chart", definition);
 cedarChart.show()
 
 const productionPanel = document.getElementById("productionPanel")
-const chart = document.getElementById("chart")
 
 view.when(function() {
   // Display the chart in an Expand widget
@@ -404,11 +403,10 @@ series: [
 ]
 };
 
-var cedarChart1 = new cedar.Chart("productionPanel1", definition);
+var cedarChart1 = new cedar.Chart("chart1", definition);
 cedarChart1.show()
 
 const productionPanel1 = document.getElementById("productionPanel1")
-const chart1 = document.getElementById("chart1")
 
 view.when(function() {
   // Display the chart in an Expand widget
@@ -450,11 +448,10 @@ series: [
 ]
 };
 
-var cedarChart2 = new cedar.Chart("productionPanel2", definition);
+var cedarChart2 = new cedar.Chart("chart2", definition);
 cedarChart2.show()
 
 const productionPanel2 = document.getElementById("productionPanel2")
-const chart2 = document.getElementById("chart2")
 
 view.when(function() {
   // Display the chart in an Expand widget
