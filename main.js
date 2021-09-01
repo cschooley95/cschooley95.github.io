@@ -408,6 +408,7 @@ var cedarChart1 = new cedar.Chart("productionPanel1", definition);
 cedarChart1.show()
 
 const productionPanel1 = document.getElementById("productionPanel1")
+const chart1 = document.getElementById("chart1")
 
 view.when(function() {
   // Display the chart in an Expand widget
@@ -453,6 +454,7 @@ var cedarChart2 = new cedar.Chart("productionPanel2", definition);
 cedarChart2.show()
 
 const productionPanel2 = document.getElementById("productionPanel2")
+const chart2 = document.getElementById("chart2")
 
 view.when(function() {
   // Display the chart in an Expand widget
