@@ -9,12 +9,14 @@ require([
   "esri/widgets/TimeSlider"
 ], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider) {
 
+  // state boundary feature layer
   const state = new FeatureLayer({
     portalItem: {
       id: "1173c9605a2e47a3835452b67de39b79"
     }
   });
 
+  // county boundary feature layer
   const county = new FeatureLayer({
     portalItem: {
       id: "537469e5e771434491176824b7ec5a10"
@@ -23,6 +25,7 @@ require([
 
   let OGLayerView;
 
+  // oil and gas well location layer
   const layer = new FeatureLayer({
     portalItem: {
       id: "dd28d5595a2940929574e79522bb4245"
@@ -31,6 +34,7 @@ require([
 
   let tableView;
 
+  // oil and gas layer hidden
   const table = new FeatureLayer({
     portalItem: {
       id: "770811c427724622ab85161500528577"
@@ -96,7 +100,7 @@ const events = [
   {name: `Covid-19 Pandemic`, date: 2020}
 ];
 
-// Create time slider with interval set to 5 years
+// Create time slider with interval set to 1 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
     playRate: 750,
@@ -106,12 +110,6 @@ const timeSlider = new TimeSlider({
         unit: "years"
       }
     },
-
-    // time slider time extent
-    //fullTimeExtent: {
-       // start: new Date(1900,0,1),
-       // end: new Date(2022,0,1)
-    //},
 
     // configure ticks for dates
     tickConfigs: [{
@@ -151,10 +149,11 @@ const timeSlider = new TimeSlider({
 // add time slider to view
 view.ui.add(timeSlider);
 
-// Creating view layer???
+// Creating view layer for hidden layer
 view.whenLayerView(table).then((layerView) => {
   tableView = layerView;
 
+// creating view layer for visible layer
 view.whenLayerView(layer).then((layerView) => {
     OGLayerView = layerView;
 
@@ -167,7 +166,7 @@ view.whenLayerView(layer).then((layerView) => {
     end: new Date(2021,0,1)
   };
 
-// Show 5 year intervals
+// Show 1 year intervals
 
 let end = new Date(start);
 
@@ -203,7 +202,7 @@ timeSlider.timeExtent = {start,end};
     excludedEffect: "grayscale(80%) opacity(20%)"
   };
 
-// Run statistics for GDP within current time extent
+// Run statistics for well counts within current time extent
 const statQuery = OGLayerView.effect.filter.createQuery();
 statQuery.outStatistics = [
 wellCounts
@@ -238,7 +237,7 @@ if (result.error) {
 })
 
 
-// Run statistics for GDP/employment within current time extent
+// Run statistics for GDP/employment/salary within current time extent
 const tableQuery = tableView.effect.filter.createQuery();
 tableQuery.outStatistics = [
 GDPAvg,
@@ -331,7 +330,7 @@ const statsDiv1 = document.getElementById("statsDiv1");
 
 });
 
-//Create line graph
+//Create line graph for crude oil production
 var definition = {
   type: "line",
   title: "Crude Oil Production",
@@ -376,10 +375,10 @@ view.when(function() {
   view.ui.add(productionExpand, "top-right");
 });
 
-//Create line graph
+//Create line graph for crude oil reserves
 var definition = {
   type: "line",
-  title: "Crude Oil Production",
+  title: "Crude Oil Reserves",
   style: {
     colors: ["#9230c7"] 
   },
@@ -421,10 +420,10 @@ view.when(function() {
   view.ui.add(productionExpand1, "top-right");
 });
 
-//Create line graph
+//Create line graph for natural gas reserves
 var definition = {
   type: "line",
-  title: "Crude Oil Production",
+  title: "Natural Gas Reserves",
   style: {
     colors: ["#5a3382"]
   },
