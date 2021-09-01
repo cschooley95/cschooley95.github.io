@@ -19,7 +19,7 @@ require([
   // county boundary feature layer
   const county = new FeatureLayer({
     portalItem: {
-      id: "537469e5e771434491176824b7ec5a10"
+      id: "537469e5e771434491176824b7ec5a10"    
     }
   });
 
