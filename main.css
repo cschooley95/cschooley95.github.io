@@ -128,7 +128,7 @@ ul + ul{
 	line-height: 1.5em;
 	overflow: auto;
 	padding: 10px;
-	width: 475px;
+	width: 550px;
 	height: 350px;
   }
 
@@ -138,8 +138,8 @@ ul + ul{
 	line-height: 1.5em;
 	overflow: auto;
 	padding: 10px;
-	width: 475px;
-	height: 300px;
+	width: 550px;
+	height: 350px;
   }
 
 #productionPanel2 {
@@ -148,8 +148,8 @@ ul + ul{
 	line-height: 1.5em;
 	overflow: auto;
 	padding: 10px;
-	width: 475px;
-	height: 300px;
+	width: 550px;
+	height: 350px;
   }
 
 #chart {
