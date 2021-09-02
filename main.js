@@ -6,8 +6,12 @@ require([
   "esri/layers/VectorTileLayer",
   "esri/widgets/Expand",
   "esri/widgets/Legend",
-  "esri/widgets/TimeSlider"
-], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider) {
+  "esri/widgets/TimeSlider",
+  "esri/tasks/QueryTask",
+  "esri/rest/support/Query",
+  "esri/rest/support/StatisticDefinition",
+  "esri/Graphic"
+], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider, QueryTask, Query, StatisticDefinition, Graphic) {
 
   // state boundary feature layer
   const state = new FeatureLayer({
@@ -17,11 +21,45 @@ require([
   });
 
   // county boundary feature layer
-  const county = new FeatureLayer({
+  var county = new FeatureLayer({
     portalItem: {
       id: "537469e5e771434491176824b7ec5a10"    
+    },
+    outFields: ["*"],
+    minScale: 0,
+    maxScale: 0,
+    popupTemplate: {
+      title: "{Name} County",
+      content: queryWellCounts
     }
   });
+
+  ///// Pop up function
+
+  var queryWellsTask = new QueryTask({
+    url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
+  });
+  
+  function queryWellCounts(target) {
+    var counts = new StatisticDefinition({
+      statisticType: "count",
+      onStatisticField: "API",
+      outStatisticFieldName: "count_county"
+    });
+    var query = new Query({
+      geometry: target.graphic.geometry,
+      outFields: ["*"],
+      spatialRelationship: "intersects",
+      outStatistics: [counts]
+    });
+  
+    return queryWellsTask.execute(query).then(function(result) {
+      var stats = result.features[0].attributes;
+      return (
+        "There were " + "<b>" + stats.count_county + "</b> wells in {NAME} County "
+      );
+    });
+    }
 
   let OGLayerView;
 
@@ -68,14 +106,33 @@ const map = new Map({
 });
 
  // Set the map view
-const view = new MapView({
+var view = new MapView({
   container: "viewDiv",
   map: map,
   center: [-109.71988355828537, 38.96201717886498],    // Centered on Thompson Springs  38.96201717886498, -109.71988355828537
   zoom:6.999
 });
 
-view.goTo(state);
+/*
+view.popup.watch("selectedFeature", function(e) {
+  view.graphics.removeAll();
+  if (e && e.geometry) {
+    view.graphics.add(
+      new Graphic({
+        geometry: e.geometry,
+        symbol: {
+          type: "simple-fill",
+          style: "none",
+          outline: {
+            color: "#6600FF",
+            width: 2
+          }
+        }
+      })
+    );
+  }
+});
+*/
 
 // Create a collapsible legend
 const legendExpand = new Expand({
