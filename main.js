@@ -50,13 +50,14 @@ require([
       geometry: target.graphic.geometry,
       outFields: ["*"],
       spatialRelationship: "intersects",
+      timeExtent: timeSlider.timeExtent,
       outStatistics: [counts]
     });
   
     return queryWellsTask.execute(query).then(function(result) {
       var stats = result.features[0].attributes;
       return (
-        "There were " + "<b>" + stats.count_county + "</b> wells in {NAME} County "
+        "There were " + "<b><span>" + stats.count_county + "</span></b> wells in {NAME} County "
       );
     });
     }
