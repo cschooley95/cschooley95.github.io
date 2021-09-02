@@ -39,8 +39,8 @@ require([
   var queryWellsTask = new QueryTask({
     url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
   });
-  
-  function queryWellCounts(target) {
+
+function queryWellCounts(target) {
     var counts = new StatisticDefinition({
       statisticType: "count",
       onStatisticField: "API",
@@ -53,14 +53,38 @@ require([
       timeExtent: timeSlider.timeExtent,
       outStatistics: [counts]
     });
-  
+
+    var yearOnly = {year:'numeric'}; //set to show year only in date strings 
+
     return queryWellsTask.execute(query).then(function(result) {
       var stats = result.features[0].attributes;
-      return (
-        "There were " + "<b><span>" + stats.count_county + "</span></b> wells in {NAME} County "
-      );
+      if (stats.count_county==1) {
+        return (
+        "Between " +
+        "<b>" +
+        timeSlider.timeExtent.start.toLocaleDateString("en-us",yearOnly) + 
+        "</b> and <b>" +
+        timeSlider.timeExtent.end.toLocaleDateString("en-us",yearOnly) +
+        "</b> there was " +
+         "<b>" + 
+         stats.count_county +
+          "</b>" +
+          " well in {NAME} County.") 
+      }else{ 
+        return(
+          "Between " +
+          "<b>" +
+          timeSlider.timeExtent.start.toLocaleDateString("en-us",yearOnly) + 
+          "</b> and <b>" +
+          timeSlider.timeExtent.end.toLocaleDateString("en-us",yearOnly) +
+          "</b> there were " +
+           "<b>" + 
+           stats.count_county +
+            "</b>" +
+            " wells in {NAME} County." )
+      }
     });
-    }
+  }
 
   let OGLayerView;
 
