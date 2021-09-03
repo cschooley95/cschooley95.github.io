@@ -434,7 +434,7 @@ series: [
       label: "Year"},
     value: { 
       field: "Production",
-      label: "Crude Oil Production (in barrels)"}
+      label: "Crude Oil Production (thousand barrels)"}
   },
 ]
 };
@@ -479,7 +479,7 @@ series: [
       label: "Year"},
     value: { 
       field: "Crude_Oil_Reserves",
-      label: "Crude Oil Reserves (in barrels)"}
+      label: "Crude Oil Reserves (thousands barrels)"}
   },
 ]
 };
@@ -524,7 +524,7 @@ series: [
       label: "Year"},
     value: { 
       field: "Natural_Gas_Liquids_Reserves",
-      label: "Natural Gas Reserves (in barrels)"}
+      label: "Natural Gas Reserves (thousand barrels)"}
   },
 ]
 };
