@@ -10,8 +10,8 @@ require([
   "esri/tasks/QueryTask",
   "esri/rest/support/Query",
   "esri/rest/support/StatisticDefinition",
-  "esri/Graphic"
-], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider, QueryTask, Query, StatisticDefinition, Graphic) {
+  "esri/popup/content/CustomContent"
+], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider, QueryTask, Query, StatisticDefinition, CustomContent) {
 
   // state boundary feature layer
   const state = new FeatureLayer({
@@ -271,7 +271,7 @@ timeSlider.timeExtent = {start,end};
       filter: {
         timeExtent:timeSlider.timeExtent
       },
-      excludedEffect: "grayscale(20%) opacity(80%)"
+      excludedEffect: "grayscale(20%) opacity(80)"
     };
 
     OGLayerView.definitionExpression = 
@@ -281,7 +281,7 @@ timeSlider.timeExtent = {start,end};
     filter: {
       timeExtent:timeSlider.timeExtent
     },
-    excludedEffect: "grayscale(80%) opacity(20%)"
+    excludedEffect: "grayscale(80%) opacity(30%)"
   };
 
 // Run statistics for well counts within current time extent
