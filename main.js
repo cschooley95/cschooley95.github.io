@@ -100,7 +100,7 @@ function queryWellCounts(target) {
   // oil and gas layer hidden
   const table = new FeatureLayer({
     portalItem: {
-      id: "770811c427724622ab85161500528577"
+      id: "41a8b6d1a75a45c581e124648efe916b"
     },
     visible:false
   });
@@ -178,6 +178,7 @@ view.ui.add(legendExpand, "top-left");
 
 // Create events for the time slider
 const events = [
+  {name:`Creation of SITLA`, date: 1995},
   {name:`Great Recession`, date: 2008},
   {name: `Covid-19 Pandemic`, date: 2020}
 ];
@@ -185,13 +186,13 @@ const events = [
 // Create time slider with interval set to 1 years
 const timeSlider = new TimeSlider({
     container: "timeSlider",
-    playRate: 750,
-    stops: {
-      interval: {
+    playRate: 1000,
+      stops: {
+        interval: {
         value: 1,
         unit: "years"
-      }
-    },
+       }
+     }, 
 
     // configure ticks for dates
     tickConfigs: [{
@@ -304,7 +305,7 @@ if (result.error) {
       timeSlider.timeExtent.start.toLocaleDateString("en-US", yearOnly) +
       "</span> and <span>" +
       timeSlider.timeExtent.end.toLocaleDateString("en-US", yearOnly) +
-      "</span> the Oil and Gas Industry in Utah:<br />";
+      "</span> the Oil and Gas Industry in Utah:</br></br>";
     
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators  
     const oilHtml =
@@ -357,16 +358,57 @@ if (result.error) {
       result.features[0].attributes["Wage_Average"].toFixed(2) +
       "/hr</span> on average (adjusted for inflation).";
 
-    const referenceHtml =
-    "<i><font size = '1'>" +
-    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, and Utah's Division of Oil, Gas, and Mining.<br />GDP, employment, and wage calculations are averages based on current time frame selection." +
-     "</font></i>";
-    
     statsDiv1.innerHTML =
-    "<ul style='margin-top:0'>" + "<li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> <li>" + WageHtml + "</li> </ul>" + referenceHtml;
+    "<ul style='margin-bottom:0'>" + "<li>" + GDPHtml + "</li> <li>" + employmentHtml + "</li> <li>" +
+    WageHtml + "</li> </ul>";
     }
 }
 })
+
+// Run statistics for GDP/employment/salary within current time extent
+const SITLAQuery = tableView.effect.filter.createQuery();
+SITLAQuery.where = "YearStart > 1998"
+SITLAQuery.outStatistics = [
+OGRev,
+OGofTotal
+];
+
+table.queryFeatures(SITLAQuery).then((result) => {
+statsDiv2.innerHTML = "";
+if (result.error) {
+  return result.error;
+} else {
+  if (result.features.length >= 1) {
+    const OGRevHtml = result.features[0].attributes["OGRev_Sum"] == null
+      ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available"
+      :"Contributed " +
+      "<span>" +
+      result.features[0].attributes["OGRev_Sum"].toFixed(1) +
+      "</span> million dollars to the Utah School and Institutional Trust Lands Administration" +
+      ".<br />";
+
+    const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null
+      ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available"
+      :"Was responsible for " +
+      "<span>" +
+      result.features[0].attributes["OGofTotal_Average"].toFixed(1) +
+      "</span>% of the Utah School and Institutional Trust Lands Administration (SITLA) total gross revenue." +
+      "<br />";
+
+    const referenceHtml =
+    "<i><font size = '1'>" +
+    "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, Utah School and Institutional Trust Lands Administration and Utah's Division of Oil, Gas, and Mining." +
+    "<br />GDP, employment, wage, and SITLA revenue percentage calculations are averages based on current time frame selection." +
+    "<br />SITLA revenue calculation is the total amount contributed based on current time frame selection." +
+    "<br />SITLA financial data for oil and gas revenue was not available for 2013 or before 1999." +
+     "</font></i>";
+    
+    statsDiv2.innerHTML =
+    "<ul style='margin-top:0'>" + "</li> <li>" + OGRevHtml + "</li> <li>" + OGofTotalHtml + "</li> </ul></br>" + referenceHtml;
+    }
+}
+})
+
 .catch((error) => {
 console.log(error);
 });
@@ -396,8 +438,23 @@ const wageAvg= {
   statisticType: "avg"
 };
 
+const OGRev = {
+  onStatisticField: "OGRev",
+  outStatisticFieldName: "OGRev_Sum",
+  statisticType: "sum"
+};
+
+const OGofTotal = {
+  onStatisticField: "PercentOGofTotal",
+  outStatisticFieldName: "OGofTotal_Average",
+  statisticType: "avg"
+};
+
+
+
 const statDiv = document.getElementById("statDiv")
 const statsDiv1 = document.getElementById("statsDiv1");
+const statsDiv2 = document.getElementById("statsDiv2");
       const infoDiv = document.getElementById("infoDiv");
       const infoDivExpand = new Expand({
         collapsedIconClass: "esri-icon-collapse",
