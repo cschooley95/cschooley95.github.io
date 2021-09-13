@@ -246,7 +246,7 @@ view.whenLayerView(layer).then((layerView) => {
  // Extent for time Slider 
   timeSlider.fullTimeExtent = {
     start: start,
-    end: new Date(2021,0,1)
+    end: new Date(2020,0,1)
   };
 
 // Show 1 year intervals
@@ -400,7 +400,7 @@ if (result.error) {
     "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, Utah School and Institutional Trust Lands Administration and Utah's Division of Oil, Gas, and Mining." +
     "<br />GDP, employment, wage, and SITLA revenue percentage calculations are averages based on current time frame selection." +
     "<br />SITLA revenue calculation is the total amount contributed based on current time frame selection." +
-    "<br />SITLA financial data for oil and gas revenue was not available for 2013, before 1999 or after 2019." +
+    "<br />SITLA financial data for oil and gas revenue was not available for 2013, before 1999 or after 2020." +
      "</font></i>";
     
     statsDiv2.innerHTML =
