@@ -336,7 +336,7 @@ if (result.error) {
   if (result.features.length >= 1) {
     const GDPHtml = result.features[0].attributes["GDP_Average"] == null
       ?"GDP data not available"
-      :"Added " +
+      :"Added an average of " +
       "<span>" +
       result.features[0].attributes["GDP_Average"].toFixed(1) +
       "</span> million dollars to Utah's Gross Domestic Product" +
@@ -381,7 +381,7 @@ if (result.error) {
   if (result.features.length >= 1) {
     const OGRevHtml = result.features[0].attributes["OGRev_Sum"] == null
       ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available"
-      :"Contributed " +
+      :"Contributed a total of " +
       "<span>" +
       result.features[0].attributes["OGRev_Sum"].toFixed(1) +
       "</span> million dollars to the Utah School and Institutional Trust Lands Administration" +
