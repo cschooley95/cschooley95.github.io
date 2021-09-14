@@ -339,7 +339,7 @@ if (result.error) {
       :"Added an average of " +
       "<span>" +
       result.features[0].attributes["GDP_Average"].toFixed(1) +
-      "</span> million dollars to Utah's Gross Domestic Product" +
+      "</span> million dollars to Utah's Gross Domestic Product per year" +
       ".<br />";
     
     var thousandsSep = {maximumFractionDigits:0}; //create thousands seperators
