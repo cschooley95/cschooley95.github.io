@@ -100,7 +100,7 @@ function queryWellCounts(target) {
   // oil and gas layer hidden
   const table = new FeatureLayer({
     portalItem: {
-      id: "41a8b6d1a75a45c581e124648efe916b"
+      id: "c27b246d53f0430d8eb781e31e9a3c70"
     },
     visible:false
   });
@@ -189,7 +189,7 @@ const timeSlider = new TimeSlider({
     playRate: 1000,
       stops: {
         interval: {
-        value: 5,
+        value: 1,
         unit: "years"
        }
      }, 
@@ -387,7 +387,7 @@ if (result.error) {
       "</span> million dollars to the Utah School and Institutional Trust Lands Administration" +
       ".<br />";
 
-    const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null
+    const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null | 0
       ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available"
       :"Was responsible for " +
       "<span>" +
@@ -445,7 +445,7 @@ const OGRev = {
 };
 
 const OGofTotal = {
-  onStatisticField: "PercentOGofTotal",
+  onStatisticField: "OGPercent",
   outStatisticFieldName: "OGofTotal_Average",
   statisticType: "avg"
 };
