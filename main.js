@@ -11,7 +11,7 @@ require([
   "esri/rest/support/Query",
   "esri/rest/support/StatisticDefinition",
   "esri/popup/content/CustomContent"
-], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider, QueryTask, Query, StatisticDefinition, CustomContent) {
+], function (Map, MapView, FeatureLayer, TileLayer, VectorTileLayer, Expand, Legend, TimeSlider, QueryTask, Query, StatisticDefinition) {
 
   // state boundary feature layer
   const state = new FeatureLayer({
@@ -34,7 +34,7 @@ require([
     }
   });
 
-  ///// Pop up function
+  ///// Pop up function for counties
 
   var queryWellsTask = new QueryTask({
     url: "https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/OGHistory/FeatureServer/0"
