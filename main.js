@@ -199,7 +199,9 @@ const timeSlider = new TimeSlider({
     tickConfigs: [{
       mode: "position",
       values: [
-        new Date(1970, 0, 1), new Date(1980, 0 , 1), new Date(1990, 0, 1), new Date(2000, 0, 1), new Date(2010, 0, 1), new Date(2020, 0, 1)
+        new Date(1970, 0, 1), new Date(1975, 0, 1), new Date(1980, 0 , 1), new Date(1985, 0, 1),
+        new Date(1990, 0, 1), new Date(1995, 0, 1), new Date(2000, 0, 1), new Date(2005, 0, 1),
+        new Date(2010, 0, 1), new Date(2015, 0, 1), new Date(2020, 0, 1)
       ].map((date) => date.getTime()),
       labelsVisible: true,
       labelFormatFunction: (value) => {
@@ -606,8 +608,6 @@ view.when(function() {
 });
 
 // Instruction Box
-
-var infoContent = 'These are instructions'
 
 const instructions = document.getElementById("instructionDiv")
 
