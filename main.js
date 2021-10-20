@@ -172,7 +172,8 @@ const legendExpand = new Expand({
       title:"Oil and Gas Surface Well Locations (1970-Present)"
     }]
   }),
-  expanded: true
+  expanded: false,
+  group: "top-left"
 });
 view.ui.add(legendExpand, "top-left");
 
@@ -400,7 +401,7 @@ if (result.error) {
     "Estimates from the US Bureau of Economic Analysis, the US Bureau of Labor Statistics, Utah School and Institutional Trust Lands Administration and Utah's Division of Oil, Gas, and Mining." +
     "<br />GDP, employment, wage, and SITLA revenue percentage calculations are averages based on current time frame selection." +
     "<br />SITLA revenue calculation is the total amount contributed based on current time frame selection." +
-    "<br />SITLA financial data for oil and gas revenue was not available for 2013, before 1999 or after 2020." +
+    "<br />SITLA financial data for oil and gas revenue was not available before 2000." +
      "</font></i>";
     
     statsDiv2.innerHTML =
@@ -603,5 +604,21 @@ view.when(function() {
   });
   view.ui.add(productionExpand1, "top-right");
 });
+
+// Instruction Box
+
+var infoContent = 'These are instructions'
+
+const instructions = document.getElementById("instructionDiv")
+
+const instructionBox = new Expand({
+  expandIconClass: "esri-icon-collapse",
+  expandTooltip: "How to use this map",
+  expanded: true,
+  view: view,
+  content: instructions,
+  group : "top-left"
+});
+view.ui.add({component: instructionBox, position: "top-left", index: 1});
 
 });

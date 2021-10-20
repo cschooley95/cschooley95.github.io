@@ -172,3 +172,9 @@ ul {
 	height: 325px;
 	width: 475px
 }
+
+#instructionDiv {
+	padding: 10px;
+	width: 300px;
+	font-size: 14pt;
+}
