@@ -1,4 +1,4 @@
-# cschooley95.github.io
+# Timelapse of Oil and Gas from the 1970s until now
 
 This interactive map portrays the growth of the oil and gas industry within Utah from 1970 to the present. 
 Click ‘play’ on the time slider to watch how the oil and gas wells have moved throughout the state. 
