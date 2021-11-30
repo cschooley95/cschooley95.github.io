@@ -57,7 +57,7 @@ function queryWellCounts(target) {
          "<span>" + 
          stats.count_county +
           "</span>" +
-          " well in {Name} County.") 
+          " mineral mines in {Name} County.") 
       }else{ 
         return(
           "Between " +
@@ -69,7 +69,7 @@ function queryWellCounts(target) {
            "<span>" + 
            stats.count_county +
             "</span>" +
-            " wells in {Name} County." )
+            " mineral mines in {Name} County." )
       }
     });
   }
