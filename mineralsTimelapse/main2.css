@@ -1,0 +1,343 @@
+html,
+body,
+#viewDiv {
+	padding: 0;
+	margin: 0;
+	height: 96%;
+	width: 100%;
+}
+
+/*
+.overlay {
+	opacity:100;
+	position:fixed;
+	top:-999em;
+	left:-999em;
+	width:100%;
+	height:100%;
+	display:table;
+	background:rgba(0,0,0,0.8);
+	-webkit-animation: splash 10s forwards;
+	animation: splash 10s forwards;
+}
+
+.overlay-inner {
+   display:table-cell;
+   vertical-align:middle;
+   text-align:center;
+}
+
+.purpleLogo1 {
+	display: inline;
+	vertical-align: bottom;
+  }
+
+.message {
+	border:solid #77496B;
+	background:#d4b8cd;
+	display:inline-block;
+	vertical-align:middle;
+	width:50%;
+	text-align:center;
+	padding:10px;
+}
+
+p {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+@-webkit-keyframes 
+                        splash {
+                            0%  
+                            {
+                            opacity: 0;
+                            top:0;
+                            left:0
+                            }     
+                            20% 
+                            {
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            60%
+                            { 
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            99% 
+                            {
+                            top:0;
+                            left:0
+                            }      
+                            100% 
+                            {
+                            opacity:0;
+                            top:-999em;
+                            left:-999em
+                            }    
+                            }    
+                            
+                            @-moz-keyframes 
+                            splash {
+                            0%  {
+                            opacity: 0;
+                            top:0;
+                            left:0
+                            }
+                            20% 
+                            {
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            60% 
+                            {
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            99% 
+                            {
+                            top:0;
+                            left:0
+                            }
+                            100% 
+                            {
+                            opacity:0;
+                            top:-999em;
+                            left:-999em
+                            }    
+                            }    
+                            @-ms-keyframes 
+                            splash {
+                            0%  {
+                            opacity: 0;
+                            top:0;
+                            left:0}  
+                            20% {
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            60% {
+                            opacity:1;
+                            top:0;
+                            left:0
+                            }
+                            99% {
+                            top:0;
+                            left:0
+                            }
+                            100% {
+                            opacity:0;
+                            top:-999em;
+                            left:-999em
+                            }    
+                            }     
+                            @keyframes 
+                            splash {
+                                0%  {
+                                opacity: 0;
+                                top:0;
+                                left:0}
+                                20% {
+                                    opacity:1;
+                                    top:0;
+                                    left:0
+                                }
+                                60% {
+                                opacity:1;
+                                top:0;
+                                left:0}
+                                99% {
+                                    top:0;
+                                    left:0
+                                    }      
+                                100% {
+                                opacity:0;
+                                top:-999em;
+                                left:-999em
+                                }    
+                                }  
+		*/						
+.sample-slider {
+	position: absolute;
+	left: 2%;
+	right: 2%;
+	bottom: 20px;
+	margin: 10px ;
+	height: 80;
+  }
+
+#timeSlider .custom-labels{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: red;
+	margin-top: -35px;
+}
+
+#timeSlider .custom-ticks{
+	background-color: black;
+	width: 1px;
+	height: 8px;
+	margin-top: -30px;
+}
+
+#timeSlider .custom-labels2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+	margin-top: 7 px;
+}
+
+#timeSlider .custom-ticks2{
+	background-color: black;
+	width: 1px;
+	height: 8px;
+	margin-top: 2px;
+}
+
+.esri-time-slider__slider .esri-slider {
+    margin-top: -5px;
+	margin-bottom: -5px;
+}
+
+#infoDiv {
+	height: 360px;
+	padding: 10px;
+	width: 625px;
+	font-size: 14pt;
+}
+
+#infoDiv span {
+	color: #77496B;
+	font-size: 12pt;
+	font-weight: bolder;
+}
+
+span {
+	color: #77496B;
+	font-size: 12pt;
+	font-weight: bolder;
+}
+
+ul {
+	display: block;
+	list-style-type: disc;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 40px;
+  }
+
+.header{
+	box-sizing: border-box;
+	height: 80px;
+	overflow: clip;
+	background-color:#20131d;
+	padding: 10px 5px;
+}
+
+.header a {
+	float: right;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	vertical-align: bottom;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 1px;
+  }
+
+.header a:hover{
+	background-color:#77496B;
+}
+
+.purpleLogo {
+	display: inline;
+	vertical-align: bottom;
+	float: left;
+  }
+
+  .header-right {
+	display: inline;
+	float: right;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	vertical-align: bottom;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 1px;
+  }
+
+  .title {
+	display: inline;
+	float: left;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	vertical-align: bottom;
+	line-height: 45px;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 24px;
+	border-radius: 1px;
+  }
+
+#productionPanel {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 525px;
+	height: auto;
+  }
+
+#productionPanel1 {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 525px;
+	height: auto;
+  }
+
+#productionPanel2 {
+	background: #fff;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 10px;
+	width: 525px;
+	height: auto;
+  }
+
+#chart {
+	  height: 325px;
+	  width: 475px
+  }
+
+#chart1 {
+	height: 325px;
+	width: 475px
+}
+
+#chart2 {
+	height: 325px;
+	width: 475px
+}
+
+#instructionDiv {
+	padding: 10px;
+	width: 300px;
+	font-size: 14pt;
+}

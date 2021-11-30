@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Growth of the Minerals Industry in Utah</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.20/esri/themes/light/main.css">
+  <link rel="stylesheet" href="main2.css">
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+  <script src="https://unpkg.com/@esri/arcgis-rest-request@1.7.1/dist/umd/request.umd.min.js"></script>
+  <script src="https://unpkg.com/@esri/arcgis-rest-feature-service@1.7.1/dist/umd/feature-service.umd.min.js"></script>
+  <!-- Load theme -->
+  <script src="https://cdn.amcharts.com/lib/4/themes/frozen.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <!-- load cedar -->
+  <script src="https://unpkg.com/@esri/cedar/dist/umd/cedar.js"></script>
+  <script src="https://js.arcgis.com/4.20/"></script>
+  <script type = "text/javascript" src="main2.js"></script>
+  
+</head>
+
+<body>
+  <div class="header">
+    <img src="https://www.ogm.utah.gov/images/purpleLogo.png" width="48" height="60" class="purpleLogo">
+    <div class="title"><b>Utah Division of Oil, Gas, & Mining</b></div>
+    <div class="header-right">
+      <a href="https://www.ogm.utah.gov/contact.php">Contact Us</a>
+      <a href="https://www.ogm.utah.gov/index.php">DOGM Website</a>
+      <a href="https://ogm-public-data-utahdnr.hub.arcgis.com/">DOGM Public Data Access</a>
+    </div>
+  </div>
+  <div id="viewDiv"></div>
+
+  <!--
+  <div id ="overlay" class="overlay">    
+    <div class="overlay-inner">      
+        <div class="message"> 
+          <img src="https://www.ogm.utah.gov/images/purpleLogo.png" width="192" height="240" class="purpleLogo1">      
+          <p><font size = "4"><br/>The State of Utah tries to ensure that the information made available to the public is accurate and complete.<br/>
+              Due to factors beyond the control of the State, however, it cannot guarantee against unauthorized modifications of information or errors made in inputting and posting data.<br/>
+              The State may make changes to a web page at any time to update, add or correct the information made available. <br/>
+              The State may elect to charge a fee for accessing or using information from the State's computer system, or may suspend or discontinue making the information available. <br/>
+            </font>
+          </p>     
+          </div>    
+      </div>
+  </div>
+-->
+  
+
+  <div id="timeSlider" class = "sample-slider"></div>
+  <div id="infoDiv" class="esri-widget">
+    <div> <font size = "5"><b>Growth of the Mineral Mining Industry</b></font></div><br/>
+    <div id="statDiv" class="esri-widget"></div>
+    <div id="statsDiv1" class="esri-widget"></div>
+    <div id="statsDiv2" class="esri-widget"></div>
+  </div>
+
+ 
+  <div id= "productionPanel" class = "esri-widget">
+    <div> <font size = "5"><b>Copper Production (2000-2018)</b></font></div>
+    <div id="chart" class = "esri-widget"></div>
+    <div><i><font size = '1'>Estimates from the Utah Geological Survey, UEMS Table 9.2</font></i></div>
+  <div id= "productionPanel1" class = "esri-widget">
+    <div> <font size = "5"><b>Gold and Silver Production (2000-2018)</b></font></div>
+    <div id="chart1" class = "esri-widget"></div>
+    <div><i><font size = '1'>Estimates from the Utah Geological Survey, UEMS Table 9.2</font></i></div>
+  </div>
+  <div id= "productionPanel2" class = "esri-widget">
+    <div> <font size = "5"><b>Sand, Gravel, and Crushed Stone (1999-2018)</b></font></div>
+    <div id="chart2" class = "esri-widget"></div>
+    <div><i><font size = '1'>Estimates from the Utah Geological Survey, UEMS Table 9.1</font></i></div>
+  </div>
+
+  <div id="instructionDiv" class = "esri-widget">
+    <div> <font size = "4"><b>Using this map</b></font></div><br/>
+    <div> <font size = "2">The time slider below is automatically set to 1 year blocks and to move at 1 year increments.<br/><br/> 
+    The time period can be manually adjusted to the time period of your choosing.<br/><br/> 
+    Hit 'Play' to watch the changes for that time period or manually drag the slider. <br/><br/>
+    When using the graphs on the right, you can select and zoom into specific time periods.<br/><br/></font></div>
+  </div>
+</body>
+
+</html>
