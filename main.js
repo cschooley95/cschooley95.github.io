@@ -384,10 +384,10 @@ if (result.error) {
   if (result.features.length >= 1) {
     const OGRevHtml = result.features[0].attributes["OGRev_Sum"] == null
       ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available"
-      :"Contributed a total of " +
+      :"Contributed an average of " +
       "<span>" +
       result.features[0].attributes["OGRev_Sum"].toFixed(1) +
-      "</span> million dollars to the Utah School and Institutional Trust Lands Administration" +
+      "</span> million dollars to the Utah School and Institutional Trust Lands Administration per year" +
       ".<br />";
 
     const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null | 0
@@ -444,7 +444,7 @@ const wageAvg= {
 const OGRev = {
   onStatisticField: "OGRev",
   outStatisticFieldName: "OGRev_Sum",
-  statisticType: "sum"
+  statisticType: "avg"
 };
 
 const OGofTotal = {
