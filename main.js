@@ -444,7 +444,7 @@ const wageAvg= {
 const OGRev = {
   onStatisticField: "OGRev",
   outStatisticFieldName: "OGRev_Sum",
-  statisticType: "avg"
+  statisticType: "sum"
 };
 
 const OGofTotal = {
