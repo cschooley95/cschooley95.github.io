@@ -370,7 +370,7 @@ if (result.error) {
 
 // Run statistics for GDP/employment/salary within current time extent
 const SITLAQuery = tableView.effect.filter.createQuery();
-SITLAQuery.where = "YearStart > 1998"
+SITLAQuery.where = "OGRev > 5.0"
 SITLAQuery.outStatistics = [
 OGRev,
 OGofTotal
@@ -382,12 +382,12 @@ if (result.error) {
   return result.error;
 } else {
   if (result.features.length >= 1) {
-    const OGRevHtml = result.features[0].attributes["OGRev_Sum"] == null
+    const OGRevHtml = result.features[0].attributes["OGRev_Sum"] == null | 0
       ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available."
       :"Contributed an average of " +
       "<span>" +
       result.features[0].attributes["OGRev_Sum"].toFixed(1) +
-      "</span> million dollars to the Utah School and Institutional Trust Lands Administration per year." +
+      "</span> million dollars to the Utah School and Institutional Trust Lands Administration per year" +
       ".<br />";
 
     const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null | 0
