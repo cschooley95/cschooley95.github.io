@@ -391,7 +391,7 @@ if (result.error) {
       ".<br />";
 
     const OGofTotalHtml = result.features[0].attributes["OGofTotal_Average"] == null | 0
-      ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available".
+      ?"Utah School and Institutional Trust Lands Administration (SITLA) revenue data not available."
       :"Was responsible for " +
       "<span>" +
       result.features[0].attributes["OGofTotal_Average"].toFixed(1) +
